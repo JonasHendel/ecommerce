@@ -1,0 +1,31 @@
+.navbar {
+  height: 5vw;
+  background: rgb(215, 209, 189);
+  min-height: 30px;
+}
+
+.navLogo img {
+  height: 4.4vw;
+  vertical-align: center;
+  margin: 5% 1vw 0px 8.66%;
+  min-height: 25px;
+
+}
+
+.navItems {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  margin-left: 2.16%;
+}
+
+.navItems a {
+  margin: 0px 0px 0px 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bold;
+  font-size: calc(10px + 0.3vw);
+  text-transform: uppercase;
+}
+

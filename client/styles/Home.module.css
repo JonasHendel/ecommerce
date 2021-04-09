@@ -1,0 +1,26 @@
+.text {
+    width: 50%;
+    min-width: 300px;
+    margin-left: 8.33%;
+    margin-top: 8%;
+    font-size: 1.55vw;
+  }
+  
+.text h1 {
+  text-transform: uppercase;  
+}
+
+.text h4 {
+  color: gray;
+}
+
+.container {
+  display: flex;
+}
+
+.image img{
+  width: 30vw;
+  margin: 10% 7% 7% 12%
+}
+
+
