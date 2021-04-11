@@ -12,22 +12,22 @@ const NavBar = () => {
           <div className={styles.navLogo}>
             <img src="/logo.png" alt="logo"/>
           </div>
-          <Link href="">
+          <Link href="/">
             <a >Hjem</a>
           </Link>
-          <Link href="" >
+          <Link href="/kurs" >
             <a>Kurs</a>
           </Link>
-          <Link href="">
+          <Link href="/shop">
             <a >Shop</a>
           </Link>
-          <Link href="">
+          <Link href="/events">
             <a >Events/aktuelt</a>
           </Link>
-          <Link href="">
+          <Link href="/about">
             <a >Om meg</a>
           </Link>
-          <Link href="">
+          <Link href="/kontakt">
             <a >Kontakt</a>
           </Link>
         </div>
