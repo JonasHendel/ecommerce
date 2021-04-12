@@ -16,11 +16,28 @@
 
 .container {
   display: flex;
+  position: relative;
 }
 
 .image img{
   width: 30vw;
   margin: 10% 7% 7% 12%
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .image img{
+    width: 80vw;
+    margin: 10% 7% 7% 12%
+  }
+  .text {
+    width: 90vw;
+    font-size: 4vw;
+  }
+  .container {
+    flex-direction: column;
+    width: 100vw
+  }
 }
 
 

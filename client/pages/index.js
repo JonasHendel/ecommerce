@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import Newsletter from '../components/Newsletter'
+
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -10,6 +12,9 @@ export default function Home() {
 				<link rel='icon' href='../public/favicon.ico' />
 			</Head>
       <div className={styles.container}>
+        <div className="newsletter">
+          <Newsletter/>
+        </div>
         <div className={styles.text}>
           <h1>Francesco solimeo</h1>
           <h4>Pizza Chef og eier av Vesuvio Cafe</h4>
