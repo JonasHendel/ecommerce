@@ -15,6 +15,12 @@ a {
   box-sizing: border-box;
 }
 
+.title {
+  display: flex;
+  justify-content: center;
+  margin-top: 1vw;
+}
+
 [class*="col-"] {
   float: left;
   padding: 15px;
@@ -43,30 +49,6 @@ a {
   margin: 5px;
 }
 
-.cancel-btn {
-  width: 60%;
-  color: rgb(165, 162, 162);
-  background: rgb(255, 255, 255);
-  border: none;
-  padding: 10px 10px 10px 10px;
-  margin-top: none;
-}
-
-.input {
-  margin: 10px;
-  margin-top: 20px;
-  width: 60%;
-  padding: none;
-  border: none;
-  border-bottom: 3px solid rgb(168, 168, 168);
-  font-size: 120%;
-}
-
-.input:focus {
-  outline: none;
-  border-color: black;
-}
-
 .submit-btn:focus {
   outline: none;
 }
@@ -77,6 +59,15 @@ a {
   color: white;
 }
 
+.cancel-btn {
+  width: 60%;
+  color: rgb(165, 162, 162);
+  background: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 10px 10px 10px;
+  margin-top: none;
+}
+
 .cancel-btn:active {
   outline: none;
   color: black;
@@ -85,4 +76,35 @@ a {
 .cancel-btn:focus {
   outline: none;
 }
+
+input {
+  margin: 10px;
+  margin-top: 10px;
+  padding: none;
+  padding-top: 20px;
+  border: none;
+  border-bottom: 3px solid rgb(168, 168, 168);
+  font-size: 120%;
+}
+
+input:focus {
+  outline: none;
+  border-color: black;
+}
+
+textarea {
+  resize: none;
+  margin: 10px;
+  border: 3px solid rgb(168, 168, 168);
+  font-size: 100%;
+  font-family: inherit;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: black;
+}
+
+
+
 

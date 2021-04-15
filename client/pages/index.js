@@ -5,6 +5,7 @@ import Newsletter from '../components/Newsletter'
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
+  console.log(process.env.MONGO_URI)
 	return (
 		<div>
 			<Head>

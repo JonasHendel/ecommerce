@@ -1,6 +1,7 @@
 .navbar {
   height: 5vw;
-  background: rgb(215, 209, 189);
+  background: #ffecd1;
+  /* background: rgb(215, 209, 189); */
   min-height: 30px;
 }
 
