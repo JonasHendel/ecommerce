@@ -14,7 +14,7 @@ const sendEmail = (e) => {
 }
 
 const ContactForm = () => {  
-  console.log(process.env.USER_E)
+  console.log(process.env.USER_EMAILJS)
   return (
     <>
         <div>
