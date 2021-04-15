@@ -5,7 +5,7 @@ import styles from '../styles/Contact.module.css'
 const sendEmail = (e) => {
   e.preventDefault()
 
-  emailjs.sendForm('test', 'template1', e.target, 'user_FumSeNhN6BKsgunkFl7DJ')
+  emailjs.sendForm('test', 'template1', e.target, process.env.USER_EMAILJS)
     .then((result) => {
         console.log(result.text);
     }, (error) => {
@@ -14,7 +14,6 @@ const sendEmail = (e) => {
 }
 
 const ContactForm = () => {  
-  console.log(process.env.USER_EMAILJS)
   return (
     <>
         <div>
