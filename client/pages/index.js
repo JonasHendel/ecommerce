@@ -1,11 +1,22 @@
 import Head from 'next/head';
 
+import { useState, useEffect } from 'react'
+
 import Newsletter from '../components/Newsletter'
 
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
-  console.log(process.env.MONGO_URI)
+  const [active, setActive] = useState(false)
+
+  useEffect(() => {
+    if(!sessionStorage.getItem("disablePopup")){
+      setTimeout(()=>{
+        setActive(true)
+      }, 5000)
+    }
+  },[])
+
 	return (
 		<div>
 			<Head>
@@ -13,9 +24,10 @@ export default function Home() {
 				<link rel='icon' href='../public/favicon.ico' />
 			</Head>
       <div className={styles.container}>
-        <div className="newsletter">
-          <Newsletter/>
+      {active && <div className="newsletter">
+          <Newsletter setActive={setActive}/>
         </div>
+      }
         <div className={styles.text}>
           <h1>Francesco solimeo</h1>
           <h4>Pizza Chef og eier av Vesuvio Cafe</h4>

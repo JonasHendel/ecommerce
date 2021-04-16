@@ -4,31 +4,23 @@ import MailchimpSubscribe from 'react-mailchimp-subscribe';
 import styles from '../styles/Newsletter.module.css';
 import { EnvelopeOpen } from 'phosphor-react';
 
-const CustomForm = ({ status, message, onValidated }) => {
+import Link from 'next/link'
 
-  const [active, setActive] = useState(false)
-
-  useEffect(() => {
-    if(!sessionStorage.getItem("disablePopup")){
-      setTimeout(()=>{
-        setActive(true)
-      }, 5000)
-    }
-  },[])
+const CustomForm = ({ status, message, onValidated, setActive }) => {
 
 	let email;
-	const submit = () => {
+	const submit = (e) => {
     email &&
     email.value.indexOf('@') > -1 &&
     onValidated({
       EMAIL: email.value,
-    }, sessionStorage.setItem("disablePopup", true));
+    }, sessionStorage.setItem("disablePopup", true), setActive(false));
   }
 
   
 	return (
     <>
-		{active && <div className={styles.container}>
+		<div className={styles.container}>
 			<div className={styles.newsletter}>
 				<EnvelopeOpen size={100} />
 				<div className={styles.text}>
@@ -38,17 +30,19 @@ const CustomForm = ({ status, message, onValidated }) => {
 						notified on new updates!
 					</h4>
 				</div>
-				<input
-					className='input'
-					ref={(node) => (email = node)}
-					type='email'
-					placeholder='Your email'
-				/>
-				<br />
-				<button className='submit-btn' onClick={submit}>
-					Subscribe
-				</button>
-				<button className='cancel-btn' onClick={() => {sessionStorage.setItem("disablePopup", true), setActive(false)}}>No thanks!</button>
+        <form onSubmit={submit}>
+          <input
+            className='input'
+            ref={(node) => (email = node)}
+            type='email'
+            placeholder='Your email'
+          />
+          <br />
+          <button type="submit" className='submit-btn'>
+            Subscribe
+          </button>
+        </form>
+				<button className='cancel-btn' onClick={(e) => {e.preventDefault(), sessionStorage.setItem("disablePopup", true), setActive(false)}}>No thanks!</button>
 				<br />
         <div>
           {status === 'error' && (
@@ -57,7 +51,7 @@ const CustomForm = ({ status, message, onValidated }) => {
         </div>
 			</div>
       <div className={styles.background}/>
-		</div>}
+		</div>
     {status === 'success' && (
       <div></div>
     )}
@@ -66,11 +60,8 @@ const CustomForm = ({ status, message, onValidated }) => {
 	);
 };
 
-const Newsletter = () => {
+const Newsletter = ({setActive}) => {
 	const url = process.env.API_URL_MAILCHIMP
-
-
-  console.log(url)
 	return (
 		<div>
 			<MailchimpSubscribe
@@ -80,6 +71,7 @@ const Newsletter = () => {
 						status={status}
 						message={message}
 						onValidated={(formData) => subscribe(formData)}
+            setActive={setActive}
 					/>
 				)}
 			/>

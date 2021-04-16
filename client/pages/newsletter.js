@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import Newsletter from "../components/Newsletter"
 
+
 const newsletter = () => {
 	return (
     <>
