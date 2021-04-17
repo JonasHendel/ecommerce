@@ -49,7 +49,7 @@ function register() {
         <form className={styles.signinCard} onSubmit={handleSubmit}>
           <h1>Register</h1>
           <input name="name" value={name} onChange={handleChangeInput} type="text" placeholder="Name"/>
-          <input name="email" value={email} onChange={handleChangeInput} type="email" placeholder="Email"/>
+          <input name="email" value={email} onChange={handleChangeInput} type="text" placeholder="Email"/>
           <input name="password" value={password} onChange={handleChangeInput} type="password" placeholder="Password" />
           <input name="cf_password" value={cf_password} onChange={handleChangeInput} type="password" placeholder="Confirm Password" />
           <button className="submit-btn" type="submit">Register</button>
