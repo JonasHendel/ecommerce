@@ -1,15 +1,18 @@
 import '../styles/globals.css'
 
-import NavBar from '../components/NavBar'
-import Grid from '../components/Grid'
+import Layout from '../components/Layout'
+
+import { DataProvider } from '../store/GlobalState'  
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-      <NavBar/>
-      {/* <Grid/> */}
-      <Component {...pageProps} />
+      <DataProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </DataProvider>
     </>
   )
 }

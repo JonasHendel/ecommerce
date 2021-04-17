@@ -1,10 +1,22 @@
-import React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
-
+import { ShoppingCart, User } from 'phosphor-react'
+import React from 'react'
 import styles from '../styles/NavBar.module.css'
 
+import { useRouter } from 'next/router'
+
+
+
 const NavBar = () => {
+  const router = useRouter
+
+  const isActive = (r) => {
+    if(r === router.pathname){
+      return { color: 'red' } 
+    }else {
+      return ''
+    }
+  }
   return (
     <>
       <div className={styles.navbar}>
@@ -30,6 +42,18 @@ const NavBar = () => {
           <Link href="/kontakt">
             <a >Kontakt</a>
           </Link>
+          <div className="flex-end">
+            <Link href="/cart">
+              <a >
+                <ShoppingCart size={30}/> 
+              </a>
+            </Link>
+            <Link href="/signin">
+              <a>
+                <User size={30} />
+              </a>
+            </Link>
+          </div>
         </div>
       </div>
     </>

@@ -40,8 +40,7 @@ a {
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
 
-.submit-btn {
-  width: 17vh;
+button {
   background: rgb(255, 255, 255);
   border-radius: 5px;
   border: 4px solid rgb(0, 0, 0);
@@ -49,11 +48,11 @@ a {
   margin: 5px;
 }
 
-.submit-btn:focus {
+button:focus {
   outline: none;
 }
 
-.submit-btn:active {
+button:active {
   outline: none;
   background: black;
   color: white;
@@ -105,6 +104,8 @@ textarea:focus {
   border-color: black;
 }
 
-
-
-
+.flex-end {
+  display: flex;
+  margin-left: auto;
+  margin-right: 40px;
+}

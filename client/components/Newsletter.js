@@ -26,8 +26,8 @@ const CustomForm = ({ status, message, onValidated, setActive }) => {
 				<div className={styles.text}>
 					<h1>Subscribe!</h1>
 					<h4>
-						Join my mailing list and be <br /> the first to be
-						notified on new updates!
+						Join my mailing list and be <br /> the first one to be
+						notified on new courses!
 					</h4>
 				</div>
         <form onSubmit={submit}>
