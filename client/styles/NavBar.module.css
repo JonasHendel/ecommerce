@@ -33,3 +33,7 @@
 .active {
   background: green;
 }
+
+.logout {
+  cursor: pointer;
+}

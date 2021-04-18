@@ -2,16 +2,17 @@ import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import Notify from './Notify';
   
-const Toast = ({message}) => {
+const Toast = ({message, handleShow}) => {
   if(message.error === true ){
-    toast.error(message.msg);
+    toast.error(message.msg, {onClose: () => handleShow(), position: "top-center"});
   }
   if(message.error === false){
-    toast.success('Registered')
+    toast.success(message.msg, {onClose: () => handleShow(), position: "top-center"})
+
   }
     return (
       <div>
-        <ToastContainer />
+        <ToastContainer limit={1} pauseOnHover={false} autoClose={3000}/>
       </div>
     );
   }

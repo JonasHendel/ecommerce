@@ -1,6 +1,10 @@
+import ReactLoading from 'react-loading';
+
 const Loading = () => {
   return (
-    <h1>Loading...</h1>
+    <div className="Loading">
+      <ReactLoading type='Spin' color="#00000" />
+    </div> 
   )
 }
 
