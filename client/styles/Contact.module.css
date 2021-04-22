@@ -1,25 +1,32 @@
 .container {
-	display: flex;
-	justify-content: space-evenly;
+  display: flex;
+  justify-content: center;
 }
 
-.contactform h1 {
-  font-size: 1.5vw;
+.contentArea {
+  width: 1500px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap ;
 }
 
 .contactform {
-	padding: 2vw;
-	margin-top: 2vw;
-	display: flex;
-	width: 40vw;
-	height: 60vh;
-	flex-direction: column;
-	justify-content: space-evenly;
-	box-shadow: 0px 0px 2vw 0.04vw rgb(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  display: flex;
+  width: 50rem;
+  height: 40rem;
+  flex-direction: column;
+  justify-content: space-evenly;
+  box-shadow: 0px 0px 2vw 0.04vw rgb(0, 0, 0, 0.1);
+}
+
+.contactform h1 {
 }
 
 .contactform textarea {
-	height: 13vw;
+	height: 13rem;
 }
 
 .email {
@@ -42,7 +49,7 @@
 }
 
 .submitbtn {
-	width: 5vw;
+	width: 5rem;
 	background: rgb(255, 255, 255);
 	border-radius: 5px;
 	border: 4px solid rgb(0, 0, 0);
@@ -64,10 +71,10 @@
 }
 
 .contactinfo {
-	margin-top: 2vw;
+	margin-top: 2rem;
 	display: flex;
-	width: 20vw;
-	height: 60vh;
+	width: 25rem;
+	height: 40rem;
 	flex-direction: column;
 	justify-content: space-evenly;
 	box-shadow: 0px 0px 50px 4px rgb(0, 0, 0, 0.1);
@@ -89,4 +96,20 @@
 .icon {
 	font-size: 70px;
   font-weight: bold;
+}
+
+
+@media only screen and (max-width: 850px) {
+
+    .contactform {
+      margin-right: 0px;
+      margin-top: 0px;
+      width: 20rem;
+    }
+
+    .contactinfo {
+      width: 20rem;
+      margin-bottom: 2rem;
+    }
+
 }

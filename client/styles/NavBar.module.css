@@ -1,16 +1,19 @@
 .navbar {
-  height: 5vw;
+  height: 6vh;
   background: #ffecd1;
   /* background: rgb(215, 209, 189); */
-  min-height: 30px;
+  min-height: 50px;
+}
+
+.navLogo {
+  display: flex;
+  align-items: center;
 }
 
 .navLogo img {
-  height: 4.4vw;
-  vertical-align: center;
+  height: 4vh;
   margin: 5% 1vw 0px 8.66%;
-  min-height: 25px;
-
+  min-height: 45px;
 }
 
 .navItems {
@@ -18,6 +21,7 @@
   justify-content: flex-start;
   position: relative;
   margin-left: 2.16%;
+  height: 100%;
 }
 
 .navItems a {
@@ -34,6 +38,76 @@
   background: green;
 }
 
+.navPages {
+  display: flex;
+  height: 100%;
+}
+@media only screen and (max-width: 600px) {
+  .navPages {
+    display: none;
+  }
+  .scrolled {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .burgerMenu {
+    display: none;
+  }
+}
+
+.mobilePages {
+  background: #ffecd1;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.mobilePages a {
+  margin: 10px;
+}
+
 .logout {
   cursor: pointer;
+}
+
+.burgerDiv{
+  display: flex;
+  align-items: center;
+}
+
+.burgerMenu {
+  background: transparent;
+  border: none;
+  padding: none;
+  margin: none;
+}
+
+.shoppingCart {
+  position: absolute;
+  padding: 3px 6px;
+  background: rgb(255, 96, 96);
+  border-radius: 50%;
+  top: 5px;
+  margin-left: 15px;
+}
+
+@keyframes scrollFadeIn {
+  from {opacity: 0;}
+  to {opacity: 100;}
+}
+
+.scrolled{
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  animation: scrollFadeIn;
+  animation-duration: 0.3s;
+  
 }

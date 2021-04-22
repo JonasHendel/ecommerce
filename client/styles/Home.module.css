@@ -1,9 +1,20 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.contentArea {
+  width: 1500px;
+  display: flex;
+
+}
+
+
 .text {
-    width: 50%;
+    width: auto;
     min-width: 300px;
-    margin-left: 8.33%;
     margin-top: 8%;
-    font-size: 1.55vw;
+    font-size: 1.8rem;
   }
   
 .text h1 {
@@ -14,15 +25,12 @@
   color: gray;
 }
 
-.container {
-  display: flex;
-  position: relative;
-}
 
 .image img{
-  width: 30vw;
-  margin: 10% 7% 7% 12%
+  width: 35rem;
+  margin: 10rem 0rem 0px 100px
 }
+
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */

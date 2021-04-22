@@ -13,27 +13,29 @@ const Kontakt = () => {
         <h1>KONTAKT</h1>
       </div>
 			<div className={styles.container}>
-				<ContactForm className={styles.icon}/>
-				<div className={styles.contactinfo}>
-					<div className={styles.contentOuter}>
-            <div className={styles.contentInner}>  
-              <Phone className={styles.icon}/>
-              <p>+47 980 56 823</p>
+        <div className={styles.contentArea}>
+          <ContactForm className={styles.icon}/>
+          <div className={styles.contactinfo}>
+            <div className={styles.contentOuter}>
+              <div className={styles.contentInner}>  
+                <Phone className={styles.icon}/>
+                <p>+47 980 56 823</p>
+              </div>
+            </div>
+            <div className={styles.contentOuter}>
+              <div className={styles.contentInner}>
+                <At className={styles.icon}/>
+                <p>test@mail.com</p>
+              </div>
+            </div>
+            <div className={styles.contentOuter}>
+              <div className={styles.contentInner}>
+                <InstagramLogo className={styles.icon}/>
+                <p>@francescosolimeo</p>
+              </div>
             </div>
           </div>
-					<div className={styles.contentOuter}>
-            <div className={styles.contentInner}>
-              <At className={styles.icon}/>
-              <p>test@mail.com</p>
-             </div>
-          </div>
-					<div className={styles.contentOuter}>
-            <div className={styles.contentInner}>
-              <InstagramLogo className={styles.icon}/>
-              <p>@francescosolimeo</p>
-            </div>
-          </div>
-				</div>
+        </div>
 			</div>
 		</>
 	);

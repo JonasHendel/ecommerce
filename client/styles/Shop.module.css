@@ -1,0 +1,59 @@
+
+
+.contentArea {
+  width: 1500px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 350px);
+  justify-content: center;
+}
+
+
+.productCard {
+  padding: 20px;
+  margin: 25px;
+  width: 300px;
+  height: auto;
+  background: white;
+  box-shadow: 0px 0px 20px 4px rgb(0, 0, 0, 0.1) ;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.productCard:hover {
+  box-shadow: 0px 0px 20px 4px rgb(0, 0, 0, 0.2) ;
+}
+
+.imageDiv {
+  width: 260px;
+  height: 180px;
+}
+
+.image {
+  width: 260px;
+  position: absolute;
+  clip: rect(0, 260px, 180px, 0);
+}
+
+.buttonDiv{
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  width: 100px;
+  margin: 0px;
+}
+
+.button a {
+  padding: auto;
+}
+
+.text h1 {
+  text-transform: capitalize;
+  font-size: 1.5em;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+}
