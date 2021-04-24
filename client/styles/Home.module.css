@@ -4,9 +4,9 @@
 }
 
 .contentArea {
-  width: 1500px;
+  max-width: 1500px;
   display: flex;
-
+  padding: 0px 100px 0px 100px
 }
 
 
