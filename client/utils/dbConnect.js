@@ -7,7 +7,7 @@ async function dbConnect() {
     console.log('Already connected.')
     return;
 }
-mongoose.connect(process.env.MONGODB_URL, {
+mongoose.connect(process.env.MONGODB_URI, {
     useCreateIndex: true,
     useFindAndModify: false,
     useNewUrlParser: true,
