@@ -1,6 +1,7 @@
 import React from 'react'
 
-import {emailjs} from 'emailjs-com'
+import emailjs from 'emailjs-com';
+
 
 import styles from '../styles/Contact.module.css'
 
