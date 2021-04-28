@@ -1,0 +1,3 @@
+Kurs for pizzaelskere!
+
+Dette kurset passer for deg som ønsker å lære og bake en ekte Napolitansk pizza hjemme. Du kommer også til å lære og bruke en teknikk som hjelper deg å lage en deig med høy hydratasjon i en vanlig kjøkkenmaskin. Om du er glad i å bake, så kommer også denne teknikken til å hjelpe deg på vei til en god focaccia, brød eller annet.  Vi kommer til å gå igjennom litt teori, blant annet egenskapene til mel, og gi veiledning til å velge gode råvarer. Deretter skal vi elte deig, lære om porsjonering og hevetid. Du skal også lære å "åpne" deigen, legge på topping, og hvordan du steker den på best mulig måte.

@@ -2,7 +2,7 @@ module.exports = {
   env: {
     USER_EMAILJS: 'user_FumSeNhN6BKsgunkFl7DJ',
     MONGO_URI: 'mongodb+srv://admin:admin@francescodb.c8uwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-    BASE_URL: 'https://fs-dev.vercel.app/',
+    BASE_URL: 'http://localhost:3000',
     MAILCHIMP_API_KEY: '920b2f6b34b0124c6c2b7e75369d2b17-us1',
     MAILCHIMP_API_SERVER: 'us1',
     MAILCHIMP_AUDIENCE_ID: 'e2787d42b4',
@@ -11,3 +11,6 @@ module.exports = {
     GA_TRACKING_ID: 'G-QRSCQJW7N1'
   },
 }
+
+// fs1169636238714714
+// fssecret12985169refresh632483901

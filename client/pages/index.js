@@ -30,7 +30,7 @@ export default function Home() {
           </div>
         }
           <div className={styles.text}>
-            <h1>{process.env.BASE_URL}</h1>
+            <h1>Franesco Solimeo</h1>
             <h4>Pizza Chef og eier av Vesuvio Cafe</h4>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.

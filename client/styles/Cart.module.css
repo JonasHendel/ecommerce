@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.contentArea {
+  display: flex;
+  justify-content: space-evenly;
+}
