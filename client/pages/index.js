@@ -20,7 +20,7 @@ export default function Home() {
 	return (
 		<div>
 			<Head>
-				<title>Francesco</title>
+				<title>Francesco Solimeo</title>
 				<link rel='icon' href='../public/favicon.ico' />
 			</Head>
       <div className={styles.container}>
