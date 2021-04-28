@@ -1,6 +1,9 @@
 # Francesco Solimeo
 
 
+### Hosted on:
+<https://vercel.com/jonashendel/fs-dev>
+
 
 ### APIs:  
 **Newsletter:**  
