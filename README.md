@@ -20,7 +20,7 @@
 >
 
 If not Vipps:    
-    ><https://stripe.com/docs/api> 
-    > 
-    ><https://developer.paypal.com/docs/api/overview/>   
-    >
+><https://stripe.com/docs/api> 
+> 
+><https://developer.paypal.com/docs/api/overview/>   
+>
