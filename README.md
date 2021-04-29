@@ -14,3 +14,7 @@
 <https://developer.postnord.com/>  
 **Payment:**   
 <https://www.vipps.no/developer/>
+
+If not Vipps: 
+    <https://stripe.com/docs/api>
+    <https://developer.paypal.com/docs/api/overview/>
