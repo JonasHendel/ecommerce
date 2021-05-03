@@ -14,7 +14,6 @@ function shop(props) {
 
   console.log(products)
 
-  console.log(process.env.MONGO_URI)
 
   return (
     <>

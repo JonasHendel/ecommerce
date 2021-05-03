@@ -3,8 +3,9 @@ import React, { useContext } from 'react'
 
 import { DataContext } from '../store/GlobalState'
 
-import NavBar from './NavBar'
+import NavBar2 from './Navbar/NavBar2'
 import Notify from './Notify'
+import Footer from './Footer'
 
 function Layout({children}) {
 
@@ -24,9 +25,10 @@ function Layout({children}) {
   
   return (
     <div>
-        <NavBar/>
+        <NavBar2/>
         <Notify/>
         {children}
+        <Footer/>
     </div>
   )
 }

@@ -5,6 +5,7 @@ export const ACTIONS = {
 }
 
 export const addToCart = (product, cart) => {
+
   if(product.inStock === 0){
     return ({type: 'NOTIFY', payload: {error: 'This product is not in stock.'}})
   }
@@ -14,10 +15,10 @@ export const addToCart = (product, cart) => {
   })
 
   if(!check) {
-    return ({type: 'NOTIFY', payload: {error: 'The product has been added to the cart.'}})
+    return ({type: 'NOTIFY', payload: {error: 'The product has already been added to the cart.'}})
   }
 
-  return ({ type: 'ADD_CART', payload: [...cart, {...product, quantity: 1}] })
+  return ({ type: 'ADD_CART', payload: [...cart, {...product, quantity: 1}]})
 }
 
 export const decrease = (data, id) => {

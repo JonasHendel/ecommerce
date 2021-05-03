@@ -6,7 +6,7 @@ import Cookie from 'js-cookie';
 import { useRouter } from 'next/router'
 
 //Project Files
-import { DataContext } from '../store/GlobalState';
+import { DataContext } from '../../store/GlobalState';
 
 //CSS
 import styles from '../styles/NavBar.module.css';
@@ -107,7 +107,7 @@ const NavBar = () => {
 							<a>Kontakt</a>
 						</Link>
 					</div>
-					<div className='flex-end'>
+					<div className={styles.flexEnd}>
 						<Link href='/cart'>
 							<a>
 								<ShoppingCart size={30}/>
