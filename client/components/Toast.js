@@ -12,7 +12,7 @@ const Toast = ({message, handleShow}) => {
   }
     return (
       <div>
-        <ToastContainer limit={1} pauseOnHover={false} autoClose={3000}/>
+        <ToastContainer limit={2} pauseOnHover={false} autoClose={3000} newestOnTop={true}/>
       </div>
     );
   }

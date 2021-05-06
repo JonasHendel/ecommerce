@@ -42,20 +42,6 @@
   display: flex;
   height: 100%;
 }
-@media only screen and (max-width: 600px) {
-  .navPages {
-    display: none;
-  }
-  .scrolled {
-    display: none;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .burgerMenu {
-    display: none;
-  }
-}
 
 .mobilePages {
   background: #ffecd1;
@@ -109,5 +95,24 @@
   z-index: 1000;
   animation: scrollFadeIn;
   animation-duration: 0.3s;
-  
+}
+
+.flexEnd {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media only screen and (max-width: 600px) {
+  .navPages {
+    display: none;
+  }
+  .scrolled {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .burgerMenu {
+    display: none;
+  }
 }
