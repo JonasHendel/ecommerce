@@ -18,6 +18,8 @@ export default function Home() {
     }
   },[])
 
+  console.log(process.env.BASE_URL)
+
 	return (
 		<div>
 			<Head>
@@ -30,3 +32,6 @@ export default function Home() {
 		</div>
 	);
 }
+
+
+export 

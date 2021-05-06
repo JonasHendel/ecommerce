@@ -8,10 +8,6 @@ module.exports = {
     MAILCHIMP_AUDIENCE_ID: 'e2787d42b4',
     ACCESS_TOKEN_SECRET: 'q+?pAzCo+bB1F8%09Cf@G6_I!8-B#Ww%B!Wg=AzKVNk+|!1O?9',
     REFRESH_TOKEN_SECRET: 'Nxqc|nBf#%S9KyFo2Y8l|btEEpb@4fXtiXZ%Zl%htP8iS7NL8ZJI@9+pO$2%WzAyFgURSmbG*6B0HNkD',
-    GA_TRACKING_ID: 'G-QRSCQJW7N1',
-    API_URL_MAILCHIMP: 'https://gmail.us1.list-manage.com/subscribe/post?u=626959619ccc4341d70b0b034&amp;id=e2787d42b4',
+    GA_TRACKING_ID: 'G-QRSCQJW7N1'
   },
 }
-
-// fs1169636238714714
-// fssecret12985169refresh632483901
