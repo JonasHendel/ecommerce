@@ -38,7 +38,7 @@ export default function NavBar2() {
 
 	const { state } = useContext(DataContext);
 
-	const { auth } = state;
+	const { auth, cart } = state;
 
 	return (
 		<Disclosure as='nav' className='bg-gray-800 sticky top-0 z-50'>
@@ -114,7 +114,7 @@ export default function NavBar2() {
 											aria-hidden='true'
 										/>
 										<span className='absolute px-2 py-1 bg-red-500 ml-15 top-4 rounded-full text-white text-xs'>
-											5
+                      {cart.length}
 										</span>
 									</button>
 								</Link>

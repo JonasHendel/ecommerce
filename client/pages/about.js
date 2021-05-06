@@ -11,8 +11,8 @@ const about = (props) => {
 
 	return (
 		<>
-			<div className='flex flex-col items-center max-w-7xl min-h-screen mx-auto px-2 sm:px6 lg:px-8 '>
-				<div className='flex flex-col items-center mt-9'>
+			<div className='flex flex-col items-center max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
+				<div className='flex flex-col items-center mt-20 md:bg-gray-100 px-20 py-5 rounded-md'>
 					<div>
 						<h1 className='text-4xl font-bold mb-9'>
 							Hvem er jeg?
@@ -20,12 +20,12 @@ const about = (props) => {
 					</div>
 					<div className='flex flex-col items-center mb-9 md:flex-row md:items-start'>
 						<div className='w-10/12 md:w-3/5'>
-							<p className='text-lg'>{content[0].about}</p>
+							<p className='text-md'>{content[0].about}</p>
 						</div> 
 						<div className='w-10/12 mt-9 flex flex-col justify-start md:ml-9 md:w-2/5 md:mt-2'>
-							<div className='flex justify-center'>
+							<div className='flex justify-center items-start'>
 								<img
-									className='w-10/12'
+									className='w-10/12 h-auto'
 									src='./francesco.png'
 								/>
 							</div>

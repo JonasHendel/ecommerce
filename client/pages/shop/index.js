@@ -21,8 +21,8 @@ function shop(props) {
           <title>Shop</title>
         </Head>
 
-        <div className="container">
-          <div className={styles.contentArea}>
+        <div className="max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8" >
+          <div className='grid grid-cols-4'>
             {
               products.length === 0 ? <h2>No products</h2>
               : products.map(product => (
