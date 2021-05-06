@@ -7,6 +7,8 @@ import { InstagramLogo, FacebookLogo, Phone, At } from 'phosphor-react';
 const about = (props) => {
 	const [content, setContent] = useState(props.content);
 
+  console.log('moino')
+
 	return (
 		<>
 			<div className='flex flex-col items-center max-w-7xl min-h-screen mx-auto px-2 sm:px6 lg:px-8 '>
