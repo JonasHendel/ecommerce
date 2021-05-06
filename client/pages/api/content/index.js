@@ -1,6 +1,6 @@
-import dbConnect from '../../utils/dbConnect'
+import dbConnect from '../../../utils/dbConnect'
 
-import Content from '../../models/contentModel'
+import Content from '../../../models/contentModel'
 
 dbConnect()
 

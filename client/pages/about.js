@@ -3,11 +3,6 @@ import { getData } from '../utils/fetchData';
 
 import { InstagramLogo, FacebookLogo, Phone, At } from 'phosphor-react';
 
-import Image from 'next/image';
-
-// TODO make responsive
-
-// TODO add href to icons
 
 const about = (props) => {
 	const [content, setContent] = useState(props.content);
@@ -21,11 +16,11 @@ const about = (props) => {
 							Hvem er jeg?
 						</h1>
 					</div>
-					<div className='flex'>
-						<div className='w-3/5'>
+					<div className='flex flex-col items-center mb-9 md:flex-row md:items-start'>
+						<div className='w-10/12 md:w-3/5'>
 							<p className='text-lg'>{content[0].about}</p>
-						</div>
-						<div className=' ml-9 w-2/5 flex flex-col justify-evenly'>
+						</div> 
+						<div className='w-10/12 mt-9 flex flex-col justify-start md:ml-9 md:w-2/5 md:mt-2'>
 							<div className='flex justify-center'>
 								<img
 									className='w-10/12'
