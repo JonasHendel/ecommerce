@@ -6,7 +6,7 @@ import { FooterForm } from './Newsletter/CustomForms';
 
 const Footer = () => {
 	const newsletterUrl = process.env.API_URL_MAILCHIMP;
-  console.log(newsletterUrl)
+  console.log(`Newsletter url${newsletterUrl}`)
 	return (
 		<div className='bg-gray-800 bottom-0 w-full p-5 h-auto'>
 			<div className='flex justify-between h-60 max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 text-white'>
