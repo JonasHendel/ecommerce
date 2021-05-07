@@ -1,18 +1,20 @@
+//NPM
 import { useState } from 'react';
+import { InstagramLogo, FacebookLogo, Phone, At } from 'phosphor-react';
+import {motion} from 'framer-motion'
+
+//Project Files
 import { getData } from '../utils/fetchData';
 
-import { InstagramLogo, FacebookLogo, Phone, At } from 'phosphor-react';
 
 
 const about = (props) => {
 	const [content, setContent] = useState(props.content);
 
-  console.log('moino')
-
 	return (
 		<>
 			<div className='flex flex-col items-center max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
-				<div className='flex flex-col items-center mt-20 md:bg-gray-100 px-20 py-5 rounded-md'>
+				<div className='flex flex-col items-center mt-20 bg-white ca:shadow-even px-20 py-5 rounded-2xl'>
 					<div>
 						<h1 className='text-4xl font-bold mb-9'>
 							Hvem er jeg?
@@ -32,17 +34,17 @@ const about = (props) => {
               <div className="flex justify-around h-60">
                 <div className='flex flex-col justify-between mt-9'>
                   <div className='flex flex-col justify-center items-center'>
-                  <div className="bg-gray-200 w-14 h-14 flex justify-center items-center rounded-full">
+                <motion.div whileHover={{scale: 1.05}} whileTap={{scale: 0.8}} className="bg-gray-800 text-white w-14 h-14 flex justify-center items-center rounded-full">
                     <At className="text-4xl"/>
-                  </div>
+                  </motion.div>
                     <p className='text-base ml-2'>
                       example@email.com
                     </p>
                   </div>
                   <div className='flex flex-col justify-center items-center'>
-                  <div className="bg-gray-200 w-14 h-14 flex justify-center items-center rounded-full">
+                <motion.div whileHover={{scale: 1.05}} whileTap={{scale: 0.8}} className="bg-gray-800 text-white w-14 h-14 flex justify-center items-center rounded-full">
                     <Phone className="text-4xl" />
-                    </div>
+                    </motion.div>
                     <p className='text-base ml-2'>
                       +47 987 231 123
                     </p>
@@ -50,15 +52,15 @@ const about = (props) => {
                 </div>
 							<div className='flex flex-col justify-between mt-9'>
 								<div className='flex flex-col justify-center items-center'>
-                <div className="bg-gray-200 w-14 h-14 flex justify-center items-center rounded-full">
+                <motion.div whileHover={{scale: 1.05}} whileTap={{scale: 0.8}} className="bg-gray-800 text-white w-14 h-14 flex justify-center items-center rounded-full">
 									<InstagramLogo className="text-4xl" />
-                  </div>
+                  </motion.div>
 									<p className='text-base ml-2'>@instagram</p>
 								</div>
 								<div className='flex flex-col justify-center items-center'>
-                <div className="bg-gray-200 w-14 h-14 flex justify-center items-center rounded-full">
+                <motion.div whileHover={{scale: 1.05}} whileTap={{scale: 0.8}} className="bg-gray-800 text-white w-14 h-14 flex justify-center items-center rounded-full">
 									<FacebookLogo className="text-4xl" />
-                  </div>
+                  </motion.div>
 									<p className='text-base ml-2'>@facebook</p>
 								</div>
 							</div>

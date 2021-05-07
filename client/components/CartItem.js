@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { DataContext } from '../store/GlobalState'
 import Link from 'next/link';
-import { Trash } from 'phosphor-react';
+import { Trash, MinusCircle, PlusCircle } from 'phosphor-react';
 import { decrease, increase, deleteItem } from '../store/Actions';
 
 
@@ -14,14 +14,14 @@ const CartItem = ({ item, dispatch, cart }) => {
 
 	return (
 		<>
-			<tr>
-				<td>
-					<img style={{ width: 100 }} src={item.images[0].url}></img>
-				</td>
-				<td>
+			<div className="flex mb-5 justify-between items-center">
+				<div>
+					<img className="w-28 rounded-md" src={item.images[0].url}></img>
+				</div>
+				<div className="w-2/5">
 					<h5>
-						<Link href={`shop/product/${item._id}`}>
-							<a>{item.title}</a>
+						<Link  href={`shop/product/${item._id}`}>
+							<a className="capitalize font-bold">{item.title}</a>
 						</Link>
 					</h5>
 
@@ -31,28 +31,28 @@ const CartItem = ({ item, dispatch, cart }) => {
 					) : (
 						<p>Not in stock</p>
 					)}
-				</td>
-				<td>
+				</div>
+				<div className="flex items-center">
 					<button
-						className='submit-btn'
+						className='text-3xl'
 						onClick={() => dispatch(decrease(cart, item._id))}
             disabled={item.quantity === 1 ? true : false}
 					>
-						-
+						<MinusCircle/>
 					</button>
-					<span>{item.quantity}</span>
+					<p className="w-6 text-center">{item.quantity}</p>
 					<button
-						className='submit-btn'
+						className='text-3xl'
 						onClick={() => dispatch(increase(cart, item._id))}
             disabled={item.quantity === item.inStock ? true : false}
 					>
-						+
+						<PlusCircle/>
 					</button>
-				</td>
-				<td>
+				</div>
+				<div>
 					<Trash size={30} color='red' onClick={handleDelete} />
-				</td>
-			</tr>
+				</div>
+			</div>
 		</>
 	);
 };

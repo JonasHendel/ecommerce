@@ -1,6 +1,8 @@
 //NPM
 import Link from 'next/link';
 import { useContext } from 'react';
+import {ShoppingCart} from 'phosphor-react'
+import {motion} from 'framer-motion'
 //CSS
 import styles from '../../styles/Shop.module.css';
 // Project files
@@ -15,23 +17,26 @@ const ProductItem = ({ product }) => {
 	const { cart } = state;
 
 
-	const userLink = () => {
+	const buttons = () => {
 		return (
 			<>
 				<div className={styles.buttonDiv}>
 					<Link href={`shop/product/${product._id}`}>
-						<button className={styles.button}>
+						<motion.button whileTap={{ scale: 0.9 }} className="w-16 h-12 bg-gray-900 text-white rounded-lg">
 							View
-						</button>
+						</motion.button>
 					</Link>
-					<button
-						className={styles.button}
+					<motion.button whileTap={{ scale: 0.9 }}
+						className='h-12 w-36 bg-gray-900 text-white rounded-lg'
 						onClick={() => {
               dispatch(addToCart(product, cart))
               }}
 					>
-						Add to cart
-					</button>
+            <div className="flex items-center justify-center">
+              <ShoppingCart size={20} className="mr-2"/>
+						  Add to cart
+            </div>
+					</motion.button>
 				</div>
 			</>
 		);
@@ -41,28 +46,30 @@ const ProductItem = ({ product }) => {
 
 	return (
 		<>
-			<div className={styles.productCard}>
+			<motion.div /*whileHover={{ scale: 1.02 }}*/ className={styles.productCard}>
 				<div className={styles.imageDiv}>
 					<img className={styles.image} src={images[0].url} />
 				</div>
 				<div className={styles.text}>
 					<div className='w-full flex justify-between'>
-						<p>NOK {price}.00</p>
+						<p className="font-semibold">NOK {price}.00</p>
 						{inStock !== 0 ? (
-							<p style={{ color: 'green' }}>
+							<p className="font-semibold" style={{ color: 'green' }}>
 								In stock: {inStock}
 							</p>
 						) : (
-							<p style={{ color: 'red' }}>Not in stock</p>
+							<p className="font-semibold" style={{ color: 'red' }}>Not in stock</p>
 						)}
 					</div>
-					<h1 title={title}>{title}</h1>
-					<p className={styles.description} title={description}>
-						{description}
-					</p>
-					{userLink()}
+          <div>
+            <h1 className="capitalize font-bold mb-2" title={title}>{title}</h1>
+            <p className={styles.description} title={description}>
+              {description}
+            </p>
+          </div>
+					{buttons()}
 				</div>
-			</div>
+			</motion.div>
 		</>
 	);
 };

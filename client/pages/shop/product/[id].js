@@ -22,7 +22,7 @@ const DetailProduct = (props) => {
   const { cart } = state
 
   const isActive = (index) => {
-    if(tab == index) return cx(styles.imgPreview, styles.active)
+    if(tab == index) return 'h-12 border-'
     return styles.imgPreview
   }
 
@@ -31,14 +31,14 @@ const DetailProduct = (props) => {
 			<Head>
 				<title>{product.title}</title>
 			</Head>
-			<div className={styles.container}>
-				<div className={styles.productCard}>
-					<div className={styles.images}>
+			<div className='max-w-7xl h-screen mx-auto sm:px-6 lg:px-8 flex justify-center'>
+				<div className='flex justify-evenly items-center w-4/5 h-1/2 shadow-even'>
+					<div className='p-20 flex flex-col'>
 						<img
 							className={styles.img}
 							src={product.images[tab].url}
 						/>
-						<div className={styles.imgPreviewDiv} >
+						<div className='flex' >
 							{product.images.map((img, index) => (
 								<img
                   className={isActive(index)}

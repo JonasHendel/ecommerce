@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { loadStripe } from '@stripe/stripe-js';
-
+import { useRouter } from 'next/router'
 //CSS
 import styles from '../styles/Cart.module.css';
 
@@ -13,6 +13,7 @@ import CartItem from '../components/CartItem';
 import { getData, postData } from '../utils/fetchData';
 
 function cart() {
+  const router = useRouter() 
 	const stripePromise = loadStripe(
 		'pk_test_51ImgVcGKeCgkx3sKS2Ft8rRE6dADswUuJc1otOGJjV89RYy0Jh1CiMvRlBZO47DtE0XkzJ6amvuUfeOEXhdoZyAo007ROFV2WI'
 	);
@@ -68,8 +69,13 @@ function cart() {
   
 
 	const handleClick = async (event) => {
+
+    if(!auth.user){
+      return router.push('/signin')
+    }
+
 		const stripe = await stripePromise;
-		const session = await postData('checkout/create-session', cart);
+		const session = await postData('order/create-checkout-session', cart);
 
 		const result = await stripe.redirectToCheckout({
 			sessionId: session.id,
@@ -85,12 +91,10 @@ function cart() {
 			<Head>
 				<title>Cart</title>
 			</Head>
-			<div className='h-screen flex justify-center items-center'>
-				<div className='max-w-7xl flex'>
-					<div className={styles.cart}>
-						<h1>Handlekurv</h1>
-						<table>
-							<tbody>
+			<div className='flex items-center max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
+				<div className='flex w-full py-20 rounded-md justify-evenly bg-gray-100 '>
+					<div className='w-1/3'>
+						<h1 className="font-bold ">Handlekurv</h1>
 								{cart.map((item) => (
 									<CartItem
 										key={item._id}
@@ -99,36 +103,15 @@ function cart() {
 										cart={cart}
 									/>
 								))}
-							</tbody>
-						</table>
 					</div>
-					<div className='ml-9 flex flex-col justify-evenly bg-gray-400'>
-						<form className=''>
-							<h2>Shipping</h2>
-							<input
-								className=''
-								type='next'
-								name='address'
-								id='address'
-								placeholder='Address'
-							/>
-							<input
-								className=''
-								type='next'
-								name='mobile'
-								id='mobile'
-								placeholder='Mobile'
-							/>
-						</form>
-						<h3>Total: NOK {total}</h3>
-						<Link href={auth.user ? '#' : '/signin'}>
+					<div className='ml-9 flex flex-col justify-evenly '>
+						<h3 className="font-bold text-4xl">Total: NOK {total}</h3>
 							<button
 								className='submit-btn'
 								onClick={handleClick}
 							>
 								Proceed with payment
 							</button>
-						</Link>
 					</div>
 				</div>
 			</div>

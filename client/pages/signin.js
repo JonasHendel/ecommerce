@@ -57,6 +57,7 @@ function signin() {
 			expires: 7,
 		});
 		localStorage.setItem('firstLogin', true);
+    router.back()
 	};
 	return (
 		<div className={styles.container}>
