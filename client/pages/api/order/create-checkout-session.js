@@ -15,8 +15,6 @@ const createCheckoutSession = async (req, res) => {
 		const cart = req.body;
 
 
-    console.log('moin')
-
 		const session = await stripe.checkout.sessions.create({
 			payment_method_types: ['card'],
 			line_items: 

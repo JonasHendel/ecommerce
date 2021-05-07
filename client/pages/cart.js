@@ -92,7 +92,7 @@ function cart() {
 				<title>Cart</title>
 			</Head>
 			<div className='flex items-center max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
-				<div className='flex w-full py-20 rounded-md justify-evenly bg-gray-100 '>
+				<div className='flex w-full min-h-500 py-10 my-20 rounded-md justify-evenly bg-gray-100 '>
 					<div className='w-1/3'>
 						<h1 className="font-bold ">Handlekurv</h1>
 								{cart.map((item) => (
@@ -104,8 +104,8 @@ function cart() {
 									/>
 								))}
 					</div>
-					<div className='ml-9 flex flex-col justify-evenly '>
-						<h3 className="font-bold text-4xl">Total: NOK {total}</h3>
+					<div className='ml-9 flex flex-col justify-center '>
+						<h3 className="font-bold mb-10 text-4xl">Total: NOK {total}</h3>
 							<button
 								className='submit-btn'
 								onClick={handleClick}

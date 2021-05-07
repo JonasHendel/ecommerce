@@ -12,10 +12,14 @@ module.exports = {
       screens: {
         'ca': '80rem'
       },
+      minHeight: {
+        '0': '0',
+        '1/4': '25%',
+        '500': '500px',
+        '3/4': '75%',
+        'full': '100%',
+       }
     },
-    screens: {
-      md: '850px',
-    }
   },
   variants: {
     extend: {},

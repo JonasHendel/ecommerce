@@ -38,7 +38,7 @@ export const increase = (data, id) => {
   return ({ type: 'ADD_CART', payload: newData})
 }
 
-export const deleteItem = (data, id, type) => {
+export const deleteItem = (data, id) => {
   const newData = data.filter(item => item._id !==id)
-  return ({ type: type, payload: newData })
+  return ({ type: 'ADD_CART', payload: newData })
 }

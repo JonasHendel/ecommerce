@@ -22,7 +22,7 @@ const ProductItem = ({ product }) => {
 			<>
 				<div className={styles.buttonDiv}>
 					<Link href={`shop/product/${product._id}`}>
-						<motion.button whileTap={{ scale: 0.9 }} className="w-16 h-12 bg-gray-900 text-white rounded-lg">
+						<motion.button whileTap={{ scale: 0.9 }} className="w-20 h-12 bg-gray-900 text-white rounded-lg">
 							View
 						</motion.button>
 					</Link>
@@ -54,11 +54,11 @@ const ProductItem = ({ product }) => {
 					<div className='w-full flex justify-between'>
 						<p className="font-semibold">NOK {price}.00</p>
 						{inStock !== 0 ? (
-							<p className="font-semibold" style={{ color: 'green' }}>
+							<p className="font-semibold text-green-500">
 								In stock: {inStock}
 							</p>
 						) : (
-							<p className="font-semibold" style={{ color: 'red' }}>Not in stock</p>
+							<p className="font-semibold text-red-600">Not in stock</p>
 						)}
 					</div>
           <div>

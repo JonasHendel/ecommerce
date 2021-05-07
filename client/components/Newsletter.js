@@ -62,7 +62,7 @@ const CustomForm = ({ status, message, onValidated, setActive }) => {
 
 const Newsletter = ({setActive}) => {
 	const url = process.env.API_URL_MAILCHIMP
-  console.log(url)
+  // console.log(url)
 	return (
 		<div>
 			<MailchimpSubscribe

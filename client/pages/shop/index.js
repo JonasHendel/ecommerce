@@ -12,7 +12,7 @@ import ProductItem from '../../components/product/ProductItem'
 function shop(props) {
   const [products, setProducts] = useState(props.products)
 
-  console.log(products)
+  // console.log(products)
 
 
   return (

@@ -19,7 +19,7 @@ export default kurs
 
 export async function getServerSideProps() {
   const res = await getData('content/course')
-  console.log(res)
+  // console.log(res)
   return{
     props:{
       status: res.status,

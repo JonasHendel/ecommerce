@@ -104,7 +104,7 @@ export default function NavBar2() {
 								</div>
 							</div>
 							<div className='absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0'>
-								<Link href='cart'>
+								<Link href='/cart'>
 									<button className='bg-gray-800 p-1 mr-5 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white'>
 										<span className='sr-only'>
 											View notifications
