@@ -11,6 +11,10 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
+input[type="button"]{
+  outline:none;
+}
+
 a {
   color: inherit;
   text-decoration: none;

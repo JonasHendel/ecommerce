@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { loadStripe } from '@stripe/stripe-js';
 import { useRouter } from 'next/router'
+import {motion} from 'framer-motion'
 //CSS
 import styles from '../styles/Cart.module.css';
 
@@ -92,9 +93,9 @@ function cart() {
 				<title>Cart</title>
 			</Head>
 			<div className='flex items-center max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
-				<div className='flex w-full min-h-500 py-10 my-20 rounded-md justify-evenly bg-gray-100 '>
-					<div className='w-1/3'>
-						<h1 className="font-bold ">Handlekurv</h1>
+				<div className='flex flex-col justify-center  w-full min-h-500 py-10 my-20 rounded-2xl shadow-even'>
+        <div className="flex justify-evenly items-center w-full">
+					<div className='w-2/5 flex flex-col'>
 								{cart.map((item) => (
 									<CartItem
 										key={item._id}
@@ -104,10 +105,10 @@ function cart() {
 									/>
 								))}
 					</div>
-					<div className='ml-9 flex flex-col justify-center '>
-						<h3 className="font-bold mb-10 text-4xl">Total: NOK {total}</h3>
+					<div className='ml-9 flex w-1/5 flex-col justify-center '>
+						<h3 className="font-bold mb-10 text-4xl">Total:<br/> NOK {total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}</h3>
 							<button
-								className='submit-btn'
+								className='h-12 w-full bg-gray-900 text-white rounded-lg'
 								onClick={handleClick}
 							>
 								Proceed with payment
@@ -115,6 +116,7 @@ function cart() {
 					</div>
 				</div>
 			</div>
+        </div>
 		</>
 	);
 }

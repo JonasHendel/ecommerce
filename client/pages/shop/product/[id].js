@@ -4,6 +4,7 @@ import { useState, useContext } from 'react';
 import Link from 'next/link';
 import {ShoppingCart} from 'phosphor-react'
 import {motion} from 'framer-motion'
+import {useRouter} from 'next/router'
 // CSS
 import styles from '../../../styles/Product.module.css';
 
@@ -13,6 +14,7 @@ import { DataContext } from '../../../store/GlobalState';
 import { addToCart } from '../../../store/Actions';
 
 const DetailProduct = (props) => {
+  const router = useRouter()
 	const cx = (...classNames) => classNames.join(' ');
 
 	const [product] = useState(props.product);
@@ -84,11 +86,9 @@ const DetailProduct = (props) => {
 								Add to cart
               </div>
 							</motion.button>
-							<Link href='/shop'>
-								<button className='cancel-btn'>
-									Return to shop
+								<button className='cancel-btn' onClick={()=>{router.back()}}>
+									Return
 								</button>
-							</Link>
 						</div>
 					</div>
 				</div>

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { DataContext } from '../store/GlobalState';
 import Link from 'next/link';
-import {motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 import { Trash, MinusCircle, PlusCircle } from 'phosphor-react';
 import { decrease, increase, deleteItem } from '../store/Actions';
 
@@ -18,42 +18,58 @@ const CartItem = ({ item, dispatch, cart }) => {
 					></img>
 				</div>
 				<div className='w-2/5'>
-					<h5>
-						<Link href={`shop/product/${item._id}`}>
-							<a className='capitalize font-bold'>{item.title}</a>
-						</Link>
-					</h5>
+					<Link href={`shop/product/${item._id}`}>
+          <div className="cursor-pointer">      
+						<a className='capitalize font-bold'>{item.title}</a>
 
-					<h6>NOK {item.quantity * item.price}</h6>
-					{item.inStock > 0 ? (
-						<p>In Stock: {item.inStock}</p>
-					) : (
-						<p>Not in stock</p>
-					)}
+						<h6 className='font-semibold'>
+							NOK {item.quantity * item.price}
+						</h6>
+						{item.inStock > 0 ? (
+							<p className='font-semibold text-green-500'>
+								In Stock: {item.inStock}
+							</p>
+						) : (
+							<p className='font-semibold text-red-600'>
+								Not in stock
+							</p>
+						)}
+          </div>
+					</Link>
 				</div>
 				<div className='flex items-center'>
-					<button
+					<motion.button
+						whileTap={{ scale: 0.9 }}
 						className='text-3xl'
 						onClick={() => dispatch(decrease(cart, item._id))}
 						disabled={item.quantity === 1 ? true : false}
 					>
-						<MinusCircle />
-					</button>
+						<MinusCircle
+							className='text-red-600'
+							size={30}
+							weight='bold'
+						/>
+					</motion.button>
 					<p className='w-6 text-center'>{item.quantity}</p>
-					<button
+					<motion.button
+						whileTap={{ scale: 0.9 }}
 						className='text-3xl'
 						onClick={() => dispatch(increase(cart, item._id))}
 						disabled={item.quantity === item.inStock ? true : false}
 					>
-						<PlusCircle />
-					</button>
+						<PlusCircle
+							className='text-green-500'
+							size={30}
+							weight='bold'
+						/>
+					</motion.button>
 				</div>
-				<motion.div whileTap={{scale: 0.9}} onClick={() => dispatch(deleteItem(cart, item._id))}>
-					<Trash
-						size={30}
-						color='red'
-						
-					/>
+				<motion.div
+					className='cursor-pointer ml-7'
+					whileTap={{ scale: 0.9 }}
+					onClick={() => dispatch(deleteItem(cart, item._id))}
+				>
+					<Trash size={30} weight='bold' />
 				</motion.div>
 			</div>
 		</>
