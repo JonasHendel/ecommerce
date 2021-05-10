@@ -18,10 +18,13 @@ const createCheckoutSession = async (req, res) => {
 			line_items: 
 				cart.map((item) => {
 					return {
-						price_data: {
-							currency: 'nok',
+            price_data: {
+              currency: 'nok',
 							product_data: {
-								name: item.title,
+                name: item.title,
+                metadata: {
+                  id: item._id
+                },
 							},
 							unit_amount: item.price * 100,
 						},

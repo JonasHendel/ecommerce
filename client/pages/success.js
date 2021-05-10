@@ -11,9 +11,19 @@ const Success = () => {
 
   const router = useRouter()
 
+  const {cart} = state
+
   useEffect(() => {
+
+    
     if (Object.keys(router.query).length) {
-      postData('order/decreaseInStock', router.query)
+    
+      const query = router.query 
+
+      postData('order/decreaseInStock', {query, cart}).then(
+        localStorage.removeItem('__next__cart01__solimeo'),
+        dispatch({ type: 'ADD_CART', payload: []})
+      )
     }
   }, [router.query])
   

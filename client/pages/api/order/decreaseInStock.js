@@ -16,14 +16,20 @@ export default async (req, res) => {
 
 const decreaseInStock = async (req, res) => {
 	try {
-		const {session_id} = req.body;
+		const {query, cart} = req.body;
 
-    console.log(session_id)
+    const { session_id } = query
 
     const session = await stripe.checkout.sessions.retrieve(
      session_id
     );
-    console.log(session)
+
+    if(Object.keys(session).length){
+      cart.map(item => {
+        return sold(item._id, item.quantity, item.inStock, item.sold)
+      }
+     )
+    }
 
 		return res.status(200).json({session_id});
 	} catch (err) {
@@ -32,6 +38,7 @@ const decreaseInStock = async (req, res) => {
 };
 
 const sold = async (id, quantity, oldInStock, oldSold) => {
+  console.log(id, quantity, oldInStock, oldSold)
 	await Products.findOneAndUpdate(
 		{ _id: id },
 		{
