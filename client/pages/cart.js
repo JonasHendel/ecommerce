@@ -69,8 +69,7 @@ function cart() {
 
   
 
-	const handleClick = async (event) => {
-
+	const handleClick = async () => {
     if(!auth.user){
       return router.push('/signin')
     }
