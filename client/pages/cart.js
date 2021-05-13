@@ -15,10 +15,12 @@ import { getData, postData } from '../utils/fetchData';
 function cart() {
 	const router = useRouter();
 	const stripePromise = loadStripe(
-		'pk_test_51ImgVcGKeCgkx3sKS2Ft8rRE6dADswUuJc1otOGJjV89RYy0Jh1CiMvRlBZO47DtE0XkzJ6amvuUfeOEXhdoZyAo007ROFV2WI'
+    process.env.STRIPE_PK
 	);
 	const { state, dispatch } = useContext(DataContext);
 	const { cart, auth } = state;
+
+  const user = auth.user
 
 	const [total, setTotal] = useState(0);
 
@@ -100,9 +102,8 @@ function cart() {
 		if (!auth.user) {
 			return router.push('/signin');
 		}
-
 		const stripe = await stripePromise;
-		const session = await postData('order/create-checkout-session', cart);
+		const session = await postData('order/create-checkout-session', {cart, user});
 
 		const result = await stripe.redirectToCheckout({
 			sessionId: session.id,

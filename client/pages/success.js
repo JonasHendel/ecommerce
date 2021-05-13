@@ -20,7 +20,7 @@ const Success = () => {
     
       const query = router.query 
 
-      postData('order/decreaseInStock', {query, cart}).then(
+      postData('order', {query, cart}).then(
         localStorage.removeItem('__next__cart01__solimeo'),
         dispatch({ type: 'ADD_CART', payload: []})
       )

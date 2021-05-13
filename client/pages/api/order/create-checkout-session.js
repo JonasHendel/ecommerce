@@ -1,6 +1,4 @@
-const stripe = require('stripe')(
-	'sk_test_51ImgVcGKeCgkx3sKVqN4nQYj7Zgx7HqGcruRhqIoddTNBMV81OTeDsdayNlfgDit9dndGI1tpgQsQeLYz4mXlfiC00X2I8ybtR'
-);
+const stripe = require('stripe')(process.env.STRIPE_SK);
 
 export default async (req, res) => {
 	switch (req.method) {
@@ -12,25 +10,30 @@ export default async (req, res) => {
 
 const createCheckoutSession = async (req, res) => {
 	try {
-		const cart = req.body;
+		const { cart, user } = req.body;
+
 		const session = await stripe.checkout.sessions.create({
+			customer_email: user.email,
+      shipping_rates: ['shr_1Iqgi1GKeCgkx3sKt4ZSTYyq'],
+      shipping_address_collection: {
+        allowed_countries: ['NO'],
+      },
 			payment_method_types: ['card'],
-			line_items: 
-				cart.map((item) => {
-					return {
-            price_data: {
-              currency: 'nok',
-							product_data: {
-                name: item.title,
-                metadata: {
-                  id: item._id
-                },
+			line_items: cart.map((item) => {
+				return {
+					price_data: {
+						currency: 'nok',
+						product_data: {
+							name: item.title,
+							metadata: {
+								id: item._id,
 							},
-							unit_amount: item.price * 100,
 						},
-						quantity: item.quantity,
-					};
-				}),
+						unit_amount: item.price * 100,
+					},
+					quantity: item.quantity,
+				};
+			}),
 			mode: 'payment',
 			success_url: `${process.env.BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
 			cancel_url: `${process.env.BASE_URL}/cart`,
