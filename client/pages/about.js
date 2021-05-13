@@ -28,7 +28,7 @@ const about = (props) => {
 							<div className='flex justify-center items-start'>
 								<img
 									className='w-10/12 h-auto'
-									src='./francesco.png'
+									src='./logo.png'
 								/>
 							</div>
               <div className="flex justify-around h-60">

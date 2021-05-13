@@ -5,8 +5,6 @@ import { useState, useEffect } from 'react'
 
 import Carousel from '../components/Carousel'
 
-import styles from '../styles/Home.module.css';
-
 export default function Home() {
   const [active, setActive] = useState(false)
 
