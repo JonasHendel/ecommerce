@@ -6,7 +6,7 @@ const orderSchema = new mongoose.Schema(
 			type: mongoose.Types.ObjectId,
 			ref: 'user',
 		},
-		address: String,
+		address: Object,
 		mobile: String,
 		cart: Array,
 		total: Number,

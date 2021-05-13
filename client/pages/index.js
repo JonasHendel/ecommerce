@@ -23,9 +23,6 @@ export default function Home() {
 				<title>Francesco Solimeo</title>
 				<link rel='icon' href='../public/favicon.ico' />
 			</Head>
-      <div className={styles.container}>
-          <Carousel/>
-      </div>
 		</div>
 	);
 }

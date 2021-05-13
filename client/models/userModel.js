@@ -21,10 +21,6 @@ const userSchema = new mongoose.Schema({
   root: {
     type: Boolean,
     default: false
-  },
-  avatar: {
-    type: String,
-    default: 'https://res.cloudinary.com/df5bwolvt/image/upload/v1618652403/avatar.png.png'
   }
 }, {
   timestamps: true

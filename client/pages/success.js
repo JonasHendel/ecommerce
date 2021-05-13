@@ -11,21 +11,21 @@ const Success = () => {
 
   const router = useRouter()
 
-  const {cart} = state
+  const {cart, auth} = state
 
-  useEffect(() => {
+  useEffect(async() => {
 
+    if (Object.keys(router.query).length && Object.keys(auth).length) {
     
-    if (Object.keys(router.query).length) {
-    
-      const query = router.query 
+      const query = router.query
 
-      postData('order', {query, cart}).then(
+
+      postData('order', {query, cart}, auth.token).then(
         localStorage.removeItem('__next__cart01__solimeo'),
         dispatch({ type: 'ADD_CART', payload: []})
       )
     }
-  }, [router.query])
+  }, [auth])
   
 	return (
 		<div className='flex flex-col h-screen items-center'>

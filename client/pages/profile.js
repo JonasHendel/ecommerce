@@ -1,9 +1,8 @@
 import Head from 'next/head';
 import { useContext, useState, useEffect } from 'react';
 import { DataContext } from '../store/GlobalState';
-import valid from '../utils/valid'
-import {patchData} from '../utils/fetchData'
-
+import valid from '../utils/valid';
+import { patchData } from '../utils/fetchData';
 
 const Profile = () => {
 	const { state, dispatch } = useContext(DataContext);
@@ -25,30 +24,56 @@ const Profile = () => {
 	}, [auth.user]);
 
 	const handleChange = (e) => {
-		const { name, value } = e.target
+		const { name, value } = e.target;
 		setData({ ...data, [name]: value });
 		dispatch({ type: 'NOTIFY', payload: {} });
+    console.log(value)
 	};
-
-  const handleUpdateProfile = (e) => {
-    e.preventDefault()
-    if(password){
-      const errMsg = valid(name, auth.user.email, password, cf_password)
-      if(errMsg) return dispatch({type: 'NOTIFY', payload: {error: errMsg}})
-      updatePassword()
+  
+	const handleUpdateProfile = (e) => {
+    e.preventDefault();
+		if (password) {
+      const errMsg = valid(name, auth.user.email, password, cf_password);
+			if (errMsg)
+      return dispatch({ type: 'NOTIFY', payload: { error: errMsg } });
+			updatePassword();
+		}
+		if (name !== auth.user.name) updateName();
+	};
+  
+	const updatePassword = () => {
+    dispatch({ type: 'NOTIFY', payload: { loading: true } });
+		patchData('user/resetPassword', { password }, auth.token).then((res) => {
+      if (res.err)
+      return dispatch({
+        type: 'NOTIFY',
+        payload: { error: res.msg },
+      });
+      return dispatch({
+        type: 'NOTIFY',
+        payload: { success: res.msg },
+      });
     }
-
-  }
-
-  const updatePassword = () => {
-    dispatch({type: 'NOTIFY', payload: {loading: true}})
-    patchData('user/resetPassword', {password}, auth.token)
-    .then(res => {
-      if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.msg}})
-      return dispatch({type: 'NOTIFY', payload: {success: res.msg}})
-    })
-
-  }
+		);
+	};
+  
+	const updateName = () => {
+		patchData('user', {name}, auth.token).then((res) => {
+			if (res.err)
+				return dispatch({
+					type: 'NOTIFY',
+					payload: { error: res.msg },
+				});
+			dispatch({
+				type: 'NOTIFY',
+				payload: { toke: auth.token, user: res.user },
+			});
+			return dispatch({
+				type: 'NOTIFY',
+				payload: { success: res.msg },
+			});
+		});
+	};
 
 	if (!auth.user) return null;
 	return (
@@ -71,7 +96,7 @@ const Profile = () => {
 						placeholder='Your name'
 						name='name'
 						value={name}
-            onChange={handleChange}
+						onChange={handleChange}
 					/>
 					<label>Email: </label>
 					<input
@@ -85,15 +110,15 @@ const Profile = () => {
 						placeholder='New password'
 						name='password'
 						value={password}
-            onChange={handleChange}
+						onChange={handleChange}
 					/>
 					<label>Confirm Password: </label>
 					<input
 						type='password'
 						placeholder='Confirm password'
-            name='cf_password'
+						name='cf_password'
 						value={cf_password}
-            onChange={handleChange}
+						onChange={handleChange}
 					/>
 				</form>
 				<button onClick={handleUpdateProfile}>Update</button>
