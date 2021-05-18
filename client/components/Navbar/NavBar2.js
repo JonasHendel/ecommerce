@@ -11,6 +11,7 @@ import { List, X, ShoppingCart, SignIn,  } from 'phosphor-react'
 //Project Files
 import { DataContext } from '../../store/GlobalState';
 import ProfileDropdown from './ProfileDropdown';
+import AdminDropdown from './AdminDropwdown'
 
 const navigation = [
 	{ name: 'Home', href: '/', current: false },
@@ -133,7 +134,10 @@ export default function NavBar2() {
 										</button>
 									</Link>
 								) : (
+                  <>
 									<ProfileDropdown classNames={classNames} />
+                  {auth.user.role === 'admin' && <AdminDropdown classNames={classNames}/>}
+                  </>
 								)}
 							</div>
 						</div>

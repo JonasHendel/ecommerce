@@ -34,7 +34,6 @@ const Profile = () => {
 		const { name, value } = e.target;
 		setData({ ...data, [name]: value });
 		dispatch({ type: 'NOTIFY', payload: {} });
-		console.log(value);
 	};
 
 	const handleUpdateProfile = (e) => {
@@ -44,6 +43,7 @@ const Profile = () => {
 			if (errMsg)
 				return dispatch({ type: 'NOTIFY', payload: { error: errMsg } });
 			updatePassword();
+      setData({...initialState, name})
 		}
 		if (name !== auth.user.name) updateName();
 	};
@@ -112,7 +112,7 @@ const Profile = () => {
 						<div className='flex items-center w-full justify-between'>
 							<label className='font-bold mr-2'>Email: </label>
 							<input
-            className="border-4 border-black border-md rounded-md p-2"
+            className="rounded-md p-3 bg-gray-200"
 								type='text'
 								defaultValue={auth.user.email}
 								disabled={true}
@@ -166,7 +166,7 @@ const Profile = () => {
                 <tr key={order._id}>
                   <td>{order._id}</td>
                   <td>{new Date(order.createdAt).toLocaleDateString()}</td>
-                  <td>{order.total}</td>
+                  <td>{order.total/100}</td>
                   <td>{order.delivered ? <i><CheckCircle className="text-green-500"/></i> : <i><XCircle className="text-red-600"/></i>}</td>
                   <td><Link href={`/order/${order._id}`}>
                     <a>details</a>

@@ -1,9 +1,12 @@
 import Head from 'next/head';
 import { useState, useContext, useEffect } from 'react';
-import { DataContext } from '../../store/GlobalState';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle, XCircle } from 'phosphor-react';
+
+import { DataContext } from '../../store/GlobalState';
+import { useRouter } from 'next/router';
+import { patchData } from '../../utils/fetchData';
+import { updateItem } from '../../store/Actions';
 
 const OrderDetails = () => {
 	const { state, dispatch } = useContext(DataContext);
@@ -15,12 +18,46 @@ const OrderDetails = () => {
 		const newArr = orders.filter((order) => order._id === router.query.id);
 		setOrderDetail(newArr);
 	}, [orders]);
+
+	const handleDelivered = (order) => {
+		dispatch({ type: 'NOTIFY', payload: { loading: true } });
+		patchData(`order/delivered/${order._id}`, null, auth.token).then(
+			(res) => {
+				if(res.err) {
+					return dispatch({
+						type: 'NOTIFY',
+						payload: { error: res.err },
+					});
+				}
+				dispatch(updateItem(
+						orders,
+						order._id,
+						{
+							...order,
+							...res.result,
+						},
+						'ADD_ORDERS'
+					)
+				);
+				return dispatch({
+					type: 'NOTIFY',
+					payload: { success: res.msg },
+				});
+			}
+		);
+	};
+
+	if (!auth.user) return null;
 	return (
 		<div className='max-w-7xl h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
 			<Head>
 				<title>Order Details</title>
 			</Head>
-			<button onClick={() => router.back()} className='flex items-center' aria-hidden="true">
+			<button
+				onClick={() => router.back()}
+				className='flex items-center'
+				aria-hidden='true'
+			>
 				<ArrowLeft /> Return
 			</button>
 			<div>
@@ -41,6 +78,16 @@ const OrderDetails = () => {
 								) : (
 									<p>Not delivered</p>
 								)}
+								{auth.user.role === 'admin' &&
+									!order.delivered && (
+										<button
+											onClick={() =>
+												handleDelivered(order)
+											}
+										>
+											Mark as delivered
+										</button>
+									)}
 							</div>
 						</div>
 						<div>

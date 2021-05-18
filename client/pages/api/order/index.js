@@ -2,7 +2,6 @@ import Products from '../../../models/productModel';
 import Orders from '../../../models/orderModel';
 import dbConnect from '../../../utils/dbConnect';
 import auth from '../../../middleware/auth';
-import { getSortedRoutes } from 'next/dist/next-server/lib/router/utils';
 const stripe = require('stripe')(process.env.STRIPE_SK);
 
 dbConnect();

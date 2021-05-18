@@ -2,61 +2,25 @@ import { Fragment } from 'react';
 import Link from 'next/link';
 import Cookie from 'js-cookie';
 import { Menu, Transition } from '@headlessui/react';
-import { User } from 'phosphor-react';
+import { Gear } from 'phosphor-react';
 
 import { useContext } from 'react';
 
 import { DataContext } from '../../store/GlobalState';
 
-const ProfileDropdown = ({ classNames }) => {
+const AdminDropdown = ({ classNames }) => {
 	const { state, dispatch } = useContext(DataContext);
 
 	const { auth } = state;
 
-	const handleLogout = () => {
-		Cookie.remove('refreshtoken', { path: 'api/auth/accessToken' });
-		localStorage.removeItem('firstLogin');
-		dispatch({ type: 'AUTH', payload: {} });
-		dispatch({ type: 'NOTIFY', payload: { success: 'Logged out!' } });
-	};
-
-	const adminRouter = () => {
-		return (
-			<>
-				<Menu.Item>
-					<Link href='/user'>
-						<a>Users</a>
-					</Link>
-				</Menu.Item>
-
-				<Menu.Item>
-					<Link href='/products'>
-						<a>Products</a>
-					</Link>
-				</Menu.Item>
-
-				<Menu.Item>
-					<Link href='/products'>
-						<a>Users</a>
-					</Link>
-				</Menu.Item>
-
-				<Menu.Item>
-					<Link href='/categories'>
-						<a>Categories</a>
-					</Link>
-				</Menu.Item>
-			</>
-		);
-	};
 	return (
 		<Menu as='div' className='ml-3 relative'>
 			{({ open }) => (
 				<>
 					<div>
-						<Menu.Button className='bg-gray-800 mr-5 p-1 text-gray-400 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white'>
+						<Menu.Button className='bg-gray-800 p-1 text-gray-400 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white'>
 							<span className='sr-only'>Open user menu</span>
-							<User className='h-8 w-8' aria-hidden='true' />
+							<Gear className='h-8 w-8' aria-hidden='true' />
 						</Menu.Button>
 					</div>
 					<Transition
@@ -75,33 +39,44 @@ const ProfileDropdown = ({ classNames }) => {
 						>
 							<Menu.Item>
 								{({ active }) => (
-									<Link href='/profile'>
+									<Link href='/users'>
 										<a
 											className={classNames(
 												active ? 'bg-gray-100' : '',
 												'block px-4 py-2 text-sm text-gray-700'
 											)}
 										>
-											Your Profile
+										Users
 										</a>
 									</Link>
 								)}
 							</Menu.Item>
+              <Menu.Item>
 								{({ active }) => (
-										auth.user.role === 'user' &&
-											adminRouter()
+									<Link href='/products'>
+										<a
+											className={classNames(
+												active ? 'bg-gray-100' : '',
+												'block px-4 py-2 text-sm text-gray-700'
+											)}
+										>
+										Products
+										</a>
+									</Link>
 								)}
-							<Menu.Item>
+							</Menu.Item>
+              <Menu.Item>
 								{({ active }) => (
-									<a
-										onClick={handleLogout}
-										className={classNames(
-											active ? 'bg-gray-100' : '',
-											'block px-4 py-2 text-sm text-gray-700'
-										)}
-									>
-										Sign out
-									</a>
+									<Link href='/categories'>
+										<a
+											className={classNames(
+												active ? 'bg-gray-100' : '',
+												'block px-4 py-2 text-sm text-gray-700'
+											)}
+										>
+										Categories
+										</a>
+									</Link>
 								)}
 							</Menu.Item>
 						</Menu.Items>
@@ -112,4 +87,4 @@ const ProfileDropdown = ({ classNames }) => {
 	);
 };
 
-export default ProfileDropdown;
+export default AdminDropdown;

@@ -14,5 +14,4 @@ const auth = async (req, res) => {
     return {id: user._id, role: user.role, root: user.root};
 }
 
-
 export default auth
