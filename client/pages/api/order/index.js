@@ -2,6 +2,7 @@ import Products from '../../../models/productModel';
 import Orders from '../../../models/orderModel';
 import dbConnect from '../../../utils/dbConnect';
 import auth from '../../../middleware/auth';
+import { getSortedRoutes } from 'next/dist/next-server/lib/router/utils';
 const stripe = require('stripe')(process.env.STRIPE_SK);
 
 dbConnect();
@@ -11,6 +12,29 @@ export default async (req, res) => {
 		case 'POST':
 			await createOrder(req, res);
 			break;
+		case 'GET':
+			await getOrders(req, res);
+			break;
+	}
+};
+
+const getOrders = async (req, res) => {
+	try {
+		const result = await auth(req, res);
+
+		let orders;
+
+		if (result.role !== 'admin') {
+			orders = await Orders.find({ user: result.id }).populate(
+				'user',
+				'-password'
+			);
+		} else {
+			orders = await Orders.find().populate('user', '-password');
+		}
+		res.json({ orders });
+	} catch (err) {
+		res.status(500).json({ err: err.message });
 	}
 };
 
@@ -23,19 +47,17 @@ const createOrder = async (req, res) => {
 
 		const session = await stripe.checkout.sessions.retrieve(session_id);
 
-		const items = await stripe.checkout.sessions.listLineItems(session_id);
-
 		// if (cart.length > 0) {
-			const newOrder = new Orders({
-				user: result.id,
-				address: session.shipping.address,
-				cart,
-				total: session.amount_total,
-			});
+		const newOrder = new Orders({
+			user: result.id,
+			address: session.shipping.address,
+			cart,
+			total: session.amount_total,
+			sessionId: session_id,
+		});
 
-      await newOrder.save()
+		await newOrder.save();
 
-			console.log(newOrder);
 		// }
 		if (Object.keys(session).length) {
 			cart.map((item) => {
@@ -50,7 +72,6 @@ const createOrder = async (req, res) => {
 };
 
 const sold = async (id, quantity, oldInStock, oldSold) => {
-	console.log(id, quantity, oldInStock, oldSold);
 	await Products.findOneAndUpdate(
 		{ _id: id },
 		{

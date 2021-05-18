@@ -12,8 +12,6 @@ const createCheckoutSession = async (req, res) => {
 	try {
 		const { cart, user } = req.body;
 
-    console.log(user)
-
 		const session = await stripe.checkout.sessions.create({
 			customer_email: user.email,
       shipping_rates: ['shr_1Iqgi1GKeCgkx3sKt4ZSTYyq'],

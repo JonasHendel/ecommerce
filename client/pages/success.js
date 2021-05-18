@@ -11,18 +11,18 @@ const Success = () => {
 
   const router = useRouter()
 
-  const {cart, auth} = state
+  const {cart, auth, orders} = state
 
   useEffect(async() => {
-
     if (Object.keys(router.query).length && Object.keys(auth).length) {
-    
       const query = router.query
 
 
-      postData('order', {query, cart}, auth.token).then(
+      await postData('order', {query, cart}, auth.token).then((res)=>{
         localStorage.removeItem('__next__cart01__solimeo'),
-        dispatch({ type: 'ADD_CART', payload: []})
+        dispatch({ type: 'ADD_CART', payload: []}),
+        dispatch({ type: 'ADD_ORDERS', payload: [...orders, res.newOrder]})
+      }
       )
     }
   }, [auth])

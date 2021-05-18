@@ -1,6 +1,6 @@
 // NPM
 import Head from 'next/head';
-import { useState, useContext, useEffectj } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Link from 'next/link';
 import {ShoppingCart} from 'phosphor-react'
 import {motion} from 'framer-motion'

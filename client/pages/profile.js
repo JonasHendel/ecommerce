@@ -1,12 +1,19 @@
 import Head from 'next/head';
 import { useContext, useState, useEffect } from 'react';
+import Link from 'next/link'
+import {XCircle, CheckCircle} from 'phosphor-react'
+
+
 import { DataContext } from '../store/GlobalState';
 import valid from '../utils/valid';
 import { patchData } from '../utils/fetchData';
 
+
+
+
 const Profile = () => {
 	const { state, dispatch } = useContext(DataContext);
-	const { auth, notify } = state;
+	const { auth, notify, orders } = state;
 
 	const initialState = {
 		avatar: '',
@@ -27,38 +34,39 @@ const Profile = () => {
 		const { name, value } = e.target;
 		setData({ ...data, [name]: value });
 		dispatch({ type: 'NOTIFY', payload: {} });
-    console.log(value)
+		console.log(value);
 	};
-  
+
 	const handleUpdateProfile = (e) => {
-    e.preventDefault();
+		e.preventDefault();
 		if (password) {
-      const errMsg = valid(name, auth.user.email, password, cf_password);
+			const errMsg = valid(name, auth.user.email, password, cf_password);
 			if (errMsg)
-      return dispatch({ type: 'NOTIFY', payload: { error: errMsg } });
+				return dispatch({ type: 'NOTIFY', payload: { error: errMsg } });
 			updatePassword();
 		}
 		if (name !== auth.user.name) updateName();
 	};
-  
+
 	const updatePassword = () => {
-    dispatch({ type: 'NOTIFY', payload: { loading: true } });
-		patchData('user/resetPassword', { password }, auth.token).then((res) => {
-      if (res.err)
-      return dispatch({
-        type: 'NOTIFY',
-        payload: { error: res.msg },
-      });
-      return dispatch({
-        type: 'NOTIFY',
-        payload: { success: res.msg },
-      });
-    }
+		dispatch({ type: 'NOTIFY', payload: { loading: true } });
+		patchData('user/resetPassword', { password }, auth.token).then(
+			(res) => {
+				if (res.err)
+					return dispatch({
+						type: 'NOTIFY',
+						payload: { error: res.msg },
+					});
+				return dispatch({
+					type: 'NOTIFY',
+					payload: { success: res.msg },
+				});
+			}
 		);
 	};
-  
+
 	const updateName = () => {
-		patchData('user', {name}, auth.token).then((res) => {
+		patchData('user', { name }, auth.token).then((res) => {
 			if (res.err)
 				return dispatch({
 					type: 'NOTIFY',
@@ -81,47 +89,95 @@ const Profile = () => {
 			<Head>
 				<title>Profile</title>
 			</Head>
-			<div className='max-w-7xl h-screen mx-auto px-2 sm:px-6 lg:px-8'>
-				<h1>Profile</h1>
-				<h2>
-					{auth.user.role === 'user'
-						? 'User Profile'
-						: 'Admin Profile'}
-				</h2>
-				<img src={auth.user.avatar} />
-				<form>
-					<label>Name: </label>
-					<input
-						type='text'
-						placeholder='Your name'
-						name='name'
-						value={name}
-						onChange={handleChange}
-					/>
-					<label>Email: </label>
-					<input
-						type='text'
-						defaultValue={auth.user.email}
-						disabled={true}
-					/>
-					<label>New Password: </label>
-					<input
-						type='password'
-						placeholder='New password'
-						name='password'
-						value={password}
-						onChange={handleChange}
-					/>
-					<label>Confirm Password: </label>
-					<input
-						type='password'
-						placeholder='Confirm password'
-						name='cf_password'
-						value={cf_password}
-						onChange={handleChange}
-					/>
-				</form>
-				<button onClick={handleUpdateProfile}>Update</button>
+			<div className='max-w-7xl h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
+      <div className="flex justify-between mt-20 h-full">
+				<div className='w-2/6 h-2/4 flex flex-col'>
+					<h1 className='text-3xl font-bold'>
+						{auth.user.role === 'user'
+							? 'User Profile'
+							: 'Admin Profile'}
+					</h1>
+					<form className='flex flex-col justify-evenly h-full'>
+						<div className='flex items-center w-full justify-between'>
+							<label className='font-bold mr-2'>Name: </label>
+							<input
+            className="border-4 border-black border-md rounded-md p-2"
+								type='text'
+								placeholder='Your name'
+								name='name'
+								value={name}
+								onChange={handleChange}
+							/>
+						</div>
+						<div className='flex items-center w-full justify-between'>
+							<label className='font-bold mr-2'>Email: </label>
+							<input
+            className="border-4 border-black border-md rounded-md p-2"
+								type='text'
+								defaultValue={auth.user.email}
+								disabled={true}
+							/>
+						</div>
+						<div className='flex items-center w-full justify-between'>
+							<label className='font-bold mr-2'>
+								New Password:{' '}
+							</label>
+							<input
+            className="border-4 border-black border-md rounded-md p-2"
+								type='password'
+								placeholder='New password'
+								name='password'
+								value={password}
+								onChange={handleChange}
+							/>
+						</div>
+						<div className='flex items-center w-full justify-between'>
+							<label className='font-bold mr-2'>
+								Confirm Password:{' '}
+							</label>
+							<input
+            className="border-4 border-black border-md rounded-md p-2"
+								type='password'
+								placeholder='Confirm password'
+								name='cf_password'
+								value={cf_password}
+								onChange={handleChange}
+							/>
+						</div>
+					</form>
+				<button className='h-14 mb-4 bg-gray-900 text-white rounded-lg' type='submit'
+          onClick={handleUpdateProfile}>Update</button>
+				</div>
+				<div className="w-3/5">
+					<h1 className='text-3xl font-bold'>Orders</h1>
+          <div>
+            <table>
+            <thead>
+              <tr>
+                <td>id</td>
+                <td>date</td>
+                <td>total</td>
+                <td>delivered</td>
+                <td>action</td>
+              </tr>
+            </thead>
+            <tbody>
+              {orders.map((order)=>(
+                <tr key={order._id}>
+                  <td>{order._id}</td>
+                  <td>{new Date(order.createdAt).toLocaleDateString()}</td>
+                  <td>{order.total}</td>
+                  <td>{order.delivered ? <i><CheckCircle className="text-green-500"/></i> : <i><XCircle className="text-red-600"/></i>}</td>
+                  <td><Link href={`/order/${order._id}`}>
+                    <a>details</a>
+                  </Link></td>
+                </tr>
+              ))}
+            </tbody>
+            </table>
+          </div>
+				</div>
+      </div>
 			</div>
 		</>
 	);
