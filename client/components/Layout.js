@@ -5,6 +5,7 @@ import { DataContext } from '../store/GlobalState'
 
 import NavBar2 from './Navbar/NavBar2'
 import Notify from './Notify'
+import Modal from './Modal'
 import Footer from './Footer'
 
 function Layout({children}) {
@@ -27,6 +28,7 @@ function Layout({children}) {
     <div>
         <NavBar2/>
         <Notify/>
+        <Modal/>
         {children}
         <Footer/>
     </div>
