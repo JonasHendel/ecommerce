@@ -13,8 +13,7 @@ import { patchData } from '../utils/fetchData';
 
 const Profile = () => {
 	const { state, dispatch } = useContext(DataContext);
-	const { auth, notify, orders } = state;
-
+	const { auth, notify, orders } = state
 	const initialState = {
 		avatar: '',
 		name: '',
@@ -150,32 +149,30 @@ const Profile = () => {
 				</div>
 				<div className="w-3/5">
 					<h1 className='text-3xl font-bold'>Orders</h1>
-          <div>
-            <table>
+            <table className="w-full table-auto divide-y">
             <thead>
-              <tr>
-                <td>id</td>
-                <td>date</td>
-                <td>total</td>
-                <td>delivered</td>
-                <td>action</td>
+              <tr className="font-bold uppercase">
+                <th className="text-left divide-x divide-gray-200">Id</th>
+                <th className="text-left divide-x divide-gray-200">Date</th>
+                <th className="text-left divide-x divide-gray-200">Total</th>
+                <th className="divide-x divide-gray-200">Delivered</th>
+                <th className="text-left divide-x divide-gray-200">Action</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="divide-y divide-gray-200">
               {orders.map((order)=>(
-                <tr key={order._id}>
+                <tr key={order._id} >
                   <td>{order._id}</td>
                   <td>{new Date(order.createdAt).toLocaleDateString()}</td>
                   <td>{order.total/100}</td>
-                  <td>{order.delivered ? <i><CheckCircle className="text-green-500"/></i> : <i><XCircle className="text-red-600"/></i>}</td>
+                  <td className="flex justify-center items-center">{order.delivered ? <CheckCircle className=" text-xl text-green-500"/> : <XCircle className="text-xl text-red-600"/>}</td>
                   <td><Link href={`/order/${order._id}`}>
-                    <a>details</a>
+                    <a className="underline">Details</a>
                   </Link></td>
                 </tr>
               ))}
             </tbody>
             </table>
-          </div>
 				</div>
       </div>
 			</div>

@@ -12,7 +12,21 @@ const courseSchema = new mongoose.Schema({
   },
   images: {
     type: Array,
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  spots: {
+    type: Number,
+    required: true
+  },
+  sold: {
+    type: Number,
+    default: 0
   }
+}, {
+  timestamps: true
 })
 
 let Dataset = mongoose.models.course || mongoose.model('course', courseSchema)
