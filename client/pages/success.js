@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import { ArrowLeft } from 'phosphor-react';
 import { useRouter } from 'next/router'
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { DataContext } from '../store/GlobalState';
 import { postData } from '../utils/fetchData';
-import { useEffect } from 'react/cjs/react.development';
 
 const Success = () => {
 	const { state, dispatch } = useContext(DataContext);

@@ -1,6 +1,6 @@
 import { DataContext } from '../../store/GlobalState';
 import { useContext, useState } from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import { useEffect } from 'react';
 
 const FooterForm = ({ status, message, onValidated, setActive }) => {
 	const [userEmail, setUserEmail] = useState('');
