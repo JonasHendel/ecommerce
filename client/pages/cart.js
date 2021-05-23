@@ -120,7 +120,10 @@ function cart() {
 				<title>Cart</title>
 			</Head>
 			<div className='flex items-center max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
-				<div className='flex flex-col justify-center  w-full min-h-500 py-10 my-20 rounded-2xl shadow-even'>
+				<div className='flex flex-col justify-start  w-full min-h-500 p-10 my-20 rounded-2xl shadow-even'>
+          <div className="mb-16">
+					<button className="flex items-center text-xl" onClick={() => router.back()}> <ArrowCircleLeft className="mr-2" weight='bold'/>Return</button>
+          </div>
 					<div className='flex justify-evenly items-center w-full'>
 						<div className='w-2/5 flex flex-col'>
 							{cart.map((item) => (

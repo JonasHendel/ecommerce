@@ -60,7 +60,6 @@ const EditUser = () => {
 			<div className='max-w-7xl h-screen flex justify-center mx-auto px-2 sm:px-6 lg:px-8'>
 				<div className='h-96 px-10 mt-20 shadow-even rounded-xl flex flex-col justify-start'>
         <div className="mt-6 mb-6">
-
 					<button className="flex items-center" onClick={() => router.back()}> <ArrowLeft className="mr-2"/>Return</button>
         </div>
 					<div className='flex flex-col justify-between items-center w-full'>
