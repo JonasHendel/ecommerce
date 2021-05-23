@@ -24,6 +24,7 @@ const Modal = () => {
     if(modal.length !== 0){
       for(const item of modal){
         if(item.type === 'ADD_CART'){
+          console.log('user')
           dispatch(deleteItem(item.data, item.id, item.type))
         }
         
@@ -88,7 +89,7 @@ const Modal = () => {
                     </Dialog.Title>
                     <div className="mt-2">
                       <p className="text-sm text-gray-500">
-                        Are you sure you want to delete this item? This user will be permanently removed.
+                        Are you sure you want to delete this item? This item will be permanently removed.
                         This action cannot be undone.
                       </p>
                     </div>

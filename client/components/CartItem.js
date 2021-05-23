@@ -8,6 +8,7 @@ import { decrease, increase, deleteItem } from '../store/Actions';
 const CartItem = ({ item, dispatch, cart }) => {
 	// const {state, dispatch} = useContext(DataContext)
 
+
 	return (
 		<>
 			<div className='flex mb-5 justify-between items-center'>
@@ -67,7 +68,7 @@ const CartItem = ({ item, dispatch, cart }) => {
 				<motion.div
 					className='cursor-pointer ml-7'
 					whileTap={{ scale: 0.9 }}
-					onClick={() => dispatch(deleteItem(cart, item._id))}
+					onClick={() => dispatch({type: 'ADD_MODAL', payload: [{data: cart, id:item._id, title: item.title, type: 'ADD_CART'}]})}
 				>
 					<Trash size={30} weight='bold' />
 				</motion.div>
