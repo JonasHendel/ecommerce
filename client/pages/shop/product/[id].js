@@ -2,9 +2,9 @@
 import Head from 'next/head';
 import { useState, useContext, useEffect } from 'react';
 import Link from 'next/link';
-import {ShoppingCart} from 'phosphor-react'
-import {motion} from 'framer-motion'
-import {useRouter} from 'next/router'
+import { ShoppingCart } from 'phosphor-react';
+import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 // CSS
 import styles from '../../../styles/Product.module.css';
 
@@ -14,12 +14,12 @@ import { DataContext } from '../../../store/GlobalState';
 import { addToCart } from '../../../store/Actions';
 
 const DetailProduct = (props) => {
-  const router = useRouter()
+	const router = useRouter();
 	const cx = (...classNames) => classNames.join(' ');
 
 	const [product] = useState(props.product);
 	const [tab, setTab] = useState(0);
-  const [addedToCart, setAddedToCart] = useState(false)
+	const [addedToCart, setAddedToCart] = useState(false);
 
 	const { state, dispatch } = useContext(DataContext);
 	const { cart } = state;
@@ -28,15 +28,13 @@ const DetailProduct = (props) => {
 		if (tab == index) return 'h-12 mr-2 border-4 border-white ';
 		return 'h-12 mr-2';
 	};
-
-
-  useEffect(()=>{
-    cart.map((item)=>{
-      if (item._id === product._id){
-        setAddedToCart(true)
-      }
-    })
-  }, [cart])
+	useEffect(() => {
+		cart.map((item) => {
+			if (item._id === product._id) {
+				setAddedToCart(true);
+			}
+		});
+	}, [cart]);
 
 	return (
 		<>
@@ -85,33 +83,45 @@ const DetailProduct = (props) => {
 						<p>{product.description}</p>
 						<p>{product.content}</p>
 						<div className='flex justify-between'>
-            {addedToCart ? <motion.button
-								animate={{ scale: [0.9, 1.1, 1.0] }}
-                transition={{duration: 0.2}}
-								className='h-12 w-60 bg-green-500 text-white rounded-lg'
+							{addedToCart ? (
+								<motion.button
+									animate={{ scale: [0.9, 1.1, 1.0] }}
+									transition={{ duration: 0.2 }}
+									className='h-12 w-60 bg-green-500 text-white rounded-lg'
+									onClick={() => {
+										dispatch(addToCart(product, cart));
+									}}>
+									<div className='flex items-center justify-center'>
+										<ShoppingCart
+											size={20}
+											className='mr-2'
+										/>
+										In cart
+									</div>
+								</motion.button>
+							) : (
+								<motion.button
+									whileTap={{ scale: 0.9 }}
+									className='h-12 w-60 bg-gray-900 text-white rounded-lg'
+									onClick={() => {
+										dispatch(addToCart(product, cart));
+									}}>
+									<div className='flex items-center justify-center'>
+										<ShoppingCart
+											size={20}
+											className='mr-2'
+										/>
+										Add to cart
+									</div>
+								</motion.button>
+							)}
+							<button
+								className='cancel-btn'
 								onClick={() => {
-									dispatch(addToCart(product, cart));
-								}}
-							>
-								<div className='flex items-center justify-center'>
-									<ShoppingCart size={20} className='mr-2' />
-									In cart
-								</div>
-							</motion.button> : <motion.button
-								whileTap={{ scale: 0.9 }}
-								className='h-12 w-60 bg-gray-900 text-white rounded-lg'
-								onClick={() => {
-									dispatch(addToCart(product, cart));
-								}}
-							>
-								<div className='flex items-center justify-center'>
-									<ShoppingCart size={20} className='mr-2' />
-									Add to cart
-								</div>
-							</motion.button> }
-								<button className='cancel-btn' onClick={()=>{router.back()}}>
-									Return
-								</button>
+									router.back();
+								}}>
+								Return
+							</button>
 						</div>
 					</div>
 				</div>
@@ -122,10 +132,8 @@ const DetailProduct = (props) => {
 
 export async function getServerSideProps({ params: { id } }) {
 	const res = await getData(`product/${id}`);
-
 	return {
 		props: { product: res.product },
 	};
 }
-
 export default DetailProduct;

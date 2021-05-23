@@ -2,6 +2,7 @@ import Head from 'next/head'
 import {useContext, useEffect, useState} from 'react'
 import {DataContext} from '../../store/GlobalState'
 import {useRouter} from 'next/router'
+import { patchData } from '../../utils/fetchData'
 
 const EditUser = () => {
   const router = useRouter()
@@ -26,6 +27,13 @@ const EditUser = () => {
     setCheckAdmin(!checkAdmin)
   }
 
+  const handleSubmit = () => {
+    let role = checkAdmin ? 'admin' : 'user'
+    dispatch({type: NOTIFY, payload: {loading: true}})
+    patchData(`user/${editUser._id}`, {role}, auth.token)
+    .then(res => console.log(res))
+  }
+
   return (
     <div>
       <Head>
@@ -47,7 +55,7 @@ const EditUser = () => {
           <lable htmlFor="isAdmin">is admin</lable>
           <input type="checkbox" id="isAdmin" checked={checkAdmin} onChange={handleChange} />
         </div>
-        <button>Update</button>
+        <button onClick={handleSubmit}>Update</button>
      </div>
     </div>
     </div>
