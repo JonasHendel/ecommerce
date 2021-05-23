@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { DataContext } from '../store/GlobalState';
 import { CheckCircle, NotePencil, Trash, XCircle, XSquare } from 'phosphor-react'
 import Link from 'next/link'
@@ -7,6 +7,15 @@ import Link from 'next/link'
 const Users = () => {
 	const { state, dispatch } = useContext(DataContext);
 	const { users, auth } = state;
+
+  
+	if(!auth.user){
+    return null
+  }else if(auth.user){
+    if(auth.user.role !== 'admin'){
+      return null
+    }
+  }
 
 	return (
 		<div>
@@ -48,7 +57,7 @@ const Users = () => {
                   </Link>
                   {
                     auth.user.root && auth.user.email !== user.email
-                    ? <Trash onClick={()=>dispatch({ type: 'ADD_MODAL', payload: [{data: user, id: user._id, title: user.name, type: 'ADD_USERS'}]})
+                    ? <Trash onClick={()=>dispatch({ type: 'ADD_MODAL', payload: [{data: users, id: user._id, title: user.name, type: 'ADD_USERS'}]})
                     } />
                     : <XSquare/> 
                   }
