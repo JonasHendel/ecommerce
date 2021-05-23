@@ -19,7 +19,6 @@ const Success = () => {
 
 
       await postData('order', {query, cart}, auth.token).then((res)=>{
-        localStorage.removeItem('__next__cart01__solimeo'),
         dispatch({ type: 'ADD_CART', payload: []}),
         dispatch({ type: 'ADD_ORDERS', payload: [...orders, res.newOrder]})
       }
