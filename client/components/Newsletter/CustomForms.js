@@ -2,7 +2,7 @@ import {DataContext} from '../../store/GlobalState'
 import {useContext, useState} from 'react'
 import { useEffect } from 'react/cjs/react.development';
 
-export const FooterForm = ({ status, message, onValidated, setActive }) => {
+const FooterForm = ({ status, message, onValidated, setActive }) => {
 
   const [userEmail, setUserEmail] = useState('')
   
@@ -58,3 +58,5 @@ export const FooterForm = ({ status, message, onValidated, setActive }) => {
 		</>
 	);
 };
+
+export default FooterForm

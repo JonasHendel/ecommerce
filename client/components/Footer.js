@@ -2,7 +2,8 @@ import Link from 'next/link';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
 import { InstagramLogo, FacebookLogo, Phone, At } from 'phosphor-react';
 
-import { FooterForm } from './Newsletter/CustomForms';
+import FooterForm from './Newsletter/CustomForms';
+
 
 const Footer = () => {
 	const newsletterUrl = process.env.API_URL_MAILCHIMP;
