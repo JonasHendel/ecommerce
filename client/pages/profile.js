@@ -122,7 +122,7 @@ const Profile = () => {
 								New Password:{' '}
 							</label>
 							<input
-            className="border-4 border-black border-md rounded-md p-2"
+                className="border-4 border-black border-md rounded-md p-2"
 								type='password'
 								placeholder='New password'
 								name='password'
@@ -151,12 +151,12 @@ const Profile = () => {
 					<h1 className='text-3xl font-bold'>Orders</h1>
             <table className="w-full table-auto divide-y">
             <thead>
-              <tr className="font-bold uppercase">
-                <th className="text-left divide-x divide-gray-200">Id</th>
-                <th className="text-left divide-x divide-gray-200">Date</th>
-                <th className="text-left divide-x divide-gray-200">Total</th>
-                <th className="divide-x divide-gray-200">Delivered</th>
-                <th className="text-left divide-x divide-gray-200">Action</th>
+              <tr className="font-bold uppercase ">
+                <th className="text-left">Id</th>
+                <th className="text-left">Date</th>
+                <th className="text-left">Total</th>
+                <th className="">Delivered</th>
+                <th className="text-left">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
