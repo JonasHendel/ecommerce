@@ -18,8 +18,8 @@ const Success = () => {
 
 
       await postData('order', {query, cart}, auth.token).then((res)=>{
-        dispatch({ type: 'ADD_CART', payload: []}),
         dispatch({ type: 'ADD_ORDERS', payload: [...orders, res.newOrder]})
+        dispatch({ type: 'ADD_CART', payload: []})
       }
       )
     }
