@@ -53,7 +53,7 @@ function register() {
 		if (res.err) {
 			return dispatch({ type: 'NOTIFY', payload: { error: res.err } });
 		}
-
+    router.push('/signin')
 		return dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
 	};
 
@@ -114,6 +114,7 @@ function register() {
 				<div className='flex flex-col items-center'>
 					<button
 						className='h-12 w-28 mb-4 bg-gray-900 text-white rounded-lg'
+            
 						type='submit'
 					>
 						Register

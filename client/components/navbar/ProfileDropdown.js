@@ -7,9 +7,12 @@ import { User } from 'phosphor-react';
 import { useContext } from 'react';
 
 import { DataContext } from '../../store/GlobalState';
+import { useRouter } from 'next/router';
 
 const ProfileDropdown = ({ classNames }) => {
 	const { state, dispatch } = useContext(DataContext);
+  
+  const router = useRouter()
 
 	const { auth } = state;
 
@@ -18,6 +21,7 @@ const ProfileDropdown = ({ classNames }) => {
 		localStorage.removeItem('firstLogin');
 		dispatch({ type: 'AUTH', payload: {} });
 		dispatch({ type: 'NOTIFY', payload: { success: 'Logged out!' } });
+    return router.push('/')
 	};
 
 	const adminRouter = () => {
