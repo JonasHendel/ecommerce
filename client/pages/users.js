@@ -35,7 +35,7 @@ const Users = () => {
                 {
                   user.role === 'admin' 
                   ? user.root ? <div className="flex items-center"><CheckCircle className="text-green-500"/> <a> Root</a> </div>
-                              : <a>User</a>
+                              : <CheckCircle className="text-green-500"/>
                   : <XCircle className="text-red-600"/>
                 }
               </th>
@@ -47,7 +47,7 @@ const Users = () => {
                   </div>
                   </Link>
                   {
-                    auth.user.root && auth.user.email || user.email
+                    auth.user.root && auth.user.email !== user.email
                     ? <Trash onClick={()=>dispatch({ type: 'ADD_MODAL', payload: [{data: user, id: user._id, title: user.name, type: 'ADD_USERS'}]})
                     } />
                     : <XSquare/> 

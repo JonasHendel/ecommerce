@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 
 import { DataContext } from '../store/GlobalState'
 
-import NavBar from './Navbar/Navbar'
+import NavBar from './navbar/NavBar'
 import Notify from './Notify'
 import Modal from './Modal'
 import Footer from './Footer'
@@ -26,7 +26,7 @@ function Layout({children}) {
   
   return (
     <div>
-        <NavBar2/>
+        <NavBar/>
         <Notify/>
         <Modal/>
         {children}
