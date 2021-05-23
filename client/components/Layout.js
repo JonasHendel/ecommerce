@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 
 import { DataContext } from '../store/GlobalState'
 
-import NavBar2 from './Navbar/N'
+import NavBar from './Navbar/Navbar'
 import Notify from './Notify'
 import Modal from './Modal'
 import Footer from './Footer'
