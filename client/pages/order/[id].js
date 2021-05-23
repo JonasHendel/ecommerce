@@ -19,17 +19,19 @@ const OrderDetails = () => {
 		setOrderDetail(newArr);
 	}, [orders]);
 
+	if (!auth.user) return null;
 	const handleDelivered = (order) => {
 		dispatch({ type: 'NOTIFY', payload: { loading: true } });
 		patchData(`order/delivered/${order._id}`, null, auth.token).then(
 			(res) => {
-				if(res.err) {
+				if (res.err) {
 					return dispatch({
 						type: 'NOTIFY',
 						payload: { error: res.err },
 					});
 				}
-				dispatch(updateItem(
+				dispatch(
+					updateItem(
 						orders,
 						order._id,
 						{
@@ -53,74 +55,109 @@ const OrderDetails = () => {
 			<Head>
 				<title>Order Details</title>
 			</Head>
-			<button
-				onClick={() => router.back()}
-				className='flex items-center'
-				aria-hidden='true'
-			>
-				<ArrowLeft /> Return
-			</button>
 			<div>
 				{orderDetail.map((order) => (
-					<div key={order._id}>
-						<h2>Order: {order._id}</h2>
-						<div>
-							<h1>Shipping</h1>
-							<p>Name: {order.user.name}</p>
-							<p>Email: {order.user.email}</p>
-							<p>
-								Address: {order.address.line1},{' '}
-								{order.address.city}, {order.address.country}
-							</p>
-							<div>
-								{order.delivered ? (
-									<p>Delivered on {order.updatedAt}</p>
-								) : (
-									<p>Not delivered</p>
-								)}
-								{auth.user.role === 'admin' &&
-									!order.delivered && (
-										<button
-											onClick={() =>
-												handleDelivered(order)
-											}
-										>
-											Mark as delivered
-										</button>
-									)}
-							</div>
+					<div
+						className='flex flex-col justify-start  w-full min-h-500 my-20 rounded-2xl shadow-even'
+						key={order._id}>
+						<div className='flex justify-start'>
+							<button
+								onClick={() => router.back()}
+								className='flex items-center justify-center h-12 w-28 mb-4 font-bold'
+								aria-hidden='true'>
+								<ArrowLeft className='mr-2' />
+								Return
+							</button>
 						</div>
-						<div>
-							<h1>Items</h1>
-							{order.cart.map((item) => (
-								<div key={item._id} className='flex'>
-									<div>
-										<img
-											className='w-28 rounded-md'
-											src={item.images[0].url}
-										></img>
+						<div className='flex justify-center mb-6'>
+							<h1 className='text-3xl font-bold'>
+								Order: {order._id}
+							</h1>
+						</div>
+						<div className='flex justify-center'>
+							<div className='w-2/5 flex flex-col'>
+								<h2 className='text-lg font-semibold'>
+									Shipping:{' '}
+								</h2>
+								{order.user ? (
+									<div className='mt-4'>
+										<div className='flex'>
+											<p className='font-semibold mr-1'>
+												Name:
+											</p>{' '}
+											{order.user.name}
+										</div>
+										<div className='flex'>
+											<p className='font-semibold mr-1'>
+												Email:
+											</p>{' '}
+											{order.user.email}
+										</div>
+										<div className='flex'>
+											<p className='font-semibold mr-1'>
+												Address:
+											</p>{' '}
+											{order.address.line1},{' '}
+											{order.address.city},{' '}
+											{order.address.country}
+										</div>
 									</div>
-									<div className='flex justify-center'>
-										<Link
-											href={`/shop/product/${item._id}`}
-										>
-											<div className='cursor-pointer flex flex-col h-full justify-evenly'>
-												<a className='capitalize text-lg font-bold'>
-													{item.quantity}
-													<a className='lowercase'>
-														x
-													</a>{' '}
-													{item.title}
-												</a>
-												<a className='font-semibold'>
-													NOK{' '}
-													{item.quantity * item.price}
-												</a>
-											</div>
-										</Link>
-									</div>
+								) : (
+									<p>Not found</p>
+								)}
+								<div className='mt-8'>
+									{order.delivered ? (
+										<p className='text-green-600 font-semibold'>
+											Delivered on {order.updatedAt}
+										</p>
+									) : (
+										<p className='text-red-600 font-semibold'>
+											Not delivered
+										</p>
+									)}
+									{auth.user.role === 'admin' &&
+										!order.delivered && (
+											<button
+												className='h-12 mt-4 px-4 bg-gray-900 text-white rounded-lg'
+												onClick={() =>
+													handleDelivered(order)
+												}>
+												Mark as delivered
+											</button>
+										)}
 								</div>
-							))}
+							</div>
+							<div className='w-2/5'>
+								<h1 className='text-lg font-bold'>Items</h1>
+								{order.cart.map((item) => (
+									<div key={item._id} className='flex mb-4'>
+										<div>
+											<img
+												className='w-28 rounded-md'
+												src={item.images[0].url}></img>
+										</div>
+										<div className='flex justify-center'>
+											<Link
+												href={`/shop/product/${item._id}`}>
+												<div className='ml-4 cursor-pointer flex flex-col h-full justify-evenly'>
+													<a className='capitalize font-bold'>
+														{item.quantity}
+														<a className='lowercase'>
+															x
+														</a>{' '}
+														{item.title}
+													</a>
+													<a className='font-semibold'>
+														NOK{' '}
+														{item.quantity *
+															item.price}
+													</a>
+												</div>
+											</Link>
+										</div>
+									</div>
+								))}
+							</div>
 						</div>
 					</div>
 				))}

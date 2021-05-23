@@ -7,7 +7,8 @@ module.exports = {
         beige: '#ffecd1',
       },
       boxShadow: {
-        even: '0 0 20px 4px rgb(0, 0, 0, 0.1)'
+        even: '0 0 20px 4px rgb(0, 0, 0, 0.1)',
+        neuphorism: '14px 14px 20px #cbced1, -14px -14px 20px white',
       },
       screens: {
         'ca': '80rem'
