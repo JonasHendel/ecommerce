@@ -25,7 +25,7 @@ const updateRole = async (req, res) =>{
     const {role} = req.body
     
     await Users.findOneAndUpdate({_id: id}, {role})
-    res.json({msg: "Successfull update!"})
+    res.json({msg: "Success! User role was updated"})
 
 	} catch (err) {
 		res.status(500).json({ err: err.message });
@@ -43,7 +43,7 @@ const deleteUser = async (req, res) => {
 
     await Users.findOneAndDelete({_id: id})
     
-    res.json({msg: 'Successfull delete'})
+    res.json({msg: 'Success! User was deleted'})
   } catch (err) {
     res.status(500).json({err: err.message})
   }

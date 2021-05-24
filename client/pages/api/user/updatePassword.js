@@ -6,12 +6,12 @@ import bcrypt from 'bcrypt'
 export default async (req, res) => {
   switch(req.method){
     case 'PATCH':
-      await resetPassword(req, res)
+      await updatePassword(req, res)
       break;
   }
 }
 
-const resetPassword = async (req, res)  => {
+const updatePassword = async (req, res)  => {
   try {
     const result = await auth(req, res)
 
@@ -19,7 +19,7 @@ const resetPassword = async (req, res)  => {
     const passwordHash = await bcrypt.hash(password, 12)
     await Users.findOneAndUpdate({_id: result.id}, {password: passwordHash})
 
-    res.json({msg: "Update Success!"})
+    res.json({msg: "Success! Password was updated"})
   } catch (err)  {
     res.status(500).json({err: err.message})
   }

@@ -31,7 +31,7 @@ const deliveredOrder = async (req, res) => {
 				}
 			);
 			res.json({
-				msg: 'Successfull update',
+				msg: 'Success! Order was updated.',
 				result: { delivered: true },
 			});
 		}

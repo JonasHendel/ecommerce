@@ -49,7 +49,7 @@ const Profile = () => {
 
 	const updatePassword = () => {
 		dispatch({ type: 'NOTIFY', payload: { loading: true } });
-		patchData('user/resetPassword', { password }, auth.token).then(
+		patchData('user/updatePassword', { password }, auth.token).then(
 			(res) => {
 				if (res.err)
 					return dispatch({

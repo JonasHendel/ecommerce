@@ -40,7 +40,7 @@ const changeName = async (req, res) => {
 
 
 		res.json({
-			msg: 'Successfull update',
+			msg: 'Success! Name was updated.',
 			user: {
 				name,
 				avatar: newUser.avatar,
