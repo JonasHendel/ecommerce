@@ -1,10 +1,11 @@
 import mongoose from 'mongoose'
 
 const productSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    maxLength: 50
   },
   price: {
     type: Number,
@@ -13,11 +14,13 @@ const productSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: true
+    required: true,
+    maxLength: 90
   },
   content: {
     type: String,
-    required: true
+    required: true,
+    maxLength: 320
   },
   images: {
     type: Array,

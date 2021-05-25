@@ -81,7 +81,7 @@ const DetailProduct = (props) => {
 							)}
 						</div>
 						<p>{product.description}</p>
-						<p>{product.content}</p>
+						<p className="h-42">{product.content}</p>
 						<div className='flex justify-between'>
 							{addedToCart ? (
 								<motion.button
