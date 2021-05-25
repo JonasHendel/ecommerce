@@ -10,7 +10,7 @@ import { DataContext } from '../../store/GlobalState';
 import { addToCart } from '../../store/Actions';
 import { useEffect } from 'react';
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, handleCheck }) => {
 	const cx = (...classNames) => classNames.join(' ');
 	const { state, dispatch } = useContext(DataContext);
 
@@ -70,14 +70,15 @@ const ProductItem = ({ product }) => {
 		);
 	};
 
+
 	const adminButtons = () => {
 		return (
 			<>
 				<div className={styles.buttonDiv}>
-					<Link href={`admin_product/${product._id}`}>
+					<Link href={`product_admin/${product._id}`}>
 						<motion.button
 							whileTap={{ scale: 0.9 }}
-							className='w-20 h-12 bg-gray-900 text-white rounded-lg'>
+							className='w-28 h-12 bg-gray-900 text-white rounded-lg'>
 							<div className='flex items-center justify-center'>
 								<NotePencil
 									size={20}
@@ -90,9 +91,9 @@ const ProductItem = ({ product }) => {
 					</Link>
 					<motion.button
 						whileTap={{ scale: 0.9 }}
-						className='h-12 w-36 bg-red-600 text-white rounded-lg'
+						className='h-12 w-28 bg-red-600 text-white rounded-lg'
 						onClick={() => {
-							dispatch(addToCart(product, cart));
+							dispatch({type: 'ADD_MODAL', payload: [{data: '', id: product._id, title: product.title, type: 'DELETE_PRODUCT'}]});
 						}}>
 						<div className='flex items-center justify-center'>
 							<Trash size={20} className='mr-2' weight='bold' />
@@ -103,13 +104,16 @@ const ProductItem = ({ product }) => {
 			</>
 		);
 	};
-
+  
 	const { title, description, inStock, price, images } = product;
-
+  
 	return (
-		<>
+    <>
 			<motion.div
 				/*whileHover={{ scale: 1.02 }}*/ className={styles.productCard}>
+        {auth.user && auth.user.role === 'admin' &&
+          <input className="absolute ml-2 mt-2 w-6 h-6" type="checkbox" checked={product.checked} onChange={()=>handleCheck(product._id)} />
+        }
 				<div className={styles.imageDiv}>
 					<img className={styles.image} src={images[0].url} />
 				</div>
@@ -136,7 +140,7 @@ const ProductItem = ({ product }) => {
 					</div>
 					{!auth.user || auth.user.role !== 'admin'
 						? userButtons()
-						: adminButtons()}
+						: adminButtons()} 
 				</div>
 			</motion.div>
 		</>

@@ -1,14 +1,16 @@
 import { Fragment, useRef, useState, useContext, useEffect } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { Warning } from 'phosphor-react';
-
 import { DataContext } from '../store/GlobalState';
 import { deleteItem } from '../store/Actions';
 import { deleteData } from '../utils/fetchData';
+import {useRouter} from 'next/router'
 
 const Modal = () => {
 	const { state, dispatch } = useContext(DataContext);
 	const { modal, auth } = state;
+
+  const router = useRouter()
 
 	const [open, setOpen] = useState(false);
 	const cancelButtonRef = useRef(null);
@@ -42,6 +44,18 @@ const Modal = () => {
     })
   }
 
+  const deleteProduct = (item) => {
+    deleteData(`product/${item.id}`, auth.token).then((res) => {
+			if (res.err)
+				return dispatch({
+					type: 'NOTIFY',
+					payload: { error: res.err },
+				});
+        dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
+        return router.push('/shop')
+		});
+  }
+
 	const handleSubmit = () => {
 		if (modal.length !== 0) {
 			for (const item of modal) {
@@ -57,7 +71,7 @@ const Modal = () => {
 				if(item.type === 'ADD_CATEGORIES') {
           deleteCategories(item)
         }
-				// if(item.type === 'DELETE_PRODUCT') deleteProduct(item)
+				if(item.type === 'DELETE_PRODUCT') deleteProduct(item)
         dispatch({ type: 'ADD_MODAL', payload: [] });
 			}
 		}
@@ -137,7 +151,7 @@ const Modal = () => {
 								<button
 									type='button'
 									className='mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'
-									onClick={handleSubmit}
+                  onClick={()=>setOpen(false)}
 									ref={cancelButtonRef}>
 									Cancel
 								</button>

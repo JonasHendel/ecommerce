@@ -14,7 +14,7 @@ const CartItem = ({ item, dispatch, cart }) => {
 			<div className='flex mb-5 justify-between items-center'>
 				<div>
 					<img
-						className='w-28 rounded-md'
+						className='w-28 h-18 object-cover rounded-md'
 						src={item.images[0].url}
 					></img>
 				</div>

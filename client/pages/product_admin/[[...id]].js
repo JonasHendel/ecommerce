@@ -1,15 +1,14 @@
 import Head from 'next/head';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { DataContext } from '../../store/GlobalState';
-import { postData } from '../../utils/fetchData';
+import { postData, getData, putData } from '../../utils/fetchData';
 import { imageUpload } from '../../utils/imageUpload';
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router';
 
 const ProductManager = () => {
-  const router = useRouter()
-  
+	const router = useRouter();
+
 	const initialState = {
-		product_id: '',
 		title: '',
 		price: 0,
 		inStock: 0,
@@ -19,20 +18,31 @@ const ProductManager = () => {
 	};
 
 	const [product, setProduct] = useState(initialState);
-	const {
-		product_id,
-		title,
-		price,
-		inStock,
-		description,
-		content,
-		category,
-	} = product;
+	const { title, price, inStock, description, content, category } = product;
 
 	const [images, setImages] = useState([]);
+	const [onEdit, setOnEdit] = useState(false);
 
 	const { state, dispatch } = useContext(DataContext);
 	const { categories, auth } = state;
+
+	const { id } = router.query;
+
+	useEffect(() => {
+		if (id) {
+			setOnEdit(true);
+			getData(`product/${id}`).then((res) => {
+				setProduct(res.product);
+				setImages(res.product.images);
+			});
+		} else {
+			setOnEdit(false);
+			setProduct(initialState);
+			setImages([]);
+		}
+	}, [id]);
+
+	useEffect;
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -88,7 +98,6 @@ const ProductManager = () => {
 			});
 
 		if (
-			!product_id ||
 			!title ||
 			!price ||
 			!inStock ||
@@ -108,19 +117,35 @@ const ProductManager = () => {
 
 		if (imgNewURL.length > 0) media = await imageUpload(imgNewURL);
 
-		const res = await postData(
-			'product',
-			{ ...product, images: [...imgOldURL, ...media] },
-			auth.token
-		);
+		let res;
+		if (onEdit) {
+      res = await putData(
+				`product/${id}`,
+				{ ...product, images: [...imgOldURL, ...media] },
+				auth.token
+			);
 
-		if (res.err)
-			return dispatch({ type: 'NOTIFY', payload: { error: res.err } });
+			if (res.err)
+				return dispatch({
+					type: 'NOTIFY',
+					payload: { error: res.err },
+				});
+		} else {
+			res = await postData(
+				'product',
+				{ ...product, images: [...imgOldURL, ...media] },
+				auth.token
+			);
+
+			if (res.err)
+				return dispatch({
+					type: 'NOTIFY',
+					payload: { error: res.err },
+				});
+		}
 
 		return dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
 	};
-
-	console.log(category);
 
 	return (
 		<>
@@ -130,14 +155,6 @@ const ProductManager = () => {
 			<div className='max-w-7xl h-screen mx-auto px-2 sm:px-6 lg:px-8'>
 				Product
 				<form onSubmit={handleSubmit}>
-					<input
-						className=''
-						type='text'
-						name='product_id'
-						value={product_id}
-						placeholder='Product ID'
-						onChange={handleChange}
-					/>
 					<input
 						className=''
 						type='text'
@@ -220,7 +237,7 @@ const ProductManager = () => {
 							))}
 						</div>
 					</div>
-					<button type='submit'>Create Product</button>
+					<button type='submit'>{onEdit ? 'Update Product' : 'Create Product'}</button>
 				</form>
 			</div>
 		</>

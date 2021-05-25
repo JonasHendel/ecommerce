@@ -53,7 +53,7 @@ const AdminDropdown = ({ classNames }) => {
 							</Menu.Item>
               <Menu.Item>
 								{({ active }) => (
-									<Link href='/products'>
+									<Link href='/product_admin'>
 										<a
 											className={classNames(
 												active ? 'bg-gray-100' : '',

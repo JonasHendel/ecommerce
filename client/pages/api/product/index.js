@@ -35,8 +35,8 @@ const createProduct = async (req, res) => {
 		if (result.role !== 'admin')
 			return res.status(400).json({ err: 'Authentication is not valid' });
 
+
 		const {
-			product_id,
 			title,
 			price,
 			inStock,
@@ -57,7 +57,7 @@ const createProduct = async (req, res) => {
 		)
 			return res.status(400).json({ err: 'Please add all the fields.' });
 
-    const product = await Products.findOne({product_id})
+    const product = await Products.findOne({title})
     if(product) return res.status(400).json({err: 'This product already exists'})
 
 		const newProduct = new Products({
