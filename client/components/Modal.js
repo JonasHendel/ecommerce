@@ -20,7 +20,6 @@ const Modal = () => {
 	}, [modal]);
 
 	const deleteUser = (item) => {
-    console.log(item)
 		dispatch(deleteItem(item.data, item.id, item.type));
 
 		deleteData(`user/${item.id}`, auth.token).then((res) => {
@@ -32,6 +31,16 @@ const Modal = () => {
 			return dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
 		});
 	};
+
+  const deleteCategories = (item) => {
+    dispatch(deleteItem(item.data, item.id, item.type))
+    deleteData(`categories/${item.id}`, auth.token).then((res)=>{
+      if(res.err){
+        return dispatch({type: 'NOTIFY', payload:{err: res.err}})
+      }
+      return dispatch({type: 'NOTIFY', payload: {success: res.msg}})
+    })
+  }
 
 	const handleSubmit = () => {
 		if (modal.length !== 0) {
@@ -45,8 +54,9 @@ const Modal = () => {
 					deleteUser(item);
 				}
 
-				// if(item.type === 'ADD_CATEGORIES') deleteCategories(item)
-
+				if(item.type === 'ADD_CATEGORIES') {
+          deleteCategories(item)
+        }
 				// if(item.type === 'DELETE_PRODUCT') deleteProduct(item)
         dispatch({ type: 'ADD_MODAL', payload: [] });
 			}
