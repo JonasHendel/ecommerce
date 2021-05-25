@@ -40,7 +40,7 @@ const updateCategory = async (req, res) => {
 }
 const deleteCategory = async (req, res) => {
   try {
-    cons result = await auth(req, res)
+    const result = await auth(req, res)
     if(result.role != 'admin'){
       res.status(400).json({err: 'Authentication is not valid.'})
     }
