@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useContext, useEffect } from 'react';
-import { DataContext } from '../store/GlobalState';
+import { DataContext } from '../../store/GlobalState';
 import {
 	CheckCircle,
 	NotePencil,
@@ -67,7 +67,7 @@ const Users = () => {
 											(auth.user.root &&
 												auth.user.email) ||
 											user.email
-												? `/edit_user/${user._id}`
+												? `/admin/user/${user._id}`
 												: '#!'
 										}>
 										<div className='cursor-pointer'>

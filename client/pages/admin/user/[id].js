@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import { useContext, useEffect, useState } from 'react';
-import { DataContext } from '../../store/GlobalState';
+import { DataContext } from '../../../store/GlobalState';
 import { useRouter } from 'next/router';
-import { patchData } from '../../utils/fetchData';
-import { updateItem } from '../../store/Actions';
+import { patchData } from '../../../utils/fetchData';
+import { updateItem } from '../../../store/Actions';
 import { ArrowLeft } from 'phosphor-react'
 
 const EditUser = () => {

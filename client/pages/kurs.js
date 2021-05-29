@@ -4,11 +4,11 @@ import Course from '../components/Course'
 import {getData} from '../utils/fetchData'
 
 
-const kurs = ({content}) => {
+const Kurs = ({content}) => {
   return (
     <div className="max-w-7xl h-screen mx-auto px-2 sm:px-6 lg:px-8">
       {content.map((course)=>(
-        <Course key={course.id} content={course}/>
+        <ProductItem product={coures} />
       ))}
     </div>
   )

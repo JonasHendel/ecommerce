@@ -39,7 +39,7 @@ const AdminDropdown = ({ classNames }) => {
 						>
 							<Menu.Item>
 								{({ active }) => (
-									<Link href='/users'>
+									<Link href='/admin/users'>
 										<a
 											className={classNames(
 												active ? 'bg-gray-100' : '',
@@ -53,7 +53,7 @@ const AdminDropdown = ({ classNames }) => {
 							</Menu.Item>
               <Menu.Item>
 								{({ active }) => (
-									<Link href='/product_admin'>
+									<Link href='/admin/product'>
 										<a
 											className={classNames(
 												active ? 'bg-gray-100' : '',
@@ -67,7 +67,7 @@ const AdminDropdown = ({ classNames }) => {
 							</Menu.Item>
               <Menu.Item>
 								{({ active }) => (
-									<Link href='/categories'>
+									<Link href='/admin/categories'>
 										<a
 											className={classNames(
 												active ? 'bg-gray-100' : '',

@@ -3,10 +3,10 @@ import { useState, useContext, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle, XCircle } from 'phosphor-react';
 
-import { DataContext } from '../../store/GlobalState';
+import { DataContext } from '../../../store/GlobalState';
 import { useRouter } from 'next/router';
-import { patchData } from '../../utils/fetchData';
-import { updateItem } from '../../store/Actions';
+import { patchData } from '../../../utils/fetchData';
+import { updateItem } from '../../../store/Actions';
 
 const OrderDetails = () => {
 	const { state, dispatch } = useContext(DataContext);

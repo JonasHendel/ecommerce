@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { useState, useContext, useEffect } from 'react';
-import { DataContext } from '../../store/GlobalState';
-import { postData, getData, putData } from '../../utils/fetchData';
-import { imageUpload } from '../../utils/imageUpload';
+import { DataContext } from '../../../store/GlobalState';
+import { postData, getData, putData } from '../../../utils/fetchData';
+import { imageUpload } from '../../../utils/imageUpload';
 import { useRouter } from 'next/router';
 
 const ProductManager = () => {
@@ -10,9 +10,9 @@ const ProductManager = () => {
 
 	const initialState = {
 		title: '',
-		price: 0,
-		inStock: 0,
-		description: 0,
+		price: Number,
+		inStock: Number,
+		description: '',
 		content: '',
 		category: '',
 	};
@@ -154,61 +154,81 @@ const ProductManager = () => {
 			</Head>
 			<div className='max-w-7xl h-screen mx-auto px-2 sm:px-6 lg:px-8'>
 				Product
-				<form onSubmit={handleSubmit}>
-					<input
-						className=''
-						type='text'
-						name='title'
-						value={title}
-						placeholder='Title'
-						onChange={handleChange}
-					/>
-					<input
-						className=''
-						type='text'
-						name='price'
-						value={price}
-						placeholder='Price'
-						onChange={handleChange}
-					/>
-					<input
-						className=''
-						type='text'
-						name='inStock'
-						value={inStock}
-						placeholder='Items in stock'
-						onChange={handleChange}
-					/>
-					<input
-						className=''
-						type='text'
-						name='description'
-						value={description}
-						placeholder='Description'
-						onChange={handleChange}
-					/>
-					<input
-						className=''
-						type='text'
-						name='content'
-						value={content}
-						placeholder='Content'
-						onChange={handleChange}
-					/>
-					<div>
-						<select
-							name='category'
-							id='category'
-							value={category}
-							onChange={handleChange}>
-							<option value='All'>All products</option>
-							{categories.map((item) => (
-								<option key={item._id} value={item._id}>
-									{item.name}
-								</option>
-							))}
-						</select>
-					</div>
+				<form className="flex justify-between"onSubmit={handleSubmit}>
+        <div cassName='flex flex-col'>
+          <div className="flex">
+          <label className="font-bold mr-2" htmlFor="title">Title:</label>
+            <input
+              className=''
+              type='text'
+              name='title'
+              value={title}
+              placeholder='Title'
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex">
+          <label className="font-bold mr-2" htmlFor="title">Price:</label>
+            <input
+              className=''
+              type='number'
+              name='price'
+              value={price}
+              placeholder='Price'
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex">
+          <label className="font-bold mr-2" htmlFor="title">In stock:</label>
+            <input
+              className=''
+              type='number'
+              name='inStock'
+              value={inStock}
+              placeholder='Items in stock'
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex">
+          <label className="font-bold mr-2" htmlFor="title">Description:</label>
+            <input
+              className=''
+              type='text'
+              name='description'
+              value={description}
+              placeholder='Description'
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex">
+          <label className="font-bold mr-2" htmlFor="title">Content:</label>
+            <input
+              className=''
+              type='text'
+              name='content'
+              value={content}
+              placeholder='Content'
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex">
+          <label className="font-bold mr-2" htmlFor="title">Category:</label>
+            <div>
+              <select
+                name='category'
+                id='category'
+                value={category}
+                onChange={handleChange}>
+                <option value='All'>Categories</option>
+                {categories.map((item) => (
+                  <option key={item._id} value={item._id}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
 					<div>
 						<input
 							type='file'

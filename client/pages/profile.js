@@ -166,7 +166,7 @@ const Profile = () => {
                   <td>{new Date(order.createdAt).toLocaleDateString()}</td>
                   <td>NOK: {order.total/100}</td>
                   <td className="flex justify-center items-center">{order.delivered ? <CheckCircle className=" text-xl text-green-500"/> : <XCircle className="text-xl text-red-600"/>}</td>
-                  <td><Link href={`/order/${order._id}`}>
+                  <td><Link href={`/admin/order/${order._id}`}>
                     <a className="underline">Details</a>
                   </Link></td>
                 </tr>

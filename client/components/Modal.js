@@ -60,7 +60,6 @@ const Modal = () => {
 		if (modal.length !== 0) {
 			for (const item of modal) {
 				if (item.type === 'ADD_CART') {
-          console.log(item.data)
 					dispatch(deleteItem(item.data, item.id, item.type));
 				}
 
