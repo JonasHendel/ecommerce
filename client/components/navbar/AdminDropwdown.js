@@ -60,7 +60,21 @@ const AdminDropdown = ({ classNames }) => {
 												'block px-4 py-2 text-sm text-gray-700'
 											)}
 										>
-										Products
+										Create Product
+										</a>
+									</Link>
+								)}
+							</Menu.Item>
+              <Menu.Item>
+								{({ active }) => (
+									<Link href='/admin/course'>
+										<a
+											className={classNames(
+												active ? 'bg-gray-100' : '',
+												'block px-4 py-2 text-sm text-gray-700'
+											)}
+										>
+										Create Course
 										</a>
 									</Link>
 								)}

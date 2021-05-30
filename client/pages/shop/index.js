@@ -28,6 +28,7 @@ function Shop(props) {
     setProducts(props.products)
   }, [props.products])
 
+
   useEffect(()=>{
     if(Object.keys(router.query).length === 0){
       setPage(1)

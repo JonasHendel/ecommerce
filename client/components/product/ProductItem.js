@@ -75,7 +75,7 @@ const ProductItem = ({ product, handleCheck }) => {
 		return (
 			<>
 				<div className={styles.buttonDiv}>
-					<Link href={`product_admin/${product._id}`}>
+					<Link href={`/admin/product/${product._id}`}>
 						<motion.button
 							whileTap={{ scale: 0.9 }}
 							className='w-28 h-12 bg-gray-900 text-white rounded-lg'>

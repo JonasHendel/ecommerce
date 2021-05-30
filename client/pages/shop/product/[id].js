@@ -66,7 +66,7 @@ const DetailProduct = (props) => {
 						<h1 className='capitalize font-bold text-2xl'>
 							{product.title}
 						</h1>
-						<div className={styles.detailProduct}>
+						<div className='flex justify-between'>
 							<p className='font-semibold'>
 								NOK: {product.price}
 							</p>

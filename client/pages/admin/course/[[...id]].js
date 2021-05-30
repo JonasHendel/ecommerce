@@ -11,14 +11,14 @@ const ProductManager = () => {
 	const initialState = {
 		title: '',
 		price: Number,
-		inStock: Number,
+		spots: Number,
 		description: '',
 		content: '',
 		category: '',
 	};
 
 	const [product, setProduct] = useState(initialState);
-	const { title, price, inStock, description, content, category } = product;
+	const { title, price, spots, description, content, category } = product;
 
 	const [images, setImages] = useState([]);
 	const [onEdit, setOnEdit] = useState(false);
@@ -40,7 +40,7 @@ const ProductManager = () => {
 		} else {
 			setOnEdit(false);
 			setProduct(initialState);
-			setImages([]);
+			// setImages([]);
 		}
 	}, [id]);
 
@@ -92,8 +92,8 @@ const ProductManager = () => {
 	};
 
   const isActive = (index) => {
-		if (tab == index) return 'h-12 mr-2 border-4 border-white ';
-		return 'h-12 mr-2';
+		if (tab == index) return 'h-12 mr-4 border-4 border-black ';
+		return 'h-12 mr-4';
 	};
 
 	const handleSubmit = async (e) => {
@@ -107,7 +107,7 @@ const ProductManager = () => {
 		if (
 			!title ||
 			!price ||
-			!inStock ||
+			!spots ||
 			!description ||
 			!content ||
 			category === 'all' ||
@@ -127,7 +127,7 @@ const ProductManager = () => {
 		let res;
 		if (onEdit) {
 			res = await putData(
-				`product/${id}`,
+				`course/${id}`,
 				{ ...product, images: [...imgOldURL, ...media] },
 				auth.token
 			);
@@ -139,7 +139,7 @@ const ProductManager = () => {
 				});
 		} else {
 			res = await postData(
-				'product',
+				'course',
 				{ ...product, images: [...imgOldURL, ...media] },
 				auth.token
 			);
@@ -157,7 +157,7 @@ const ProductManager = () => {
 	return (
 		<>
 			<Head>
-				<title>Product manager</title>
+				<title>Course manager</title>
 			</Head>
 			<div className='max-w-7xl h-screen mx-auto px-2 sm:px-6 lg:px-8'>
 				<form
@@ -165,7 +165,7 @@ const ProductManager = () => {
 					onSubmit={handleSubmit}>
 					<div className='flex justify-around'>
 						<div className='flex flex-col'>
-							<h1 className='font-bold text-2xl'>Product</h1>
+							<h1 className='font-bold text-2xl'>Course</h1>
 							<div className='flex flex-col'>
 								<label
 									className='font-bold mr-2'
@@ -200,14 +200,14 @@ const ProductManager = () => {
 								<label
 									className='font-bold mr-2'
 									htmlFor='title'>
-									In stock:
+									Spots:
 								</label>
 								<input
 									className='border-4 border-black border-md rounded-md p-2'
 									type='number'
-									name='inStock'
-									value={inStock}
-									placeholder='Items in stock'
+									name='spots'
+									value={spots}
+									placeholder='Spots in available'
 									onChange={handleChange}
 								/>
 							</div>
@@ -283,6 +283,7 @@ const ProductManager = () => {
 								/>
 								<div className='flex'>
 									{images.map((img, index) => (
+                    <div>
 										<img
 											className={isActive(index)}
 											key={index}
@@ -292,6 +293,8 @@ const ProductManager = () => {
 												setTab(index);
 											}}
 										/>
+                    <span className="relative px-2 py-1 bg-red-500 bottom-14 right-2 ml-15 rounded-full text-white text-xs cursor-pointer" onClick={() => deleteImage(index)}>x</span>
+                    </div>
 									))}
 								</div>
                 </div>
@@ -303,7 +306,7 @@ const ProductManager = () => {
 						<button
 							className='w-36 h-12 rounded-lg bg-gray-900 text-white '
 							type='submit'>
-							{onEdit ? 'Update Product' : 'Create Product'}
+							{onEdit ? 'Update Course' : 'Create Course'}
 						</button>
 					</div>
 				</form>

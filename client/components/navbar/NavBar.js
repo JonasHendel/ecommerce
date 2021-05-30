@@ -70,12 +70,12 @@ export default function NavBar2() {
 								<div className='flex-shrink-0 flex items-center'>
 									<img
 										className='block lg:hidden h-16 w-auto'
-										src='./logo.png'
+										src='../logo.png'
 										alt='Francesco Solimeo'
 									/>
 									<img
 										className='hidden lg:block h-14 w-auto'
-										src='./logo.png'
+										src='../logo.png'
 										alt='Francesco Solimeo'
 									/>
 								</div>
