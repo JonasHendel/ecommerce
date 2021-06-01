@@ -19,7 +19,6 @@ const getCourse = async (req, res) => {
     if(!course){
       return res.status(400).json({err: 'This course does not exist'})
     } 
-    console.log(course)
     res.json({course})
   } catch (err) {
     res.status(500).json({err: err.message}) 

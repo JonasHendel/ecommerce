@@ -98,12 +98,12 @@ function cart() {
 		);
 	}
 
-	const handleClick = async () => {
+	const handlePayment = async () => {
 		if (!auth.user) {
 			return router.push('/signin');
 		}
 		const stripe = await stripePromise;
-		const session = await postData('order/create-checkout-session', {cart, user});
+		const session = await postData('order/cart-session', {cart, user});
 
 		const result = await stripe.redirectToCheckout({
 			sessionId: session.id,
@@ -113,6 +113,7 @@ function cart() {
 			console.log(result.error.message);
 		}
 	};
+
 
 	return (
 		<>
@@ -145,7 +146,7 @@ function cart() {
 							</h3>
 							<button
 								className='h-12 w-full bg-gray-900 text-white rounded-lg'
-								onClick={handleClick}
+								onClick={handlePayment}
 							>
 								Proceed with payment
 							</button>

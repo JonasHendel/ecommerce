@@ -2,24 +2,25 @@ import Link from 'next/link';
 import { ArrowLeft } from 'phosphor-react';
 import { useRouter } from 'next/router'
 import { useContext, useEffect } from 'react';
-import { DataContext } from '../store/GlobalState';
-import { postData } from '../utils/fetchData';
+import { DataContext } from '../../store/GlobalState';
+import { postData } from '../../utils/fetchData';
 
 const Success = () => {
 	const { state, dispatch } = useContext(DataContext);
 
   const router = useRouter()
 
-  const {cart, auth, orders} = state
+  const {auth, orders, course} = state
+
+  console.log(course)
 
   useEffect(async() => {
     if (Object.keys(router.query).length && Object.keys(auth).length) {
+
       const query = router.query
-
-
-      await postData('order', {query, cart}, auth.token).then((res)=>{
+      await postData('order/course', {query, course}, auth.token).then((res)=>{
         dispatch({ type: 'ADD_ORDERS', payload: [...orders, res.newOrder]})
-        dispatch({ type: 'ADD_CART', payload: []})
+        // dispatch({ type: 'ADD_CART', payload: []})
       }
       )
     }

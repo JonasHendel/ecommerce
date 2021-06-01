@@ -41,6 +41,7 @@ const ProductItem = ({ product, handleCheck }) => {
 					</Link>
 					{addedToCart ? (
 						<motion.button
+             initial={false}
 							animate={{ scale: [0.9, 1.1, 1.0] }}
 							transition={{ duration: 0.2 }}
 							className='h-12 w-36 bg-green-500 text-white rounded-lg'

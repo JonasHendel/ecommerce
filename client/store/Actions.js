@@ -6,11 +6,19 @@ export const ACTIONS = {
   ADD_ORDERS: 'ADD_ORDERS',
   ADD_USERS: 'ADD_USERS',
   ADD_CATEGORIES: 'ADD_CATEGORIES',
-  DELETE_PRODUCT: 'DELETE_PRODUCT'
+  DELETE_PRODUCT: 'DELETE_PRODUCT',
+  ADD_COURSE: 'ADD_COURSE'
+}
+
+export const addCourse = (course) => {
+  if(course.spots === 0){
+    return ({type: 'NOTIFY', payload: {error: 'There are no more spots'}})
+  }
+
+  return ({type: 'ADD_COURSE', payload: course})
 }
 
 export const addToCart = (product, cart) => {
-
   if(product.inStock === 0){
     return ({type: 'NOTIFY', payload: {error: 'This product is not in stock.'}})
   }

@@ -8,11 +8,11 @@ import { getData } from '../utils/fetchData'
 export const DataContext = createContext()
 
 export const DataProvider = ({children}) => {
-  const initialState = {notify:{}, auth: {}, cart: [], modal: [], orders: [], users: [], categories: [],}
+  const initialState = {notify:{}, auth: {}, cart: [], modal: [], orders: [], users: [], categories: [], course: {}}
    
   const [state, dispatch] = useReducer(reducers, initialState)
 
-  const { cart, auth } = state
+  const { cart, auth, course } = state
 
   useEffect(()=>{
      const firstLogin = localStorage.getItem("firstLogin")
@@ -49,6 +49,17 @@ export const DataProvider = ({children}) => {
   useEffect(()=> {
     localStorage.setItem('__next__cart01__solimeo', JSON.stringify(cart))
   }, [cart])
+
+  useEffect(()=> {
+    const course_ls = JSON.parse(localStorage.getItem('course_ls'))
+    if(course_ls){
+      dispatch({type: 'ADD_COURSE', payload: course_ls})
+    }
+  }, [])
+
+  useEffect(()=> {
+    localStorage.setItem('course_ls', JSON.stringify(course))
+  }, [course])
 
   useEffect(()=>{
       if(auth.token){

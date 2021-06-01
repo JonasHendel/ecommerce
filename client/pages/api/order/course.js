@@ -1,4 +1,4 @@
-import Products from '../../../models/productModel';
+import Courses from '../../../models/courseModel';
 import Orders from '../../../models/orderModel';
 import dbConnect from '../../../utils/dbConnect';
 import auth from '../../../middleware/auth';
@@ -38,30 +38,37 @@ const getOrders = async (req, res) => {
 };
 
 const createOrder = async (req, res) => {
+
+  console.log(req.body)
+
 	try {
-		const result = await auth(req, res);
-		const { query, cart } = req.body;
+		// const result = await auth(req, res);
+		const { query, course } = req.body;
 
 		const { session_id } = query;
 
 		const session = await stripe.checkout.sessions.retrieve(session_id);
 
-		// if (cart.length > 0) {
-		const newOrder = new Orders({
-			user: result.id,
-			address: session.shipping.address,
-			cart,
-			total: session.amount_total,
-			sessionId: session_id,
-		});
+    console.log(course)
 
-		await newOrder.save();
-
-		// }
-		if (Object.keys(session).length) {
-			cart.map((item) => {
-				return sold(item._id, item.quantity, item.inStock, item.sold);
+		if (course.length > 0) {
+			const newOrder = new Orders({
+				user: result.id,
+				address: session.shipping.address,
+				total: session.amount_total,
+				course,
+				sessionId: session_id,
 			});
+
+			await newOrder.save();
+		}
+		if (Object.keys(session).length) {
+			return sold(
+				course._id,
+				course.quantity,
+				course.spots,
+				course.sold
+			);
 		}
 
 		return res.status(200).json({ session_id, newOrder });
@@ -71,10 +78,10 @@ const createOrder = async (req, res) => {
 };
 
 const sold = async (id, quantity, oldInStock, oldSold) => {
-	await Products.findOneAndUpdate(
+	await Courses.findOneAndUpdate(
 		{ _id: id },
 		{
-			inStock: oldInStock - quantity,
+			spots: oldInStock - quantity,
 			sold: quantity + oldSold,
 		}
 	);
