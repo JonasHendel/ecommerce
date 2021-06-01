@@ -10,8 +10,10 @@ const orderSchema = new mongoose.Schema(
 		mobile: String,
 		cart: Array,
 		total: Number,
-		sessionId: String,
-		method: String,
+		sessionId: {
+      type: String,
+      unique: true,
+    },
 		delivered: {
 			type: Boolean,
 			default: false,

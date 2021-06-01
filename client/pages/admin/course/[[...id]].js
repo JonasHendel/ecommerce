@@ -17,8 +17,9 @@ const ProductManager = () => {
 		category: '',
 	};
 
-	const [product, setProduct] = useState(initialState);
-	const { title, price, spots, description, content, category } = product;
+	const [course, setCourse] = useState(initialState);
+
+	const { title, price, spots, description, content, category } = course
 
 	const [images, setImages] = useState([]);
 	const [onEdit, setOnEdit] = useState(false);
@@ -33,13 +34,13 @@ const ProductManager = () => {
 	useEffect(() => {
 		if (id) {
 			setOnEdit(true);
-			getData(`product/${id}`).then((res) => {
-				setProduct(res.product);
-				setImages(res.product.images);
+			getData(`course/${id}`).then((res) => {
+				setCourse(res.course);
+				setImages(res.course.images);
 			});
 		} else {
 			setOnEdit(false);
-			setProduct(initialState);
+			setCourse(initialState);
 			// setImages([]);
 		}
 	}, [id]);
@@ -48,7 +49,7 @@ const ProductManager = () => {
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-		setProduct({ ...product, [name]: value });
+		setCourse({ ...course, [name]: value });
 	};
 
 	const handleUpload = (e) => {
@@ -76,7 +77,6 @@ const ProductManager = () => {
 		});
 		if (err) dispatch({ type: 'NOTIFY', payload: { error: err } });
 		const imgCount = images.length;
-		console.log(imgCount);
 		if (imgCount + newImages.legnth > 5)
 			return dispatch({
 				type: 'NOTIFY',
@@ -128,7 +128,7 @@ const ProductManager = () => {
 		if (onEdit) {
 			res = await putData(
 				`course/${id}`,
-				{ ...product, images: [...imgOldURL, ...media] },
+				{ ...course, images: [...imgOldURL, ...media] },
 				auth.token
 			);
 
@@ -140,7 +140,7 @@ const ProductManager = () => {
 		} else {
 			res = await postData(
 				'course',
-				{ ...product, images: [...imgOldURL, ...media] },
+				{ ...course, images: [...imgOldURL, ...media] },
 				auth.token
 			);
 
@@ -151,6 +151,7 @@ const ProductManager = () => {
 				});
 		}
 
+    router.push('/course')
 		return dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
 	};
 

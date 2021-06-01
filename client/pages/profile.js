@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useContext, useState, useEffect } from 'react';
 import Link from 'next/link'
 import {XCircle, CheckCircle} from 'phosphor-react'
+import { useRouter } from 'next/router';
 
 
 import { DataContext } from '../store/GlobalState';
@@ -12,77 +13,81 @@ import { patchData } from '../utils/fetchData';
 
 
 const Profile = () => {
+  const router = useRouter();
 	const { state, dispatch } = useContext(DataContext);
-	const { auth, notify, orders } = state
+	const { auth, notify, orders, tickets } = state
+
+
+  
 	const initialState = {
-		avatar: '',
+    avatar: '',
 		name: '',
 		password: '',
 		cf_password: '',
 	};
 	const [data, setData] = useState(initialState);
 	const { avatar, name, password, cf_password } = data;
-
+  
 	useEffect(() => {
-		if (auth.user) {
-			setData({ ...data, name: auth.user.name });
+    if (auth.user) {
+      setData({ ...data, name: auth.user.name });
 		}
 	}, [auth.user]);
-
+  
 	const handleChange = (e) => {
-		const { name, value } = e.target;
+    const { name, value } = e.target;
 		setData({ ...data, [name]: value });
 		dispatch({ type: 'NOTIFY', payload: {} });
 	};
-
+  
 	const handleUpdateProfile = (e) => {
-		e.preventDefault();
+    e.preventDefault();
 		if (password) {
-			const errMsg = valid(name, auth.user.email, password, cf_password);
+      const errMsg = valid(name, auth.user.email, password, cf_password);
 			if (errMsg)
-				return dispatch({ type: 'NOTIFY', payload: { error: errMsg } });
+      return dispatch({ type: 'NOTIFY', payload: { error: errMsg } });
 			updatePassword();
       setData({...initialState, name})
 		}
 		if (name !== auth.user.name) updateName();
 	};
-
+  
 	const updatePassword = () => {
-		dispatch({ type: 'NOTIFY', payload: { loading: true } });
+    dispatch({ type: 'NOTIFY', payload: { loading: true } });
 		patchData('user/updatePassword', { password }, auth.token).then(
-			(res) => {
-				if (res.err)
-					return dispatch({
-						type: 'NOTIFY',
-						payload: { error: res.msg },
-					});
+      (res) => {
+        if (res.err)
+        return dispatch({
+          type: 'NOTIFY',
+          payload: { error: res.msg },
+        });
 				return dispatch({
-					type: 'NOTIFY',
+          type: 'NOTIFY',
 					payload: { success: res.msg },
 				});
 			}
-		);
-	};
-
-	const updateName = () => {
-		patchData('user', { name }, auth.token).then((res) => {
-			if (res.err)
+      );
+    };
+    
+    const updateName = () => {
+      patchData('user', { name }, auth.token).then((res) => {
+        if (res.err)
 				return dispatch({
-					type: 'NOTIFY',
+          type: 'NOTIFY',
 					payload: { error: res.msg },
 				});
-			dispatch({
-				type: 'NOTIFY',
-				payload: { toke: auth.token, user: res.user },
-			});
-			return dispatch({
-				type: 'NOTIFY',
-				payload: { success: res.msg },
-			});
-		});
-	};
-
-	if (!auth.user) return null;
+        dispatch({
+          type: 'NOTIFY',
+          payload: { toke: auth.token, user: res.user },
+        });
+        return dispatch({
+          type: 'NOTIFY',
+          payload: { success: res.msg },
+        });
+      });
+    };
+  
+  if (!auth.user) return null
 	return (
 		<>
 			<Head>

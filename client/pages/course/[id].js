@@ -52,19 +52,21 @@ const Course = (props) => {
 		if (!auth.user) {
 			return router.push('/signin');
 		}
+
+    dispatch({type: 'ADD_COURSE', payload: {}})
     
-		// const stripe = await stripePromise;
-		// const session = await postData('order/course-session', {course, user})
+		const stripe = await stripePromise;
+		const session = await postData('order/course-session', {course, user})
     
     dispatch(addCourse(course));
 
-		// const result = await stripe.redirectToCheckout({
-		// 	sessionId: session.id,
-		// });
+		const result = await stripe.redirectToCheckout({
+			sessionId: session.id,
+		});
 
-		// if (result.error) {
-		// 	console.log(result.error.message);
-		// }
+		if (result.error) {
+			console.log(result.error.message);
+		}
 	};
 
 	return (

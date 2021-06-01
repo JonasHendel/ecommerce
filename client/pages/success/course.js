@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { useContext, useEffect } from 'react';
 import { DataContext } from '../../store/GlobalState';
 import { postData } from '../../utils/fetchData';
+import emailjs from 'emailjs-com'
 
 const Success = () => {
 	const { state, dispatch } = useContext(DataContext);
@@ -12,7 +13,19 @@ const Success = () => {
 
   const {auth, orders, course} = state
 
-  console.log(course)
+  var templateParams = {
+    name: 'James',
+    notes: 'Check this out!'
+};
+ 
+  emailjs.send('test', 'template1', templateParams)
+    .then(function(response) {
+       console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+       console.log('FAILED...', error);
+    });
+
+
 
   useEffect(async() => {
     if (Object.keys(router.query).length && Object.keys(auth).length) {

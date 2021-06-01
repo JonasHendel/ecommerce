@@ -151,6 +151,7 @@ const ProductManager = () => {
 				});
 		}
 
+    router.push('/shop')
 		return dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
 	};
 
