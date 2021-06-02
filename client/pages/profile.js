@@ -38,8 +38,7 @@ const Profile = () => {
     const { name, value } = e.target;
 		setData({ ...data, [name]: value });
 		dispatch({ type: 'NOTIFY', payload: {} });
-	};
-  
+	};  
 	const handleUpdateProfile = (e) => {
     e.preventDefault();
 		if (password) {

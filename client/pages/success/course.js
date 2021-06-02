@@ -13,20 +13,6 @@ const Success = () => {
 
   const {auth, orders, course} = state
 
-  var templateParams = {
-    name: 'James',
-    notes: 'Check this out!'
-};
- 
-  emailjs.send('test', 'template1', templateParams)
-    .then(function(response) {
-       console.log('SUCCESS!', response.status, response.text);
-    }, function(error) {
-       console.log('FAILED...', error);
-    });
-
-
-
   useEffect(async() => {
     if (Object.keys(router.query).length && Object.keys(auth).length) {
 

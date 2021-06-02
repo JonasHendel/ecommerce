@@ -42,6 +42,11 @@ const reducers = (state, action) => {
 				...state,
 				categories: action.payload,
 			};
+		case ACTIONS.ADD_TICKETS:
+			return {
+				...state,
+				tickets: action.payload,
+			};
 		default:
 			return state;
 	}

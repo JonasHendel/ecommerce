@@ -7,7 +7,8 @@ export const ACTIONS = {
   ADD_USERS: 'ADD_USERS',
   ADD_CATEGORIES: 'ADD_CATEGORIES',
   DELETE_PRODUCT: 'DELETE_PRODUCT',
-  ADD_COURSE: 'ADD_COURSE'
+  ADD_COURSE: 'ADD_COURSE',
+  ADD_TICKETS: 'ADD_TICKETS',
 }
 
 export const addCourse = (course) => {

@@ -8,7 +8,7 @@ import { getData } from '../utils/fetchData'
 export const DataContext = createContext()
 
 export const DataProvider = ({children}) => {
-  const initialState = {notify:{}, auth: {}, cart: [], modal: [], orders: [], users: [], categories: [], course: {}}
+  const initialState = {notify:{}, auth: {}, cart: [], modal: [], orders: [], users: [], tickets: [], categories: [], course: {}}
    
   const [state, dispatch] = useReducer(reducers, initialState)
 
@@ -63,9 +63,13 @@ export const DataProvider = ({children}) => {
 
   useEffect(()=>{
       if(auth.token){
-        getData('order', auth.token).then(res => {
+        getData('order/cart', auth.token).then(res => {
           if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
           dispatch({type: 'ADD_ORDERS', payload: res.orders})
+        })
+        getData('order/course', auth.token).then(res=>{
+          if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
+          dispatch({type: 'ADD_TICKETS', payload: res.tickets})
         })
         if(auth.user.role === 'admin'){
           getData('user', auth.token).then(res => { 
@@ -77,6 +81,7 @@ export const DataProvider = ({children}) => {
       }else{
         dispatch({type: 'ADD_ORDERS', payload: []})
         dispatch({type: 'ADD_USERS', payload: []})
+        dispatch({type: 'ADD_TICKETS', payload: []})
       }
   }, [auth.token])
 

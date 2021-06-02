@@ -11,9 +11,9 @@ const orderSchema = new mongoose.Schema(
 		cart: Array,
 		total: Number,
 		sessionId: {
-      type: String,
-      unique: true,
-    },
+			type: String,
+			unique: true,
+		},
 		delivered: {
 			type: Boolean,
 			default: false,
