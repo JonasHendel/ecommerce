@@ -1,8 +1,9 @@
 import React from 'react';
 import { useEffect } from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
 import CourseItem from '../../components/CourseItem'
-import Link from 'next/link';
+import { DataContext } from '../../store/GlobalState';
 
 import { getData } from '../../utils/fetchData';
 
@@ -21,9 +22,7 @@ const courseOverview = (props) => {
 				<h2>No products</h2>
 			) : (
 				courses.map((course) => (
-					<Link href={`course/${course._id}`}>
-						<CourseItem course={course}/>
-					</Link>
+						<CourseItem key={course._id} course={course}/>
 				))
 			)}
     </div>

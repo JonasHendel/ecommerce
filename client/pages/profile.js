@@ -4,7 +4,7 @@ import Link from 'next/link'
 import {XCircle, CheckCircle} from 'phosphor-react'
 import { useRouter } from 'next/router';
 
-
+import Order from '../components/OrderTable'
 import { DataContext } from '../store/GlobalState';
 import valid from '../utils/valid';
 import { patchData } from '../utils/fetchData';
@@ -85,7 +85,8 @@ const Profile = () => {
         });
       });
     };
-  
+
+
   if (!auth.user) return null
 	return (
 		<>
@@ -151,32 +152,9 @@ const Profile = () => {
 				<button className='h-14 mb-4 bg-gray-900 text-white rounded-lg' type='submit'
           onClick={handleUpdateProfile}>Update</button>
 				</div>
-				<div className="w-3/5">
-					<h1 className='text-3xl font-bold'>Orders</h1>
-            <table className="w-full table-auto divide-y">
-            <thead>
-              <tr className="font-bold uppercase ">
-                <th className="text-left">Id</th>
-                <th className="text-left">Date</th>
-                <th className="text-left">Total</th>
-                <th className="">Delivered</th>
-                <th className="text-left">Action</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200">
-              {orders.map((order)=>(
-                <tr key={order._id} >
-                  <td>{order._id}</td>
-                  <td>{new Date(order.createdAt).toLocaleDateString()}</td>
-                  <td>NOK: {order.total/100}</td>
-                  <td className="flex justify-center items-center">{order.delivered ? <CheckCircle className=" text-xl text-green-500"/> : <XCircle className="text-xl text-red-600"/>}</td>
-                  <td><Link href={`/admin/order/${order._id}`}>
-                    <a className="underline">Details</a>
-                  </Link></td>
-                </tr>
-              ))}
-            </tbody>
-            </table>
+				<div className="w-3/5 flex flex-col">
+          <Order items={orders} title="orders"/>
+          <Order items={tickets} title="tickets"/>
 				</div>
       </div>
 			</div>

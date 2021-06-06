@@ -1,13 +1,5 @@
 
 
-.contentArea {
-  width: 1500px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 350px);
-  justify-content: center;
-}
-
-
 .productCard {
   background: white;
   margin-top: 20px;
@@ -44,14 +36,6 @@
 
 .info {
   display: flex;
-}
-
-.buttonDiv {
-  width: 500px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .button {

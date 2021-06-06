@@ -11,15 +11,23 @@ const Success = () => {
 
   const router = useRouter()
 
-  const {auth, orders, course} = state
+  const {auth, tickets, course} = state
+
+  const {user} = auth
 
   useEffect(async() => {
     if (Object.keys(router.query).length && Object.keys(auth).length) {
 
       const query = router.query
-      await postData('order/course', {query, course}, auth.token).then((res)=>{
-        dispatch({ type: 'ADD_ORDERS', payload: [...orders, res.newOrder]})
-        // dispatch({ type: 'ADD_CART', payload: []})
+      
+      let ticket
+
+      await postData('order/course', {query, course}, auth.token).then(async(res)=>{
+        ticket = res.newTicket
+        await dispatch({ type: 'ADD_TICKETS', payload: [...tickets, res.newTicket]})
+        postData('mail', {user, course, ticket}, auth.token).then(() => {
+          dispatch({ type: 'ADD_COURSE', payload: []})
+        })
       }
       )
     }

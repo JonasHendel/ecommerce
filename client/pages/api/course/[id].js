@@ -25,9 +25,11 @@ const getCourse = async (req, res) => {
     const {id} = req.query
 
     const course = await Courses.findById(id)
+
     if(!course){
       return res.status(400).json({err: 'This course does not exist'})
     } 
+    
     res.json({course})
   } catch (err) {
     res.status(500).json({err: err.message}) 
@@ -43,6 +45,8 @@ const updateCourse = async (req, res) => {
 		const { id } = req.query;
 		const {
 			title,
+      date,
+      time,
 			price,
 			spots,
 			description,
@@ -51,8 +55,11 @@ const updateCourse = async (req, res) => {
 			images,
 		} = req.body;
 
+
 		if (
 			!title ||
+      !date ||
+      !time ||
 			!price ||
 			!spots ||
 			!description ||
@@ -66,6 +73,8 @@ const updateCourse = async (req, res) => {
 			{ _id: id },
 			{
 				title,
+        date,
+        time,
 				price,
 				spots,
 				description,

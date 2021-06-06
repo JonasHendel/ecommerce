@@ -15,18 +15,21 @@ function Filter({state}) {
     setCategory(e.target.value)
     filterSearch({router, category: e.target.value})
   }
+  
+  const handleSearch = () => {
+    return null
+  }
 
   return (
       <div className="flex justify-between mt-10">
         <select className="border-4 border-gray-900 rounded-lg" value={category} onChange={handleCategory}>
           <option value='all'>All categories</option>
          { categories.map(item => (
-           <option value={item._id}>{item.name}</option>
+           <option key={item._id} value={item._id}>{item.name}</option>
          ))} 
         </select>
         <form className="w-3/5 h-12 flex justify-center border-4 border-gray-900 border-md rounded-lg" autoCorrect="off">
-          <input className="w-4/5 border-r-4 border-gray-900" type="text" placeholder="Search" list="title_product" value={search.toLowerCase()}/>
-
+          <input className="w-4/5 border-r-4 border-gray-900" type="text" placeholder="Search" list="title_product" onChange={handleSearch} value={search.toLowerCase()}/>
           <datalist id="title_product">
             <option value="name">Title Name</option>
           </datalist>

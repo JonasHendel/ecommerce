@@ -25,6 +25,18 @@ const courseSchema = new mongoose.Schema(
 			type: Number,
 			required: true,
 		},
+    date: {
+      type: String,
+      required: true
+    },
+    time: {
+      type: String,
+      required: true,
+    },
+    checked: {
+      type: Boolean,
+      default: false,
+    },
 		sold: {
 			type: Number,
 			default: 0,

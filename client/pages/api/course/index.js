@@ -17,7 +17,8 @@ export default async (req, res) => {
 
 const getCourses = async (req, res) => {
 	try {
-		const courses = await Courses.find();
+    
+		const courses = await Courses.find({checked: false});
 
 
 		res.json({
@@ -39,6 +40,8 @@ const createCourse = async (req, res) => {
 
 		const {
 			title,
+      date,
+      time,
 			price,
 			spots,
 			description,
@@ -49,6 +52,8 @@ const createCourse = async (req, res) => {
 
 		if (
 			!title ||
+      !date ||
+      !time ||
 			!price ||
 			!spots ||
 			!description ||
@@ -62,7 +67,9 @@ const createCourse = async (req, res) => {
     if(product) return res.status(400).json({err: 'This course already exists'})
 
 		const newCourse = new Courses({
-			title: title.toLowerCase(),
+			title,
+      date,
+      time,
 			price,
 			spots,
 			description,

@@ -10,6 +10,8 @@ const ProductManager = () => {
 
 	const initialState = {
 		title: '',
+    date: Date,
+    time: '',
 		price: Number,
 		spots: Number,
 		description: '',
@@ -19,8 +21,9 @@ const ProductManager = () => {
 
 	const [course, setCourse] = useState(initialState);
 
-	const { title, price, spots, description, content, category } = course
+	const { title, date, time, price, spots, description, content, category } = course
 
+    // const dated = new Date(course.date).toISOString().slice(0, 10)
 	const [images, setImages] = useState([]);
 	const [onEdit, setOnEdit] = useState(false);
   const [tab, setTab] = useState(0)
@@ -44,8 +47,6 @@ const ProductManager = () => {
 			// setImages([]);
 		}
 	}, [id]);
-
-	useEffect;
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -106,6 +107,7 @@ const ProductManager = () => {
 
 		if (
 			!title ||
+      !date ||
 			!price ||
 			!spots ||
 			!description ||
@@ -154,7 +156,7 @@ const ProductManager = () => {
     router.push('/course')
 		return dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
 	};
-
+  
 	return (
 		<>
 			<Head>
@@ -179,6 +181,36 @@ const ProductManager = () => {
 									name='title'
 									value={title}
 									placeholder='Title'
+									onChange={handleChange}
+								/>
+							</div>
+              <div className='flex flex-col'>
+								<label
+									className='font-bold mr-2'
+									htmlFor='title'>
+									Date:
+								</label>
+								<input
+									className='border-4 border-black border-md rounded-md p-2'
+									type='date'
+									name='date'
+									value={date}
+									placeholder='Date'
+									onChange={handleChange}
+								/>
+							</div>
+              <div className='flex flex-col'>
+								<label
+									className='font-bold mr-2'
+									htmlFor='title'>
+									Time:
+								</label>
+								<input
+									className='border-4 border-black border-md rounded-md p-2'
+									type='time'
+									name='time'
+									value={time}
+									placeholder='Date'
 									onChange={handleChange}
 								/>
 							</div>

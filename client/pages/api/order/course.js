@@ -63,10 +63,12 @@ const getTickets = async (req, res) => {
 
 		if (result.role !== 'admin') {
 			tickets = await Tickets.find({ user: result.id })
+        .sort({createdAt: -1})
 				.populate('user', '-password')
-				.populate('course');
+				.populate('course')
 		} else {
 			tickets = await Tickets.find()
+        .sort({createdAt: -1})
 				.populate('user', '-password')
 				.populate('course');
 		}

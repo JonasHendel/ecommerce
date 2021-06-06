@@ -26,9 +26,9 @@ function Layout({children}) {
   
   return (
     <div>
-        <NavBar/>
-        <Notify/>
-        <Modal/>
+        <NavBar />
+        <Notify />
+        <Modal />
         {children}
         <Footer/>
     </div>

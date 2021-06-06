@@ -11,9 +11,9 @@ export default async (req, res) => {
 		case 'POST':
 			await createOrder(req, res);
 			break;
-    case 'GET':
-      await getOrders(req,res);
-      break;
+		case 'GET':
+			await getOrders(req, res);
+			break;
 	}
 };
 
@@ -67,12 +67,13 @@ const getOrders = async (req, res) => {
 		let orders;
 
 		if (result.role !== 'admin') {
-			orders = await Orders.find({ user: result.id }).populate(
-				'user',
-				'-password'
-			);
+			orders = await Orders.find({ user: result.id })
+				.sort({ createdAt: -1 })
+				.populate('user', '-password');
 		} else {
-			orders = await Orders.find().populate('user', '-password');
+			orders = await Orders.find()
+			.sort({ createdAt: -1 })
+      .populate('user', '-password');
 		}
 		res.json({ orders });
 	} catch (err) {

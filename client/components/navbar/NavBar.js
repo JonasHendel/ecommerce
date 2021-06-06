@@ -4,14 +4,12 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Disclosure } from '@headlessui/react';
 
-
-import { List, X, ShoppingCart, SignIn,  } from 'phosphor-react'
-
+import { List, X, ShoppingCart, SignIn } from 'phosphor-react';
 
 //Project Files
 import { DataContext } from '../../store/GlobalState';
 import ProfileDropdown from './ProfileDropdown';
-import AdminDropdown from './AdminDropwdown'
+import AdminDropdown from './AdminDropwdown';
 
 const navigation = [
 	{ name: 'Home', href: '/', current: false },
@@ -26,7 +24,7 @@ function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');
 }
 
-export default function NavBar2() {
+export default function NavBar() {
 	const router = useRouter();
 
 	const isActive = (href) => {
@@ -83,9 +81,8 @@ export default function NavBar2() {
 									<div className='flex space-x-4 h-20 items-center'>
 										{navigation.map((item) => (
 											<Link
-												key={item.name}
 												href={item.href}
-											>
+												key={item.name}>
 												<a
 													className={classNames(
 														isActive(item.href),
@@ -95,8 +92,7 @@ export default function NavBar2() {
 														item.current
 															? 'page'
 															: undefined
-													}
-												>
+													}>
 													{item.name}
 												</a>
 											</Link>
@@ -115,7 +111,7 @@ export default function NavBar2() {
 											aria-hidden='true'
 										/>
 										<span className='absolute px-2 py-1 bg-red-500 ml-15 top-4 rounded-full text-white text-xs'>
-                      {cart.length}
+											{cart.length}
 										</span>
 									</button>
 								</Link>
@@ -134,10 +130,16 @@ export default function NavBar2() {
 										</button>
 									</Link>
 								) : (
-                  <>
-									<ProfileDropdown classNames={classNames} />
-                  {auth.user.role === 'admin' && <AdminDropdown classNames={classNames}/>}
-                  </>
+									<>
+										<ProfileDropdown
+											classNames={classNames}
+										/>
+										{auth.user.role === 'admin' && (
+											<AdminDropdown
+												classNames={classNames}
+											/>
+										)}
+									</>
 								)}
 							</div>
 						</div>
@@ -146,9 +148,8 @@ export default function NavBar2() {
 					<Disclosure.Panel className='sm:hidden'>
 						<div className='px-2 pt-2 pb-3 space-y-1'>
 							{navigation.map((item) => (
-								<Link href={item.href}>
+								<Link href={item.href} key={item.name}>
 									<a
-										key={item.name}
 										className={classNames(
 											item.current
 												? 'bg-gray-900 text-white'
@@ -157,8 +158,7 @@ export default function NavBar2() {
 										)}
 										aria-current={
 											item.current ? 'page' : undefined
-										}
-									>
+										}>
 										{item.name}
 									</a>
 								</Link>
