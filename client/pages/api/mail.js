@@ -13,15 +13,11 @@ export default async (req, res) => {
 
 const sendMail = async (req, res) => {
 	try {
-		const result = await auth(req, res);
-
 		const { email } = req.body.user;
 
 		const { course } = req.body;
 
     const {ticket} = req.body
-
-		console.log(req.body);
 
 		const msg = {
 			to: email,

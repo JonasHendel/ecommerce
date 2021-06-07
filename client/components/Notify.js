@@ -8,7 +8,7 @@ function Notify() {
   const { notify } = state
   return (
     <>
-      {/* Loading is placed here. */}
+      {notify.loading && <Loading/>}
       {notify.error && <Toast message={{error: true, msg: notify.error}} handleShow={()=>{dispatch({ type: "NOTIFY", payload: {} })}}/>}
       {notify.success && <Toast message={{error: false, msg: notify.success}} handleShow={()=>{dispatch({ type: "NOTIFY", payload: {} })}}/>}
     </>

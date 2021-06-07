@@ -12,6 +12,7 @@ import Filter from '../../components/Filter';
 import { getData } from '../../utils/fetchData';
 import { DataContext } from '../../store/GlobalState';
 import filterSearch from '../../utils/filterSearch';
+import Loading from '../../components/Loading'
 
 function Shop(props) {
 	const [products, setProducts] = useState(props.products);

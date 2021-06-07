@@ -21,15 +21,13 @@ const createTicket = async (req, res) => {
 	try {
 		const result = await auth(req, res);
 
-		if (result.role !== 'admin') {
-			return res.status(400).json({ err: 'Authentication is invalid!' });
-		}
-
 		const { query, course } = req.body;
 
 		const { session_id } = query;
 
 		const session = await stripe.checkout.sessions.retrieve(session_id);
+
+    console.log(session)
 
 		const newTicket = new Tickets({
 			user: result.id,
@@ -38,6 +36,7 @@ const createTicket = async (req, res) => {
 			total: session.amount_total,
 			sessionId: session_id,
 		});
+
 
 		await newTicket.save();
 

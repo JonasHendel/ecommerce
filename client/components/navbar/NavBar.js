@@ -40,7 +40,7 @@ export default function NavBar() {
 	const { auth, cart } = state;
 
 	return (
-		<Disclosure as='nav' className='bg-gray-800 sticky top-0 z-50'>
+		<Disclosure as='nav' className='bg-gray-800 sticky top-0 z-20'>
 			{({ open }) => (
 				<>
 					<div className='max-w-7xl mx-auto px-2 sm:px-6 lg:px-8'>
@@ -68,12 +68,12 @@ export default function NavBar() {
 								<div className='flex-shrink-0 flex items-center'>
 									<img
 										className='block lg:hidden h-16 w-auto'
-										src='../logo.png'
+										src='/logo.png'
 										alt='Francesco Solimeo'
 									/>
 									<img
 										className='hidden lg:block h-14 w-auto'
-										src='../logo.png'
+										src='/logo.png'
 										alt='Francesco Solimeo'
 									/>
 								</div>

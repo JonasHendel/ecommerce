@@ -54,7 +54,6 @@ const ProductManager = () => {
 	};
 
 	const handleUpload = (e) => {
-		dispatch({ type: 'NOTIFY', payload: {} });
 		let newImages = [];
 		let num = 0;
 		let err = '';
@@ -98,6 +97,7 @@ const ProductManager = () => {
 	};
 
 	const handleSubmit = async (e) => {
+    dispatch({ type: 'NOTIFY', payload: { loading: true } });
 		e.preventDefault();
 		if (auth.user.role !== 'admin')
 			return dispatch({

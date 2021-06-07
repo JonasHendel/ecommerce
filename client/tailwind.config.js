@@ -35,6 +35,9 @@ module.exports = {
         '500': '500px',
         '3/4': '75%',
         'full': '100%',
+       },
+       maxHeight: {
+         'screen': '100vh'
        }
     },
   },
