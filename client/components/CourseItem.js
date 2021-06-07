@@ -1,7 +1,7 @@
 //NPM
 import Link from 'next/link';
 import { useContext, useState } from 'react';
-import { NotePencil, ShoppingCart, Trash } from 'phosphor-react';
+import { NotePencil, Ticket, Trash } from 'phosphor-react';
 import { motion } from 'framer-motion';
 //CSS
 import styles from '../styles/Course.module.css';
@@ -36,10 +36,24 @@ const CourseItem = ({ course, handleCheck }) => {
 		return (
 			<>
 				<div className='flex w-full justify-evenly'>
+					<Link href={`/admin/tickets/${course._id}`}>
+						<motion.button
+							whileTap={{ scale: 0.9 }}
+							className='w-36 h-12 bg-gray-900 text-white rounded-lg'>
+							<div className='flex items-center justify-center'>
+								<Ticket
+									size={20}
+									className='mr-2'
+									weight='bold'
+								/>
+								Tickets
+							</div>
+						</motion.button>
+					</Link>
 					<Link href={`/admin/course/${course._id}`}>
 						<motion.button
 							whileTap={{ scale: 0.9 }}
-							className='w-48 h-12 bg-gray-900 text-white rounded-lg'>
+							className='w-36 h-12 bg-gray-900 text-white rounded-lg'>
 							<div className='flex items-center justify-center'>
 								<NotePencil
 									size={20}
@@ -52,7 +66,7 @@ const CourseItem = ({ course, handleCheck }) => {
 					</Link>
 					<motion.button
 						whileTap={{ scale: 0.9 }}
-						className='h-12 w-48 bg-red-600 text-white rounded-lg'
+						className='h-12 w-36 bg-red-600 text-white rounded-lg'
 						onClick={() => {
 							dispatch({type: 'ADD_MODAL', payload: [{data: '', id: course._id, title: course.title, type: 'DELETE_COURSE'}]});
 						}}>

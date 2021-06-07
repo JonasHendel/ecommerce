@@ -111,7 +111,7 @@ const ProductItem = ({ product, handleCheck }) => {
 	return (
     <>
 			<motion.div
-				/*whileHover={{ scale: 1.02 }}*/ className={styles.productCard}>
+				/*whileHover={{ scale: 1.02 }}*/ className='bg-white my-5 w-270 h-450 shadow-even rounded-2xl overflow-hidden sm:mr-5'>
         {auth.user && auth.user.role === 'admin' &&
           <input className="absolute ml-2 mt-2 w-6 h-6" type="checkbox" checked={product.checked} onChange={()=>handleCheck(product._id)} />
         }

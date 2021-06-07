@@ -11,7 +11,14 @@ module.exports = {
         neuphorism: '14px 14px 20px #cbced1, -14px -14px 20px white',
       },
       screens: {
-        'ca': '80rem'
+        'ca': '1280px'
+      },
+      height: {
+        '450':'450px'
+      },
+      width: {
+        '270':'270px',
+        '500':'500px',
       },
       minHeight: {
         '0': '0',

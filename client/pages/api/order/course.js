@@ -20,6 +20,11 @@ export default async (req, res) => {
 const createTicket = async (req, res) => {
 	try {
 		const result = await auth(req, res);
+
+		if (result.role !== 'admin') {
+			return res.status(400).json({ err: 'Authentication is invalid!' });
+		}
+
 		const { query, course } = req.body;
 
 		const { session_id } = query;
@@ -63,12 +68,12 @@ const getTickets = async (req, res) => {
 
 		if (result.role !== 'admin') {
 			tickets = await Tickets.find({ user: result.id })
-        .sort({createdAt: -1})
+				.sort({ createdAt: -1 })
 				.populate('user', '-password')
-				.populate('course')
+				.populate('course');
 		} else {
 			tickets = await Tickets.find()
-        .sort({createdAt: -1})
+				.sort({ createdAt: -1 })
 				.populate('user', '-password')
 				.populate('course');
 		}
