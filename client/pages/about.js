@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { InstagramLogo, FacebookLogo, Phone, At } from 'phosphor-react';
 import {motion} from 'framer-motion'
+import Head from 'next/head'
 
 //Project Files
 import { getData } from '../utils/fetchData';
@@ -13,8 +14,11 @@ const about = (props) => {
 
 	return (
 		<>
+    <Head>
+      <title>About</title>
+    </Head>
 			<div className='flex flex-col items-center max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
-				<div className='flex flex-col items-center mt-20 bg-white ca:shadow-even px-20 py-5 rounded-2xl'>
+				<div className='flex flex-col items-center mt-10 bg-white ca:shadow-even px-20 py-5 rounded-2xl'>
 					<div>
 						<h1 className='text-4xl font-bold mb-9'>
 							Hvem er jeg?

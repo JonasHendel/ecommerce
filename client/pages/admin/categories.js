@@ -86,12 +86,13 @@ const Categories = () => {
 								<h1 className="w-4/6 text-md font-bold">{category.name}</h1>
                 <div className="2/6 flex items-center">
 								<NotePencil
+                className="cursor-pointer text-xl"
                 weight="bold"
 									onClick={() => editCategory(category)}
 								/>
 								<Trash
                 weight="bold"
-                className="text-red-600"
+                className="text-red-600 cursor-pointer text-xl"
 									onClick={() =>
 										dispatch({
 											type: 'ADD_MODAL',

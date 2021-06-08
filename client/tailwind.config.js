@@ -14,11 +14,13 @@ module.exports = {
         'ca': '1280px'
       },
       height: {
-        '450':'450px'
+        '450':'450px',
+        '40rem': '40rem'
       },
       width: {
         '270':'270px',
         '500':'500px',
+        '50rem':'50rem',
       },
       minHeight: {
         '0': '0',

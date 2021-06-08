@@ -163,7 +163,7 @@ const ProductManager = () => {
 			</Head>
 			<div className='max-w-7xl h-screen mx-auto px-2 sm:px-6 lg:px-8'>
 				<form
-					className='flex flex-col justify-between shadow-even rounded-2xl p-20 mt-20'
+					className='flex flex-col justify-between shadow-even rounded-2xl p-20 mt-10'
 					onSubmit={handleSubmit}>
 					<div className='flex justify-around'>
 						<div className='flex flex-col'>
