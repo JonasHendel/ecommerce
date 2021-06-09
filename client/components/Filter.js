@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import filterSearch from '../utils/filterSearch'
 import {useRouter} from 'next/router'
+import { getData } from '../utils/fetchData'
 
 function Filter({state}) {
   const [title, setTitle] = useState('')
@@ -16,33 +17,34 @@ function Filter({state}) {
     filterSearch({router, category: e.target.value})
   }
   
-  const handleSearch = () => {
-    return null
+  const handleSort = (e) => {
+    setSort(e.target.value)
+    filterSearch({router, sort: e.target.value})
   }
+
+
+  useEffect(()=>{
+    filterSearch({router, search: search ? search.toLowerCase() : 'all'})
+  }, [search])
 
   return (
       <div className="flex justify-between mt-10">
-        <form className="w-3/5 h-12 flex justify-center border-4 border-gray-900 border-md rounded-lg" autoCorrect="off">
-          <input className="w-4/5 border-r-4 border-gray-900" type="text" placeholder="Search" list="title_product" onChange={handleSearch} value={search.toLowerCase()}/>
-          <datalist id="title_product">
-            <option value="name">Title Name</option>
-          </datalist>
-
-          <button className="w-1/5" type="submit">Search</button>
+        <form className="w-3/5 h-12 flex justify-center border-4 border-gray-900 border-md rounded-lg" autoComplete="off">
+          <input className="w-full border-gray-900 pl-2" type="text" placeholder="Search" list="title_product" onChange={e => setSearch(e.target.value)} value={search.toLowerCase()}/>
         </form>
-        <select className="border-4 border-gray-900 rounded-lg" value={category} onChange={handleCategory}>
+        <select className="border-4 border-gray-900 rounded-lg pl-3" value={category} onChange={handleCategory}>
           <option value='all'>All categories</option>
          { categories.map(item => (
            <option key={item._id} value={item._id}>{item.name}</option>
          ))} 
         </select>
 
-        <select className="border-4 border-gray-900 rounded-lg" value={sort}>
+        <select className="border-4 border-gray-900 rounded-lg pl-2" value={sort} onChange={handleSort}>
            <option value="-createdAt">Newest</option>
            <option value="oldest">Oldest</option>
            <option value="-sold">Best sellers</option>
            <option value="-price">Price: High-Low</option>
-           <option value="-price">Price: Low-High</option>
+           <option value="price">Price: Low-High</option>
         </select>
       </div>
   )

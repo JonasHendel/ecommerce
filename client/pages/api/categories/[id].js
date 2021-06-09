@@ -1,5 +1,7 @@
 import dbConnect from '../../../utils/dbConnect'
 import Categories from '../../../models/categoriesModel'
+import Products from '../../../models/productModel'
+import Courses from '../../../models/courseModel'
 import auth from '../../../middleware/auth'
 
 dbConnect()
@@ -48,6 +50,10 @@ const deleteCategory = async (req, res) => {
     const {id} = req.query
   
     await Categories.findByIdAndDelete({_id: id})
+
+    const products = await Products.findOne({category: id})
+    if(products) return res.status(400).json({err: 'Please delete all prducts with a this category'})
+
     res.json({msg: 'Success! Category was deleted'})
   } catch (err) {
     res.status(500).json({err: err.message})

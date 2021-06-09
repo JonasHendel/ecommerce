@@ -31,8 +31,6 @@ function Shop(props) {
 	useEffect(() => {
 		if (Object.keys(router.query).length === 0) {
 			setPage(1);
-		} else {
-			setPage(Number(router.query.page));
 		}
 	}, []);
 
@@ -116,7 +114,7 @@ function Shop(props) {
 						''
 					) : (
 						<button
-							className='w-36 h-12 border-4 border-gray-900  rounded-lg'
+							className='w-36 h-12 border-4 border-gray-900  rounded-lg mb-5'
 							onClick={handleLoadMore}>
 							Load more
 						</button>

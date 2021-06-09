@@ -15,12 +15,15 @@ module.exports = {
       },
       height: {
         '450':'450px',
+        '500':'500px',
         '40rem': '40rem'
       },
       width: {
         '270':'270px',
         '500':'500px',
+        '800':'800px',
         '50rem':'50rem',
+        '22rem':'22rem',
       },
       minHeight: {
         '0': '0',
