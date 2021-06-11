@@ -32,13 +32,6 @@ const Course = (props) => {
 	const [course, setCourse] = useState(initialState);
 	const { quantity, price } = course;
 
-	setTimeout(() => {
-		if (tab >= course.images.length - 1) {
-			setTab(0);
-		} else {
-			setTab(tab + 1);
-		}
-	}, 5000);
 
 	const isActive = (index) => {
 		if (tab == index) return 'h-12 mr-2 border-4 border-black ';

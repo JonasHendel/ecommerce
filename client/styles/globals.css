@@ -6,99 +6,143 @@
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: 'Inter', sans-serif;
+	padding: 0;
+	margin: 0;
+	font-family: 'Inter', sans-serif;
 }
 
-input[type="button"]{
-  outline:none;
+input[type='button'] {
+	outline: none;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .title {
-  display: flex;
-  justify-content: center;
-  margin-top: 1vw;
+	display: flex;
+	justify-content: center;
+	margin-top: 1vw;
 }
 
 .submit-btn {
-  background: rgb(255, 255, 255);
-  border-radius: 5px;
-  border: 4px solid rgb(0, 0, 0);
-  padding: 10px 10px 10px 10px;
-  margin: 5px;
+	background: rgb(255, 255, 255);
+	border-radius: 5px;
+	border: 4px solid rgb(0, 0, 0);
+	padding: 10px 10px 10px 10px;
+	margin: 5px;
 }
 
 .submit-btn:focus {
-  outline: none;
+	outline: none;
 }
 
 .submit-btn:active {
-  outline: none;
-  background: black;
-  color: white;
+	outline: none;
+	background: black;
+	color: white;
 }
 
-
 .cancel-btn {
-  color: rgb(165, 162, 162);
-  background: rgb(255, 255, 255);
-  border: none;
-  padding: 10px 10px 10px 10px;
-  margin-top: none;
+	color: rgb(165, 162, 162);
+	background: rgb(255, 255, 255);
+	border: none;
+	padding: 10px 10px 10px 10px;
+	margin-top: none;
 }
 
 .cancel-btn:active {
-  outline: none;
-  color: black;
+	outline: none;
+	color: black;
 }
 
 .cancel-btn:focus {
-  outline: none;
+	outline: none;
 }
 
 .input {
-  margin: 10px;
-  margin-top: 10px;
-  padding: none;
-  padding-top: 20px;
-  border: none;
-  border-bottom: 3px solid rgb(168, 168, 168);
-  font-size: 120%;
+	margin: 10px;
+	margin-top: 10px;
+	padding: none;
+	padding-top: 20px;
+	border: none;
+	border-bottom: 3px solid rgb(168, 168, 168);
+	font-size: 120%;
 }
 
 .input:focus {
-  outline: none;
-  border-color: black;
+	outline: none;
+	border-color: black;
 }
 
 .textarea {
-  resize: none;
-  margin: 10px;
-  border: 3px solid rgb(168, 168, 168);
-  font-size: 100%;
-  font-family: inherit;
+	resize: none;
+	margin: 10px;
+	border: 3px solid rgb(168, 168, 168);
+	font-size: 100%;
+	font-family: inherit;
 }
 
 .textarea:focus {
-  outline: none;
-  border-color: black;
+	outline: none;
+	border-color: black;
 }
-
 
 .container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
 }
 
+.slider {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.image {
+	width: 1000px;
+	height: 600px;
+	border-radius: 10px;
+  object-fit: cover;
+}
+
+.right-arrow {
+	position: absolute;
+	top: 50%;
+	right: 32px;
+	font-size: 3rem;
+	color: white;
+	z-index: 10;
+	cursor: pointer;
+	user-select: none;
+}
+
+.left-arrow {
+	position: absolute;
+	top: 50%;
+	left: 32px;
+	font-size: 3rem;
+	color: white;
+	z-index: 10;
+	cursor: pointer;
+	user-select: none;
+}
+
+.slide {
+	transition: 1s;
+	left: 0;
+}
+
+.slide.active {
+	opacity: 1;
+	transition-duration: 1s;
+	transform: scale(1.08);
+}

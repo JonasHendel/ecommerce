@@ -1,0 +1,22 @@
+export const SliderData = [
+  {
+    image:
+      'https://res.cloudinary.com/devhendel/image/upload/v1619880718/IMG_9594_gzrt8w.jpg'
+  },
+  {
+    image:
+      'https://res.cloudinary.com/devhendel/image/upload/v1619880719/IMG_9649_c6khqb.jpg'
+  },
+  {
+    image:
+      'https://res.cloudinary.com/devhendel/image/upload/v1619880718/IMG_9571_jhvxih.jpg'
+  },
+  {
+    image:
+      'https://res.cloudinary.com/devhendel/image/upload/v1619880677/IMG_1319_nsjbqi.jpg'
+  },
+  {
+    image:
+      'https://res.cloudinary.com/devhendel/image/upload/v1619880676/IMG_1594_ftu3lr.jpg'
+  }
+];

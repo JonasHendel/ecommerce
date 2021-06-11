@@ -19,7 +19,6 @@ const OrderDetails = () => {
 		setOrderDetail(newArr);
 	}, [orders]);
 
-	if (!auth.user) return null;
 	const handleDelivered = (order) => {
 		dispatch({ type: 'NOTIFY', payload: { loading: true } });
 		patchData(`order/delivered/${order._id}`, null, auth.token).then(
@@ -49,7 +48,13 @@ const OrderDetails = () => {
 		);
 	};
 
-	if (!auth.user) return null;
+  if (!auth.user) {
+		return null;
+	} else if (auth.user) {
+		if (auth.user.role !== 'admin') {
+			return null;
+		}
+	}
 	return (
 		<div className='max-w-7xl h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
 			<Head>

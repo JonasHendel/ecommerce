@@ -2,9 +2,12 @@ import Head from 'next/head';
 import { GraduationCap, ShoppingBag } from 'phosphor-react';
 import Link from 'next/link';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
-import {HomeForm} from '../components/Newsletter/CustomForms'
+import { HomeForm } from '../components/Newsletter/CustomForms';
 
 import { useState, useEffect } from 'react';
+
+import ImageSlider from '../components/slider/ImageSlider';
+import { SliderData } from '../components/slider/SliderData';
 
 import Carousel from '../components/Carousel';
 import { useContext } from 'react';
@@ -53,18 +56,15 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<div className='max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 flex flex-col'>
-				<div className='w-full h-500 flex justify-center mt-10'>
-					<img
-						className='w-800 h-500 object-cover rounded-xl shadow-even'
-						src='https://res.cloudinary.com/devhendel/image/upload/v1623173506/fs_media/dev099evd4yhri4nyphi.jpg'
-					/>
+				<div className='w-full flex justify-center mt-20'>
+					<ImageSlider slides={SliderData} />
 				</div>
-				<div className='flex justify-evenly'>
+				<div className='flex justify-evenly mt-20 mb-20'>
 					<Link href='/shop'>
-						<div className='flex flex-col items-center w-22rem shadow-even border-gray-900 rounded-xl mt-10 cursor-pointer'>
+						<div className='flex flex-col items-center w-22rem shadow-even border-gray-900 rounded-xl cursor-pointer'>
 							<h1 className='font-bold text-4xl mt-3 h-1/5'>
 								Nettbutikk
-							</h1> 
+							</h1>
 							<div className='flex items-center'>
 								<p className='font-semibold text-gray-600 text-xl w-1/2 pl-10'>
 									Her finner du alt fra ... til ...
@@ -74,8 +74,10 @@ export default function Home() {
 						</div>
 					</Link>
 					<Link href='/course'>
-						<div className='flex flex-col items-center w-22rem shadow-even border-gray-900 rounded-xl mt-10 cursor-pointer'>
-							<h1 className='font-bold text-4xl mt-3 h-1/5'>Kurs</h1>
+						<div className='flex flex-col items-center w-22rem shadow-even border-gray-900 rounded-xl cursor-pointer'>
+							<h1 className='font-bold text-4xl mt-3 h-1/5'>
+								Kurs
+							</h1>
 							<div className='flex items-center'>
 								<p className='font-semibold text-gray-600 text-xl w-1/2 pl-10'>
 									Her kan du kjøpe billetter for kurs
@@ -84,20 +86,24 @@ export default function Home() {
 							</div>
 						</div>
 					</Link>
-					<div className='flex flex-col items-center w-22rem h-60 shadow-even border-gray-900 rounded-xl mt-10 '>
-						<h1 className='font-bold text-4xl mt-3 h-1/5'>Newsletter</h1>
-          <div className="flex flex-grow">
-						<MailchimpSubscribe
-						url={newsletterUrl}
-						render={({ subscribe, status, message }) => (
-							<HomeForm
-								status={status}
-								message={message}
-								onValidated={(formData) => subscribe(formData)}
+					<div className='flex flex-col items-center w-22rem h-60 shadow-even border-gray-900 rounded-xl '>
+						<h1 className='font-bold text-4xl mt-3 h-1/5'>
+							Newsletter
+						</h1>
+						<div className='flex flex-grow'>
+							<MailchimpSubscribe
+								url={newsletterUrl}
+								render={({ subscribe, status, message }) => (
+									<HomeForm
+										status={status}
+										message={message}
+										onValidated={(formData) =>
+											subscribe(formData)
+										}
+									/>
+								)}
 							/>
-						)}
-					/>
-            </div>
+						</div>
 					</div>
 				</div>
 			</div>

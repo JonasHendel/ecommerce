@@ -3,28 +3,28 @@ import mongoose from 'mongoose'
 const productSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    required: [true, 'Please enter a title.'],
     trim: true,
-    maxLength: 50
+    maxLength: [50, 'Title can not be longer than 50 characters.']
   },
   price: {
     type: Number,
-    required: true,
+    required: [true, 'Please enter a price.'],
     trim: true,
   },
   description: {
     type: String,
-    required: true,
-    maxLength: 90
+    required: [true, 'Please enter a description.'],
+    maxLength: [90, 'Description can not be longer than 90 characters.']
   },
   content: {
     type: String,
-    required: true,
-    maxLength: 320
+    required: [true, 'Please enter content.'],
+    maxLength: [320, 'Content can not be longer than 320 characters.']
   },
   images: {
     type: Array,
-    required: true
+    required: [true, 'Please add images.'],
   },
   category: {
     type: String,

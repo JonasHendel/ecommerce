@@ -1,19 +1,8 @@
-import {postData} from '../utils/fetchData'
-import {useContext} from 'react'
-import {DataContext} from '../store/GlobalState'
+import ImageSlider from '../components/slider/ImageSlider';
+import { SliderData } from '../components/slider/SliderData';
 
 const Mail = () => {
-  const {state} = useContext(DataContext)
-  const {auth} = state
-  const handleSend = () => {
-    postData('mail', auth.user, auth.token).then(res => console.log(res))
-  }
+	return <ImageSlider slides={SliderData} />;
+};
 
-  return (
-    <div className="h-screen flex justify-center items-center">
-      <button className="bg-gray-900 text-white rounded-md p-10" onClick={handleSend}>Send Mail</button>
-    </div>
-  )
-}
-
-export default Mail
+export default Mail;

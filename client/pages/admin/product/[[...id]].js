@@ -156,6 +156,14 @@ const ProductManager = () => {
 		return dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
 	};
 
+  if (!auth.user) {
+		return null;
+	} else if (auth.user) {
+		if (auth.user.role !== 'admin') {
+			return null;
+		}
+	}
+
 	return (
 		<>
 			<Head>

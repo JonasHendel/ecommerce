@@ -22,6 +22,14 @@ const TicketPage = () => {
 		}
 	}, [tickets]);
 
+  if (!auth.user) {
+		return null;
+	} else if (auth.user) {
+		if (auth.user.role !== 'admin') {
+			return null;
+		}
+	}
+
 	return (
 		<div className='max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 flex flex-col items-center'>
     <div className='w-full'>
