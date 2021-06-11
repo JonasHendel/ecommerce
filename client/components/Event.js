@@ -19,7 +19,7 @@ const Event = ({ event }) => {
 		return (
 			<>
 				<div className='flex justify-center'>
-					<Link href={`/course/${event._id}`}>
+					<Link href={`/events/${event._id}`}>
 						<motion.button
 							whileTap={{ scale: 0.9 }}
 							className=' w-64 h-12 bg-gray-900 text-white rounded-lg'>
@@ -36,6 +36,15 @@ const Event = ({ event }) => {
 		return (
 			<>
 				<div className='flex w-full justify-evenly'>
+					<Link href={`events/${event._id}`}>
+						<motion.button
+							whileTap={{ scale: 0.9 }}
+							className='w-36 h-12 bg-gray-900 text-white rounded-lg'>
+							<div className='flex items-center justify-center'>
+								View
+							</div>
+						</motion.button>
+					</Link>
 					<Link href={`/admin/event/${event._id}`}>
 						<motion.button
 							whileTap={{ scale: 0.9 }}

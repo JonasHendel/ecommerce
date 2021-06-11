@@ -50,23 +50,7 @@ const Event = (props) => {
 							{event.title}
 						</h1>
 						<div className='mb-10'>
-							<motion.img
-								className='w-96 h-72 object-cover mb-2 '
-								src={event.images[tab].url}
-							/>
-							<div className='flex'>
-								{event.images.map((img, index) => (
-									<img
-										className={isActive(index)}
-										key={index}
-										src={img.url}
-										alt={img.url}
-										onClick={() => {
-											setTab(index);
-										}}
-									/>
-								))}
-							</div>
+              <ImageSlider slides={event.images} />
 						</div>
 						<div className='w-full'>
 							<p className='font-bold'>{event.description}</p>

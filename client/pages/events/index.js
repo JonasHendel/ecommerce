@@ -16,7 +16,6 @@ const eventOverview = (props) => {
 		setEvents(props.events);
 	}, [props.events]);
 
-  console.log(events)
 
 
 	return (

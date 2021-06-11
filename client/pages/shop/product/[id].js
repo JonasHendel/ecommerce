@@ -6,12 +6,13 @@ import { ShoppingCart } from 'phosphor-react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 // CSS
-import styles from '../../../styles/Product.module.css';
+import styles from '../../..//styles/Product.module.css';
 
 // Project files
 import { getData } from '../../../utils/fetchData';
 import { DataContext } from '../../../store/GlobalState';
 import { addToCart } from '../../../store/Actions';
+import ImageSlider from '../../../components/slider/ImageSlider'
 
 const DetailProduct = (props) => {
 	const router = useRouter();
@@ -42,25 +43,9 @@ const DetailProduct = (props) => {
 				<title>{product.title}</title>
 			</Head>
 			<div className='max-w-7xl h-screen mx-auto sm:px-6 lg:px-8 flex justify-center'>
-				<div className='flex justify-evenly mt-20 items-center w-4/5 h-1/2 shadow-even rounded-2xl'>
+				<div className='flex justify-evenly mt-20 items-center w-full h-1/2 shadow-even rounded-2xl'>
 					<div className='flex flex-col h-5/6 justify-center'>
-						<img
-							className='w-96 mb-2'
-							src={product.images[tab].url}
-						/>
-						<div className='flex'>
-							{product.images.map((img, index) => (
-								<img
-									className={isActive(index)}
-									key={index}
-									src={img.url}
-									alt={img.url}
-									onClick={() => {
-										setTab(index);
-									}}
-								/>
-							))}
-						</div>
+						<ImageSlider slides={product.images}/>
 					</div>
 					<div className='w-96 h-5/6 flex flex-col justify-evenly'>
 						<h1 className='capitalize font-bold text-2xl'>

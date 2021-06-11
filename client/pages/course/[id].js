@@ -6,6 +6,7 @@ import {useRouter} from 'next/router'
 import { loadStripe } from '@stripe/stripe-js';
 import { MinusCircle, PlusCircle, ShoppingCart } from 'phosphor-react';
 import { addCourse } from '../../store/Actions';
+import ImageSlider from '../../components/slider/ImageSlider'
 
 import {DataContext} from '../../store/GlobalState'
 import {postData} from '../../utils/fetchData'
@@ -68,29 +69,13 @@ const Course = (props) => {
 				<title>{course.title}</title>
 			</Head>
 			<div className='max-w-7xl h-screen mx-auto sm:px-6 lg:px-8 flex justify-center'>
-				<div className='flex justify-evenly mt-20 items-center w-6/6 h-4/5 shadow-even rounded-2xl'>
-					<section className='flex flex-col h-4/5 w-2/5 justify-center'>
+				<div className='flex justify-evenly mt-10 items-center w-full h-5/6 shadow-even rounded-2xl'>
+					<section className='flex flex-col full w-2/5 justify-center items-start'>
 						<h1 className='uppercase font-bold text-2xl mb-10'>
 							{course.title}
 						</h1>
 						<div className='mb-10'>
-							<motion.img
-								className='w-96 h-72 object-cover mb-2'
-								src={course.images[tab].url}
-							/>
-							<div className='flex'>
-								{course.images.map((img, index) => (
-									<img
-										className={isActive(index)}
-										key={index}
-										src={img.url}
-										alt={img.url}
-										onClick={() => {
-											setTab(index);
-										}}
-									/>
-								))}
-							</div>
+              <ImageSlider slides={course.images}/>
 						</div>
 						<div className='w-full'>
 							<p className='font-bold'>{course.description}</p>

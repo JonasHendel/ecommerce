@@ -6,7 +6,7 @@ import { HomeForm } from '../components/Newsletter/CustomForms';
 
 import { useState, useEffect } from 'react';
 
-import ImageSlider from '../components/slider/ImageSlider';
+import ImageSlider from '../components/slider/ImageSliderHome';
 import { SliderData } from '../components/slider/SliderData';
 
 import Carousel from '../components/Carousel';

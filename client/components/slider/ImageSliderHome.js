@@ -2,11 +2,12 @@ import { ArrowCircleLeft, ArrowCircleRight } from 'phosphor-react';
 import React, { useState } from 'react';
 import { useEffect } from 'react/cjs/react.development';
 import { SliderData } from './SliderData';
-import styles from '../../styles/Slider.module.css'
 
 const ImageSlider = ({ slides }) => {
 	const length = slides.length;
 	const [current, setCurrent] = useState(0);
+
+  console.log(slides)
 
 	const nextSlide = () => {
 		setCurrent(current === length - 1 ? 0 : current + 1);
@@ -21,9 +22,9 @@ const ImageSlider = ({ slides }) => {
 	}
 
 	return (
-		<section className={styles.slider}>
-			<ArrowCircleLeft className={styles.leftArrow} onClick={prevSlide} />
-			<ArrowCircleRight className={styles.rightArrow} onClick={nextSlide} />
+		<section className='slider'>
+			<ArrowCircleLeft className='left-arrow' onClick={prevSlide} />
+			<ArrowCircleRight className='right-arrow' onClick={nextSlide} />
 			{slides.map((slide, index) => {
 				return (
 					<div
@@ -31,9 +32,9 @@ const ImageSlider = ({ slides }) => {
 						key={index}>
 						{index === current && (
 							<img
-								src={slide.url}
+								src={slide.image}
 								alt='travel image'
-								className={styles.image}
+								className='image'
 							/>
 						)}
 					</div>

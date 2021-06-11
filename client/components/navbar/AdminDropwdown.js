@@ -31,12 +31,10 @@ const AdminDropdown = ({ classNames }) => {
 						enterTo='transform opacity-100 scale-100'
 						leave='transition ease-in duration-75'
 						leaveFrom='transform opacity-100 scale-100'
-						leaveTo='transform opacity-0 scale-95'
-					>
+						leaveTo='transform opacity-0 scale-95'>
 						<Menu.Items
 							static
-							className='origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none'
-						>
+							className='origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none'>
 							<Menu.Item>
 								{({ active }) => (
 									<Link href='/admin/users'>
@@ -44,51 +42,60 @@ const AdminDropdown = ({ classNames }) => {
 											className={classNames(
 												active ? 'bg-gray-100' : '',
 												'block px-4 py-2 text-sm text-gray-700'
-											)}
-										>
-										Users
+											)}>
+											Users
 										</a>
 									</Link>
 								)}
 							</Menu.Item>
-              <Menu.Item>
+							<Menu.Item>
 								{({ active }) => (
 									<Link href='/admin/product'>
 										<a
 											className={classNames(
 												active ? 'bg-gray-100' : '',
 												'block px-4 py-2 text-sm text-gray-700'
-											)}
-										>
-										Create Product
+											)}>
+											Create Product
 										</a>
 									</Link>
 								)}
 							</Menu.Item>
-              <Menu.Item>
+							<Menu.Item>
 								{({ active }) => (
 									<Link href='/admin/course'>
 										<a
 											className={classNames(
 												active ? 'bg-gray-100' : '',
 												'block px-4 py-2 text-sm text-gray-700'
-											)}
-										>
-										Create Course
+											)}>
+											Create Course
 										</a>
 									</Link>
 								)}
 							</Menu.Item>
-              <Menu.Item>
+							<Menu.Item>
+								{({ active }) => (
+									<Link href='/admin/event'>
+										<a
+											className={classNames(
+												active ? 'bg-gray-100' : '',
+												'block px-4 py-2 text-sm text-gray-700'
+											)}>
+											Create Event
+										</a>
+									</Link>
+								)}
+							</Menu.Item>
+							<Menu.Item>
 								{({ active }) => (
 									<Link href='/admin/categories'>
 										<a
 											className={classNames(
 												active ? 'bg-gray-100' : '',
 												'block px-4 py-2 text-sm text-gray-700'
-											)}
-										>
-										Categories
+											)}>
+											Categories
 										</a>
 									</Link>
 								)}

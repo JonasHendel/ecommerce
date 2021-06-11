@@ -31,15 +31,23 @@ const CourseItem = ({ course, handleCheck }) => {
 		);
 	};
 
-
 	const adminButtons = () => {
 		return (
 			<>
 				<div className='flex w-full justify-evenly'>
+					<Link href={`/course/${course._id}`}>
+						<motion.button
+							whileTap={{ scale: 0.9 }}
+							className='w-28 h-12 bg-gray-900 text-white rounded-lg'>
+							<div className='flex items-center justify-center'>
+								View
+							</div>
+						</motion.button>
+					</Link>
 					<Link href={`/admin/tickets/${course._id}`}>
 						<motion.button
 							whileTap={{ scale: 0.9 }}
-							className='w-36 h-12 bg-gray-900 text-white rounded-lg'>
+							className='w-28 h-12 bg-gray-900 text-white rounded-lg'>
 							<div className='flex items-center justify-center'>
 								<Ticket
 									size={20}
@@ -53,7 +61,7 @@ const CourseItem = ({ course, handleCheck }) => {
 					<Link href={`/admin/course/${course._id}`}>
 						<motion.button
 							whileTap={{ scale: 0.9 }}
-							className='w-36 h-12 bg-gray-900 text-white rounded-lg'>
+							className='w-28 h-12 bg-gray-900 text-white rounded-lg'>
 							<div className='flex items-center justify-center'>
 								<NotePencil
 									size={20}
@@ -66,9 +74,19 @@ const CourseItem = ({ course, handleCheck }) => {
 					</Link>
 					<motion.button
 						whileTap={{ scale: 0.9 }}
-						className='h-12 w-36 bg-red-600 text-white rounded-lg'
+						className='h-12 w-28 bg-red-600 text-white rounded-lg'
 						onClick={() => {
-							dispatch({type: 'ADD_MODAL', payload: [{data: '', id: course._id, title: course.title, type: 'DELETE_COURSE'}]});
+							dispatch({
+								type: 'ADD_MODAL',
+								payload: [
+									{
+										data: '',
+										id: course._id,
+										title: course.title,
+										type: 'DELETE_COURSE',
+									},
+								],
+							});
 						}}>
 						<div className='flex items-center justify-center'>
 							<Trash size={20} className='mr-2' weight='bold' />
@@ -79,14 +97,13 @@ const CourseItem = ({ course, handleCheck }) => {
 			</>
 		);
 	};
-  
+
 	const { title, description, spots, price, images } = course;
-  
+
 	return (
-    <>
-			<motion.div
-				 className={styles.productCard}>
-        {/* {auth.user && auth.user.role === 'admin' &&
+		<>
+			<motion.div className={styles.productCard}>
+				{/* {auth.user && auth.user.role === 'admin' &&
           <input className="absolute ml-2 mt-2 w-6 h-6" type="checkbox" checked={product.checked} onChange={()=>handleCheck(course._id)} />
         } */}
 				<div className={styles.imageDiv}>
@@ -109,13 +126,11 @@ const CourseItem = ({ course, handleCheck }) => {
 						<h1 className='capitalize font-bold mb-2' title={title}>
 							{title}
 						</h1>
-						<p title={description}>
-							{description}
-						</p>
+						<p title={description}>{description}</p>
 					</div>
 					{!auth.user || auth.user.role !== 'admin'
 						? userButtons()
-						: adminButtons()} 
+						: adminButtons()}
 				</div>
 			</motion.div>
 		</>
