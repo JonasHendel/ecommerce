@@ -22,13 +22,12 @@ const ProductManager = () => {
 
 	const [images, setImages] = useState([]);
 	const [onEdit, setOnEdit] = useState(false);
-  const [tab, setTab] = useState(0)
+	const [tab, setTab] = useState(0);
 
 	const { state, dispatch } = useContext(DataContext);
 	const { categories, auth } = state;
 
 	const { id } = router.query;
-
 
 	useEffect(() => {
 		if (id) {
@@ -76,7 +75,6 @@ const ProductManager = () => {
 		});
 		if (err) dispatch({ type: 'NOTIFY', payload: { error: err } });
 		const imgCount = images.length;
-		console.log(imgCount);
 		if (imgCount + newImages.legnth > 5)
 			return dispatch({
 				type: 'NOTIFY',
@@ -91,13 +89,13 @@ const ProductManager = () => {
 		setImages(newArr);
 	};
 
-  const isActive = (index) => {
+	const isActive = (index) => {
 		if (tab == index) return 'h-12 mr-2 border-4 border-white ';
 		return 'h-12 mr-2';
 	};
 
 	const handleSubmit = async (e) => {
-    dispatch({ type: 'NOTIFY', payload: { loading: true } });
+		dispatch({ type: 'NOTIFY', payload: { loading: true } });
 		e.preventDefault();
 		if (auth.user.role !== 'admin')
 			return dispatch({
@@ -152,11 +150,11 @@ const ProductManager = () => {
 				});
 		}
 
-    router.push('/shop')
+		router.push('/shop');
 		return dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
 	};
 
-  if (!auth.user) {
+	if (!auth.user) {
 		return null;
 	} else if (auth.user) {
 		if (auth.user.role !== 'admin') {
@@ -276,37 +274,59 @@ const ProductManager = () => {
 								</div>
 							</div>
 						</div>
-						<section className="flex flex-col justify-evenly">
+						<section className='flex flex-col justify-evenly'>
 							<input
 								type='file'
 								onChange={handleUpload}
 								multiple
 								accept='image/*'
 							/>
-              <div className="h-4/6">
-
-              { images.length !== 0 &&
-              <div>
-								<img
-									className='h-60 w-96 mb-2 object-cover'
-									src={images[tab].url ? images[tab].url : URL.createObjectURL(images[tab])}
-								/>
-								<div className='flex'>
-									{images.map((img, index) => (
+							<div className='h-4/6'>
+								{images.length !== 0 && (
+									<div>
 										<img
-											className={isActive(index)}
-											key={index}
-											src={img.url ? img.url : URL.createObjectURL(img)}
-											alt={img}
-											onClick={() => {
-												setTab(index);
-											}}
+											className='h-60 w-96 mb-2 object-cover'
+											src={
+												images[tab].url
+													? images[tab].url
+													: URL.createObjectURL(
+															images[tab]
+													  )
+											}
 										/>
-									))}
-								</div>
-                </div>
-              }
-              </div>
+										<div className='flex'>
+											{images.map((img, index) => (
+												<div key={index}>
+													<img key={index}
+														className={isActive(
+															index
+														)}
+														
+														src={
+															img.url
+																? img.url
+																: URL.createObjectURL(
+																		img
+																  )
+														}
+														alt={img}
+														onClick={() => {
+															setTab(index);
+														}}
+													/>
+													<span
+														className='relative px-2 py-1 bg-red-500 bottom-14 right-2 ml-15 rounded-full text-white text-xs cursor-pointer'
+														onClick={() =>
+															deleteImage(index)
+														}>
+														x
+													</span>
+												</div>
+											))}
+										</div>
+									</div>
+								)}
+							</div>
 						</section>
 					</div>
 					<div className='flex justify-end'>

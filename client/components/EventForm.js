@@ -6,12 +6,12 @@ import styles from '../styles/Contact.module.css';
 import { useContext } from 'react';
 import { DataContext } from '../store/GlobalState';
 
-const ContactForm = () => {
+const ContactForm = ({event}) => {
 	const initialState = {
 		user_name: '',
 		user_email: '',
-		subject: '',
-		message: '',
+		subject: event.title,
+		message: 'Hei, jeg vil gjerne booke deg den "ANGI DATO". Vi er "ANGI ANTALL PERSONER" personer. Stedet vi vil at du skal være er "ANGI STED".',
 	};
 
 	const [emailInfo, setEmailInfo] = useState(initialState);
@@ -22,11 +22,13 @@ const ContactForm = () => {
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setEmailInfo({ ...emailInfo, [name]: value });
+		console.log(emailInfo);
 	};
 
 	const sendEmail = (e) => {
     e.preventDefault();
 		dispatch({ type: 'NOTIFY', payload: { loading: true } });
+
 
 		emailjs
 			.sendForm('test', 'template1', e.target, process.env.USER_EMAILJS)
@@ -51,9 +53,9 @@ const ContactForm = () => {
 		<>
 			<div>
 				<form
-					className='p-8 mt-8 mr-8 w-50rem h-40rem flex flex-col justify-evenly shadow-even rounded-xl'
+					className='p-8 mt-8 mr-8 h-40rem flex flex-col justify-evenly'
 					onSubmit={sendEmail}>
-					<h1 className='font-bold text-xl'>Send meg en Epost!</h1>
+					<h1 className='font-bold text-xl'>Book meg!</h1>
 					<input type='hidden' name='contact_number' />
 					<div className='flex justify-between'>
 						<input
@@ -77,7 +79,7 @@ const ContactForm = () => {
 					</div>
 					<input
 						className='mb-2 border-4 border-gray-900 border-md rounded-md p-2'
-						value={subject}
+						value={event.title}
 						onChange={handleChange}
 						type='text'
 						name='subject'

@@ -10,6 +10,7 @@ import { getData } from '../../utils/fetchData';
 
 const courseOverview = (props) => {
 	const [courses, setCourses] = useState(props.courses);
+  console.log(courses)
 
 	useEffect(() => {
 		setCourses(props.courses);
