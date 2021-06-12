@@ -31,7 +31,6 @@ const Event = ({ event }) => {
 		);
 	};
 
-
 	const adminButtons = () => {
 		return (
 			<>
@@ -63,7 +62,7 @@ const Event = ({ event }) => {
 						whileTap={{ scale: 0.9 }}
 						className='h-12 w-36 bg-red-600 text-white rounded-lg'
 						onClick={() => {
-							dispatch({type: 'ADD_MODAL', payload: [{data: '', id: event._id, title: event.title, type: 'DELETE_COURSE'}]});
+							dispatch({type: 'ADD_MODAL', payload: [{data: '', id: event._id, title: event.title, type: 'DELETE_EVENT'}]});
 						}}>
 						<div className='flex items-center justify-center'>
 							<Trash size={20} className='mr-2' weight='bold' />

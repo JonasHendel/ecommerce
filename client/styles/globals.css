@@ -147,3 +147,69 @@ a {
 	transition-duration: 1s;
 	transform: scale(1.08);
 }
+
+@media only screen and (max-width: 1100px) {
+  
+  .image {
+    width: 600px;
+    height: 360px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: top;
+  }
+  
+  .right-arrow {
+    position: absolute;
+    top: 40%;
+    right: 32px;
+    font-size: 3rem;
+    color: white;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .left-arrow {
+    position: absolute;
+    top: 40%;
+    left: 32px;
+    font-size: 3rem;
+    color: white;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  
+  .image {
+    width: 360px;
+    height: 216px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: top;
+  }
+  
+  .right-arrow {
+    position: absolute;
+    top: 40%;
+    right: 32px;
+    font-size: 3rem;
+    color: white;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .left-arrow {
+    position: absolute;
+    top: 40%;
+    left: 32px;
+    font-size: 3rem;
+    color: white;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+  }
+}

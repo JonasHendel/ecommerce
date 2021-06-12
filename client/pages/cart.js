@@ -79,19 +79,19 @@ function cart() {
           Empty Cart
         </title>
       </Head>
-				<div className='mt-20 flex flex-col h-2/5 justify-evenly items-center'>
+				<div className='mt-20 flex flex-col justify-evenly items-center'>
 					<ShoppingCart size={160} />
 					<div className='flex flex-col items-center'>
-						<h1 className='font-bold text-4xl'>
+						<h1 className='font-bold mt-4 text-4xl'>
 							Your cart is empty
 						</h1>
-						<h2 className='text-gray-500'>
+						<h2 className='text-gray-500 mt-4'>
 							Please add something to your cart
 						</h2>
 					</div>
 					<Link href='/shop'>
 						<motion.a
-							className='p-3 bg-gray-900 text-white rounded-lg cursor-pointer flex items-center'
+							className='p-3 bg-gray-900 mt-4 text-white rounded-lg cursor-pointer flex items-center'
 							whileTap={{ scale: 0.9 }}
 						>
               <ArrowCircleLeft size={30} className="mr-2"/>

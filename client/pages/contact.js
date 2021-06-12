@@ -11,11 +11,11 @@ const Kontakt = () => {
     <Head>
       <title>Contact Page</title>
     </Head>
-			<div className='max-w-7xl h-screen mx-auto px-2 sm:px-6 lg:px-8 flex-col items-center'>
+			<div className='max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 flex-col items-center'>
 				<h1 className='mt-5 text-center font-bold text-3xl'>KONTAKT</h1>
-				<div className='flex'>
+				<div className='flex flex-col items-center lg:flex-row'>
 					<ContactForm />
-					<div className='mt-8 flex flex-col justify-evenly w-96 h-40rem shadow-even rounded-xl'>
+					<div className='my-8 flex flex-col w-5/6 justify-evenly lg:w-96 h-40rem shadow-even rounded-xl'>
 						<div className='flex justify-center'>
 							<div className='flex flex-col items-center text-xl font-bold'>
 								<Phone className='text-7xl' />

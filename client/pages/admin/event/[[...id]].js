@@ -5,7 +5,7 @@ import { postData, getData, putData } from '../../../utils/fetchData';
 import { imageUpload } from '../../../utils/imageUpload';
 import { useRouter } from 'next/router';
 
-const ProductManager = () => {
+const EventManager = () => {
 	const router = useRouter();
 
 	const initialState = {
@@ -154,7 +154,7 @@ const ProductManager = () => {
 	return (
 		<>
 			<Head>
-				<title>Product manager</title>
+				<title>Event manager</title>
 			</Head>
 			<div className='max-w-7xl h-screen mx-auto px-2 sm:px-6 lg:px-8'>
 				<form
@@ -277,4 +277,4 @@ const ProductManager = () => {
 	);
 };
 
-export default ProductManager;
+export default EventManager;

@@ -16,12 +16,11 @@ const ProductManager = () => {
 		spots: Number,
 		description: '',
 		content: '',
-		category: '',
 	};
 
 	const [course, setCourse] = useState(initialState);
 
-	const { title, date, time, price, spots, description, content, category } =
+	const { title, date, time, price, spots, description, content} =
 		course;
 
 	// const dated = new Date(course.date).toISOString().slice(0, 10)
@@ -30,7 +29,7 @@ const ProductManager = () => {
 	const [tab, setTab] = useState(0);
 
 	const { state, dispatch } = useContext(DataContext);
-	const { categories, auth } = state;
+	const { auth } = state;
 
 	const { id } = router.query;
 
@@ -112,7 +111,6 @@ const ProductManager = () => {
 			!spots ||
 			!description ||
 			!content ||
-			category === 'all' ||
 			images.length === 0
 		)
 			return res
@@ -281,30 +279,6 @@ const ProductManager = () => {
 									placeholder='Content'
 									onChange={handleChange}
 								/>
-							</div>
-							<div className='flex flex-col'>
-								<label
-									className='font-bold mr-2'
-									htmlFor='title'>
-									Category:
-								</label>
-								<div>
-									<select
-										className='border-4 w-full border-black border-md rounded-md p-2'
-										name='category'
-										id='category'
-										value={category}
-										onChange={handleChange}>
-										<option value='All'>Categories</option>
-										{categories.map((item) => (
-											<option
-												key={item._id}
-												value={item._id}>
-												{item.name}
-											</option>
-										))}
-									</select>
-								</div>
 							</div>
 						</div>
 						<section className='flex flex-col justify-evenly'>

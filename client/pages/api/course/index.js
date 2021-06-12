@@ -46,7 +46,6 @@ const createCourse = async (req, res) => {
 			spots,
 			description,
 			content,
-			category,
 			images,
 		} = req.body;
 
@@ -58,7 +57,6 @@ const createCourse = async (req, res) => {
 			!spots ||
 			!description ||
 			!content ||
-			category === 'all' ||
 			images.length === 0
 		)
 			return res.status(400).json({ err: 'Please add all the fields.' });
@@ -74,7 +72,6 @@ const createCourse = async (req, res) => {
 			spots,
 			description,
 			content,
-			category,
 			images,
 		});
 

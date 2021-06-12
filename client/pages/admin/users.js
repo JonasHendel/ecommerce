@@ -29,7 +29,7 @@ const Users = () => {
 			</Head>
 			<div className="max-w-7xl h-screen mx-auto px-2 sm:px-6 lg:px-8 flex flex-col items-center">
         <h1 className="mt-10 text-2xl font-bold">Users</h1>
-				<table className="w-full table-auto mt-10">
+				<table className="w-full table-auto mt-10 overflow-scroll">
 					<thead className=''>
 						<tr className='text-left'>
 							<th className=''></th>

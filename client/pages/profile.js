@@ -17,8 +17,6 @@ const Profile = () => {
 	const { state, dispatch } = useContext(DataContext);
 	const { auth, notify, orders, tickets } = state
 
-
-  
 	const initialState = {
     avatar: '',
 		name: '',
@@ -92,19 +90,19 @@ const Profile = () => {
 			<Head>
 				<title>Profile</title>
 			</Head>
-			<div className='max-w-7xl h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
-      <div className="flex justify-between mt-20 h-full">
-				<div className='w-2/6 h-2/4 flex flex-col'>
-					<h1 className='text-3xl font-bold'>
+			<div className='max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
+      <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between mt-20 h-full">
+				<div className='lg:w-2/6 h-1/2 w-4/5 flex flex-col'>
+					<h1 className='text-3xl font-bold mb-2'>
 						{auth.user.role === 'user'
 							? 'User Profile'
 							: 'Admin Profile'}
 					</h1>
-					<form className='flex flex-col justify-evenly h-full'>
+					<form className='flex  flex-col justify-evenly h-full'>
 						<div className='flex items-center w-full justify-between'>
 							<label className='font-bold mr-2'>Name: </label>
 							<input
-            className="border-4 border-black border-md rounded-md p-2"
+            className="border-4 border-black border-md rounded-md p-2 mb-4"
 								type='text'
 								placeholder='Your name'
 								name='name'
@@ -112,7 +110,7 @@ const Profile = () => {
 								onChange={handleChange}
 							/>
 						</div>
-						<div className='flex items-center w-full justify-between'>
+						<div className='flex items-center w-full justify-between mb-4'>
 							<label className='font-bold mr-2'>Email: </label>
 							<input
             className="rounded-md p-3 bg-gray-200"
@@ -121,7 +119,7 @@ const Profile = () => {
 								disabled={true}
 							/>
 						</div>
-						<div className='flex items-center w-full justify-between'>
+						<div className='flex items-center w-full justify-between mb-4'>
 							<label className='font-bold mr-2'>
 								New Password:{' '}
 							</label>
@@ -134,7 +132,7 @@ const Profile = () => {
 								onChange={handleChange}
 							/>
 						</div>
-						<div className='flex items-center w-full justify-between'>
+						<div className='flex items-center w-full justify-between mb-4'>
 							<label className='font-bold mr-2'>
 								Confirm Password:{' '}
 							</label>
@@ -147,11 +145,11 @@ const Profile = () => {
 								onChange={handleChange}
 							/>
 						</div>
-					</form>
 				<button className='h-14 mb-4 bg-gray-900 text-white rounded-lg' type='submit'
           onClick={handleUpdateProfile}>Update</button>
+					</form>
 				</div>
-				<div className="w-3/5 flex flex-col">
+				<div className="flex flex-col w-4/5 lg:w-auto">
           <Order items={orders} title="orders"/>
           <Order items={tickets} title="tickets"/>
 				</div>

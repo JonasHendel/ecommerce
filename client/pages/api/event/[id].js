@@ -26,8 +26,6 @@ const getEvent = async (req, res) => {
 
     const event = await Events.findById(id)
 
-    console.log(event)
-
     if(!event){
       return res.status(400).json({err: 'This event does not exist'})
     } 
@@ -77,16 +75,15 @@ const updateEvent = async (req, res) => {
 	}
 };
 
-const deleteCourse = async (req, res) => {
+const deleteEvent = async (req, res) => {
 	try {
 		const result = await auth(req, res);
-    console.log(result)
 		if (result.role !== 'admin') {
 			return res.status(400).json({ err: 'Authentication is not valid' });
 		}
 		const { id } = req.query;
     
-		await Courses.findByIdAndDelete(id);
+		await Events.findByIdAndDelete(id);
 
 		res.json({ msg: 'Success! Product was deleted.'});
 	} catch (err) {

@@ -44,7 +44,7 @@ const Event = (props) => {
 				<title>{event.title}</title>
 			</Head>
 			<div className='max-w-7xl h-screen mx-auto sm:px-6 lg:px-8 flex justify-center'>
-				<div className='flex justify-evenly mt-20 items-center w-full h-4/5 shadow-even rounded-2xl'>
+				<div className='flex justify-evenly mt-10 items-center w-full h-4/5 shadow-even rounded-2xl'>
 					<section className='flex flex-col h-4/5 w-2/5 justify-center'>
 						<h1 className='uppercase font-bold text-2xl mb-10'>
 							{event.title}

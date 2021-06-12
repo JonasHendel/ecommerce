@@ -59,9 +59,9 @@ export default function Home() {
 				<div className='w-full flex justify-center mt-20'>
 					<ImageSlider slides={SliderData} />
 				</div>
-				<div className='flex justify-evenly mt-20 mb-20'>
+				<div className='flex flex-wrap items-center justify-evenly mt-20 mb-20'>
 					<Link href='/shop'>
-						<div className='flex flex-col items-center w-22rem shadow-even border-gray-900 rounded-xl cursor-pointer'>
+						<div className='flex flex-col items-center w-22rem h-60 shadow-even mb-5 border-gray-900 rounded-xl cursor-pointer'>
 							<h1 className='font-bold text-4xl mt-3 h-1/5'>
 								Nettbutikk
 							</h1>
@@ -74,7 +74,7 @@ export default function Home() {
 						</div>
 					</Link>
 					<Link href='/course'>
-						<div className='flex flex-col items-center w-22rem shadow-even border-gray-900 rounded-xl cursor-pointer'>
+						<div className='flex flex-col items-center w-22rem h-60 shadow-even mb-5 border-gray-900 rounded-xl cursor-pointer'>
 							<h1 className='font-bold text-4xl mt-3 h-1/5'>
 								Kurs
 							</h1>
@@ -86,7 +86,7 @@ export default function Home() {
 							</div>
 						</div>
 					</Link>
-					<div className='flex flex-col items-center w-22rem h-60 shadow-even border-gray-900 rounded-xl '>
+					<div className='flex flex-col items-center w-22rem h-60 shadow-even mb-5 border-gray-900 rounded-xl '>
 						<h1 className='font-bold text-4xl mt-3 h-1/5'>
 							Newsletter
 						</h1>

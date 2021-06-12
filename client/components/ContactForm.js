@@ -49,15 +49,14 @@ const ContactForm = () => {
 
 	return (
 		<>
-			<div>
 				<form
-					className='p-8 mt-8 mr-8 w-50rem h-40rem flex flex-col justify-evenly shadow-even rounded-xl'
+					className='p-8 my-8 w-5/6 lg:w-50rem h-40rem lg:mr-8 flex flex-col justify-evenly shadow-even rounded-xl'
 					onSubmit={sendEmail}>
 					<h1 className='font-bold text-xl'>Send meg en Epost!</h1>
 					<input type='hidden' name='contact_number' />
-					<div className='flex justify-between'>
+					<div className='flex flex-col lg:flex-row justify-between'>
 						<input
-							className='w-2/5 mb-2 border-4 border-gray-900 border-md rounded-md p-2'
+							className='lg:w-2/5 mb-2 border-4 border-gray-900 border-md rounded-md p-2'
 							value={user_name}
 							onChange={handleChange}
 							type='text'
@@ -66,7 +65,7 @@ const ContactForm = () => {
 							required
 						/>
 						<input
-							className='w-3/6 mb-2 border-4 border-gray-900 border-md rounded-md p-2'
+							className='lg:w-3/6 mb-2 border-4 border-gray-900 border-md rounded-md p-2'
 							value={user_email}
 							onChange={handleChange}
 							type='email'
@@ -101,7 +100,6 @@ const ContactForm = () => {
 						</button>
 					</div>
 				</form>
-			</div>
 		</>
 	);
 };

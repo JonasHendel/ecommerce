@@ -10,7 +10,7 @@ const Footer = () => {
   // console.log(`Newsletter url${newsletterUrl}`)
 	return (
 		<div className='bg-gray-800 bottom-0 w-full p-5 h-auto'>
-			<div className='flex justify-between h-60 max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 text-white'>
+			<div className='flex justify-between h-60 max-w-7xl mx-auto px-2  sm:px-6 lg:px-8 text-white'>
 				<div className='flex flex-col justify-evenly w-60'>
 					<Link href='/shop'>
 						<div className="cursor-pointer">
@@ -57,7 +57,7 @@ const Footer = () => {
 					</div>
           </a>
 				</div>
-				<div className='flex flex-col justify-center'>
+				<div className='hidden sm:flex flex-col justify-center'>
 					<MailchimpSubscribe
 						url={newsletterUrl}
 						render={({ subscribe, status, message }) => (

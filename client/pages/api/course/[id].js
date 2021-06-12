@@ -51,7 +51,6 @@ const updateCourse = async (req, res) => {
 			spots,
 			description,
 			content,
-			category,
 			images,
 		} = req.body;
 
@@ -64,7 +63,6 @@ const updateCourse = async (req, res) => {
 			!spots ||
 			!description ||
 			!content ||
-			category === 'all' ||
 			images.length === 0
 		)
 			return res.statys(400).json({ err: 'Please add all the fields.' });
@@ -79,7 +77,6 @@ const updateCourse = async (req, res) => {
 				spots,
 				description,
 				content,
-				category,
 				images,
 			}
 		);

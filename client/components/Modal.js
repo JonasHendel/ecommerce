@@ -68,6 +68,19 @@ const Modal = () => {
 		});
   }
 
+  const deleteEvent = (item) => {
+    deleteData(`event/${item.id}`, auth.token).then((res) => {
+			if (res.err)
+				return dispatch({
+					type: 'NOTIFY',
+					payload: { error: res.err },
+				});
+        dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
+        return router.push('/events')
+		});
+  }
+
+
 	const handleSubmit = () => {
 		if (modal.length !== 0) {
 			for (const item of modal) {
@@ -85,6 +98,8 @@ const Modal = () => {
 				if(item.type === 'DELETE_PRODUCT') deleteProduct(item)
         
         if(item.type == 'DELETE_COURSE') deleteCourse(item)
+
+        if(item.type == 'DELETE_EVENT') deleteEvent(item)
 
         dispatch({ type: 'ADD_MODAL', payload: [] });
 			}
