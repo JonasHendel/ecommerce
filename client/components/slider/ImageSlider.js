@@ -29,7 +29,6 @@ const ImageSlider = ({ slides }) => {
 					<div
 						className={index === current ? 'slide active' : 'slide'}
 						key={index}>
-            className="md"
 						{index === current && (
 							<img
 								src={slide.url}
