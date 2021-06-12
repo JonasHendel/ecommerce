@@ -4,9 +4,14 @@ import { getData } from '../../../utils/fetchData';
 import Head from 'next/head'
 
 import Ticket from '../../../components/Ticket';
+import { useContext } from 'react';
+import { DataContext } from '../../../store/GlobalState';
 
 const Tickets = () => {
 	const router = useRouter();
+
+  const {state} = useContext(DataContext)
+  const {auth} = state
 
 	const { id } = router.query;
 	const [tickets, setTickets] = useState([]);
