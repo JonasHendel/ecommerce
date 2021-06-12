@@ -8,7 +8,7 @@ import styles from '../../styles/Shop.module.css';
 
 //Project files
 import ProductItem from '../../components/product/ProductItem';
-import Filter from '../../components/Filter';
+import {ProductFilter} from '../../components/Filter';
 import { getData } from '../../utils/fetchData';
 import { DataContext } from '../../store/GlobalState';
 import filterSearch from '../../utils/filterSearch';
@@ -76,7 +76,7 @@ function Shop(props) {
 			</Head>
 
 			<div className='max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8'>
-				<Filter state={state} />
+				<ProductFilter state={state} />
 
 				{auth.user && auth.user.role === 'admin' && (
 					<div className='flex justify-end items-center mt-4'>

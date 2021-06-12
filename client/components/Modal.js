@@ -80,6 +80,18 @@ const Modal = () => {
 		});
   }
 
+  const deleteRecipe = (item) => {
+    deleteData(`recipe/${item.id}`, auth.token).then((res) => {
+			if (res.err)
+				return dispatch({
+					type: 'NOTIFY',
+					payload: { error: res.err },
+				});
+        dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
+        return router.push('/recipes')
+		});
+  }
+
 
 	const handleSubmit = () => {
 		if (modal.length !== 0) {
@@ -100,6 +112,8 @@ const Modal = () => {
         if(item.type == 'DELETE_COURSE') deleteCourse(item)
 
         if(item.type == 'DELETE_EVENT') deleteEvent(item)
+
+        if(item.type == 'DELETE_RECIPE') deleteRecipe(item)
 
         dispatch({ type: 'ADD_MODAL', payload: [] });
 			}

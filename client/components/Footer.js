@@ -27,14 +27,14 @@ const Footer = () => {
 							<a>Om meg</a>
 						</div>
 					</Link>
-					<Link href='/kontakt'>
+					<Link href='/contact'>
 						<div className="cursor-pointer">
 							<a>Kontakt</a>
 						</div>
 					</Link>
 				</div>
 				<div className='flex flex-col justify-evenly text-3xl w-60'>
-					<Link href='/kontakt'>
+					<Link href='/contact'>
 					<div className='flex items-center cursor-pointer'>
 						<At />
 						<p className='text-base ml-2'>example@email.com</p>

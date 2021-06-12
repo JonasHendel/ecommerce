@@ -8,7 +8,7 @@ import styles from '../../styles/Shop.module.css';
 
 //Project files
 import RecipeItem from '../../components/RecipeItem';
-import Filter from '../../components/Filter';
+import {RecipeFilter} from '../../components/Filter';
 import { getData } from '../../utils/fetchData';
 import { DataContext } from '../../store/GlobalState';
 import filterSearch from '../../utils/filterSearch';
@@ -51,13 +51,13 @@ function Recipes(props) {
 
 	const handleDeleteAll = () => {
 		let deleteArr = [];
-		recipes.forEach((product) => {
-			if (product.checked) {
+		recipes.forEach((recipe) => {
+			if (recipe.checked) {
 				deleteArr.push({
 					data: '',
-					id: product._id,
+					id: recipe._id,
 					title: 'Delete all selected recipes?',
-					type: 'DELETE_PRODUCT',
+					type: 'DELETE_RECIPE',
 				});
 			}
 		});
@@ -76,7 +76,7 @@ function Recipes(props) {
 			</Head>
 
 			<div className='max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8'>
-				<Filter state={state} />
+				<RecipeFilter state={state} />
 
 				{auth.user && auth.user.role === 'admin' && (
 					<div className='flex justify-end items-center mt-4'>

@@ -65,7 +65,7 @@ const RecipeItem = ({ recipe, handleCheck }) => {
 						whileTap={{ scale: 0.9 }}
 						className='h-12 w-28 bg-red-600 text-white rounded-lg'
 						onClick={() => {
-							dispatch({type: 'ADD_MODAL', payload: [{data: '', id: recipe._id, title: recipe.title, type: 'DELETE_PRODUCT'}]});
+							dispatch({type: 'ADD_MODAL', payload: [{data: '', id: recipe._id, title: recipe.title, type: 'DELETE_RECIPE'}]});
 						}}>
 						<div className='flex items-center justify-center'>
 							<Trash size={20} className='mr-2' weight='bold' />
