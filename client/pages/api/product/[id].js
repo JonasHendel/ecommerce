@@ -89,8 +89,13 @@ const deleteProduct = async (req, res) => {
 			return res.status(400).json({ err: 'Authentication is not valid' });
 		}
 		const { id } = req.query;
+
+
+    const product = await Products.findById(id)
     
-		await Products.findByIdAndDelete(id);
+		await Products.findByIdAndUpdate((id), {
+      checked: !product.checked
+    });
 
 		res.json({ msg: 'Success! Product was deleted.'});
 	} catch (err) {

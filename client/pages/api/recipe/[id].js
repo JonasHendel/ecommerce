@@ -91,8 +91,13 @@ const deleteRecipe = async (req, res) => {
 			return res.status(400).json({ err: 'Authentication is not valid' });
 		}
 		const { id } = req.query;
+
+    const recipe = await Recipes.findById(id)
     
-		await Recipes.findByIdAndDelete(id);
+		await Recipes.findByIdAndUpdate((id), {
+      checked: !recipe.checked
+    });
+    
 
 		res.json({ msg: 'Success! Recipe was deleted.'});
 	} catch (err) {

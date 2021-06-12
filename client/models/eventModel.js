@@ -19,6 +19,10 @@ const EventSchema = new mongoose.Schema({
     images: {
       type: Array,
     },
+		checked: {
+			type: Boolean,
+			default: false,
+		},
 })
 
 module.exports = mongoose.models.Event || mongoose.model('Event', EventSchema);

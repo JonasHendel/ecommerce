@@ -16,7 +16,7 @@ const Success = () => {
 		if (Object.keys(router.query).length && Object.keys(auth).length) {
 			dispatch({ type: 'NOTIFY', payload: { loading: true } });
 			const query = router.query;
-			await postData('order/cart', { query, cart }, auth.token).then(
+			await postData('order/createOrder', { query, cart }, auth.token).then(
 				(res) => {
 					dispatch({
 						type: 'ADD_ORDERS',

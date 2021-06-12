@@ -1,6 +1,5 @@
 const Ticket = ({ ticket }) => {
 	const { user, course } = ticket;
-  console.log(ticket)
 	return (
 		<>
 			<div className='flex flex-col w-500 h-60 justify-evenly shadow-even my-10 p-10'>

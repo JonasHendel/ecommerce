@@ -25,6 +25,10 @@ const ticketSchema = new mongoose.Schema(
 			unique: true,
       required: true,
 		},
+		checked: {
+			type: Boolean,
+			default: false,
+		},
 	},
 	{
 		timestamps: true,

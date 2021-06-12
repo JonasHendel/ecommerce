@@ -13,6 +13,7 @@ const Tickets = () => {
   const {state} = useContext(DataContext)
   const {auth} = state
 
+
 	const { id } = router.query;
 	const [tickets, setTickets] = useState([]);
 

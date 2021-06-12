@@ -41,6 +41,12 @@ const deleteUser = async (req, res) => {
 
     const {id} = req.query
 
+    const user = await Users.findById(id)
+    
+		await Users.findByIdAndUpdate((id), {
+      checked: !user.checked
+    });
+
     await Users.findOneAndDelete({_id: id})
     
     res.json({msg: 'Success! User was deleted'})

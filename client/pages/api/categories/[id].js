@@ -48,9 +48,13 @@ const deleteCategory = async (req, res) => {
     }
   
     const {id} = req.query
-  
-    await Categories.findByIdAndDelete({_id: id})
 
+    const categorie = await Categories.findById(id)
+    
+		await Categories.findByIdAndUpdate((id), {
+      checked: !categorie.checked
+    });
+  
     const products = await Products.findOne({category: id})
     if(products) return res.status(400).json({err: 'Please delete all prducts with a this category'})
 

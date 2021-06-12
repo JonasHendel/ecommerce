@@ -8,7 +8,12 @@ const categoriesSchema = new mongoose.Schema(
       unique: true,
       trim: true,
 		},
+		checked: {
+			type: Boolean,
+			default: false,
+		},
 	},
+
 	{
 		timestamps: true,
 	}

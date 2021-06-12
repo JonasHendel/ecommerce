@@ -21,7 +21,7 @@ const Success = () => {
 
 			let ticket;
 
-			await postData('order/course', { query, course }, auth.token).then(
+			await postData('order/createTicket', { query, course }, auth.token).then(
 				async (res) => {
 					ticket = res.newTicket;
 					await dispatch({

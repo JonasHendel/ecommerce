@@ -82,8 +82,13 @@ const deleteEvent = async (req, res) => {
 			return res.status(400).json({ err: 'Authentication is not valid' });
 		}
 		const { id } = req.query;
+
+    const event = await Events.findById(id)
     
-		await Events.findByIdAndDelete(id);
+		await Events.findByIdAndUpdate((id), {
+      checked: !event.checked
+    });
+    
 
 		res.json({ msg: 'Success! Product was deleted.'});
 	} catch (err) {
