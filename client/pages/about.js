@@ -4,13 +4,15 @@ import { InstagramLogo, FacebookLogo, Phone, At } from 'phosphor-react';
 import {motion} from 'framer-motion'
 import Head from 'next/head'
 
+import {aboutText} from '../public/about'
+
 //Project Files
 import { getData } from '../utils/fetchData';
 
 
 
-const about = (props) => {
-	const [content, setContent] = useState(props.content);
+const about = (/*props*/) => {
+	// const [content, setContent] = useState(props.content);
 
 	return (
 		<>
@@ -26,7 +28,7 @@ const about = (props) => {
 					</div>
 					<div className='flex flex-col items-center mb-9 md:flex-row md:items-start'>
 						<div className='w-10/12 md:w-3/5'>
-							<p className='text-md'>{content[0].about}</p>
+							<p className='text-md'>{aboutText}</p>
 						</div> 
 						<div className='w-10/12 mt-9 flex flex-col justify-start md:ml-9 md:w-2/5 md:mt-2'>
 							<div className='flex justify-center items-start'>
@@ -77,14 +79,14 @@ const about = (props) => {
 	);
 };
 
-export async function getServerSideProps() {
-	const res = await getData('content');
-	return {
-		props: {
-			status: res.status,
-			content: res.content,
-		},
-	};
-}
+// export async function getServerSideProps() {
+// 	const res = await getData('content');
+// 	return {
+// 		props: {
+// 			status: res.status,
+// 			content: res.content,
+// 		},
+// 	};
+// }
 
 export default about;
