@@ -17,7 +17,7 @@ const Footer = () => {
 							<a>Shop</a>
 						</div>
 					</Link>
-					<Link href='/salgsvilkår'>
+					<Link href='/salgsvilkar'>
 						<div className="cursor-pointer">
 							<a>Salgsvilkår</a>
 						</div>
@@ -50,10 +50,10 @@ const Footer = () => {
 						<p className='text-base ml-2'>@instagram</p>
 					</div>
           </a>
-					<a href='https://www.facebook.com' target='_blank'>
+					<a href='https://www.facebook.com/vesuviocafeoslo/' target='_blank'>
 					<div className='flex items-center'>
 						<FacebookLogo />
-						<p className='text-base ml-2'>@facebook</p>
+						<p className='text-base ml-2'>@vesuviocafeoslo</p>
 					</div>
           </a>
 				</div>

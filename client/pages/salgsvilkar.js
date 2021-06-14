@@ -1,7 +1,7 @@
 const Salgsvilkar = () => {
 	return (
 		<>
-			<div className='max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8'>
+			<div className='max-w-7xl min-h-screen mx-auto my-10 px-2 sm:px-6 lg:px-8'>
 				<h1 className='font-bold text-3xl mt-4'>1. Avtalen</h1>
 				<p className='text-xl'>
 					Avtalen består av disse salgsbetingelsene, opplysninger gitt
@@ -197,16 +197,139 @@ const Salgsvilkar = () => {
 					betraktning på avtaletiden, unngått, eller overvunnet
 					følgene av.
 				</p>
-				<h1 className='font-bold text-3xl mt-4'>10. Mangel ved varen - kjøperens rettigheter og reklamasjonsfrist</h1>
-				<p className='text-xl'></p>
-				<h1 className='font-bold text-3xl mt-4'></h1>
-				<p className='text-xl'></p>
-				<h1 className='font-bold text-3xl mt-4'></h1>
-				<p className='text-xl'></p>
-				<h1 className='font-bold text-3xl mt-4'></h1>
-				<p className='text-xl'></p>
-				<h1 className='font-bold text-3xl mt-4'></h1>
-				<p className='text-xl'></p>
+				<h1 className='font-bold text-3xl mt-4'>
+					10. Mangel ved varen - kjøperens rettigheter og
+					reklamasjonsfrist
+				</h1>
+				<p className='text-xl'>
+					Hvis det foreligger en mangel ved varen må kjøper innen
+					rimelig tid etter at den ble oppdaget eller burde ha blitt
+					oppdaget, gi selger melding om at han eller hun vil påberope
+					seg mangelen. Kjøper har alltid reklamert tidsnok dersom det
+					skjer innen 2 mnd. fra mangelen ble oppdaget eller burde
+					blitt oppdaget. Reklamasjon kan skje senest to år etter at
+					kjøper overtok varen. Dersom varen eller deler av den er
+					ment å vare vesentlig lenger enn to år, er
+					reklamasjonsfristen fem år.
+					<br />
+					<br />
+					Dersom varen har en mangel og dette ikke skyldes kjøperen
+					eller forhold på kjøperens side, kan kjøperen i henhold til
+					reglene i forbrukerkjøpsloven kapittel 6 etter
+					omstendighetene holde kjøpesummen tilbake, velge mellom
+					retting og omlevering, kreve prisavslag, kreve avtalen hevet
+					og/eller kreve erstatning fra selgeren.
+					<br />
+					<br />
+					Reklamasjon til selgeren bør skje skriftlig.
+					<br />
+					<br />
+					Retting eller omlevering
+					<br />
+					Kjøperen kan velge mellom å kreve mangelen rettet eller
+					levering av tilsvarende ting. Selger kan likevel motsette
+					seg kjøperens krav dersom gjennomføringen av kravet er
+					umulig eller volder selgeren urimelige kostnader. Retting
+					eller omlevering skal foretas innen rimelig tid. Selger har
+					i utgangspunktet ikke rett til å foreta mer enn to
+					avhjelpsforsøk for samme mangel.
+					<br />
+					<br />
+					Prisavslag
+					<br />
+					Kjøper kan kreve et passende prisavslag dersom varen ikke
+					blir rettet eller omlevert. Dette innebærer at forholdet
+					mellom nedsatt og avtalt pris svarer til forholdet mellom
+					tingens verdi i mangelfull og kontraktsmessig stand. Dersom
+					særlige grunner taler for det, kan prisavslaget i stedet
+					settes lik mangelens betydning for kjøperen.
+					<br />
+					<br />
+					Heving
+					<br />
+					Dersom varen ikke er rettet eller omlevert, kan kjøperen
+					også heve kjøpet når mangelen ikke er uvesentlig.
+				</p>
+				<h1 className='font-bold text-3xl mt-4'>
+					11. Selgerens rettigheter ved kjøperens mislighold
+				</h1>
+				<p className='text-xl'>
+					Dersom kjøperen ikke betaler eller oppfyller de øvrige
+					pliktene etter avtalen eller loven, og dette ikke skyldes
+					selgeren eller forhold på selgerens side, kan selgeren i
+					henhold til reglene i forbrukerkjøpsloven kapittel 9 etter
+					omstendighetene holde varen tilbake, kreve oppfyllelse av
+					avtalen, kreve avtalen hevet samt kreve erstatning fra
+					kjøperen. Selgeren vil også etter omstendighetene kunne
+					kreve renter ved forsinket betaling, inkassogebyr og et
+					rimelig gebyr ved uavhentede varer.
+					<br />
+					<br />
+					Oppfyllelse
+					<br />
+					Selger kan fastholde kjøpet og kreve at kjøperen betaler
+					kjøpesummen. Er varen ikke levert, taper selgeren sin rett
+					dersom han venter urimelig lenge med å fremme kravet.
+					<br />
+					<br />
+					Heving
+					<br />
+					Selger kan heve avtalen dersom det foreligger vesentlig
+					betalingsmislighold eller annet vesentlig mislighold fra
+					kjøperens side. Selger kan likevel ikke heve dersom hele
+					kjøpesummen er betalt. Fastsetter selger en rimelig
+					tilleggsfrist for oppfyllelse og kjøperen ikke betaler innen
+					denne fristen, kan selger heve kjøpet.
+					<br />
+					<br />
+					Renter ved forsinket betaling/inkassogebyr
+					<br />
+					Dersom kjøperen ikke betaler kjøpesummen i henhold til
+					avtalen, kan selger kreve renter av kjøpesummen etter
+					forsinkelsesrenteloven. Ved manglende betaling kan kravet,
+					etter forutgående varsel, bli sendt til Kjøper kan da bli
+					holdt ansvarlig for gebyr etter inkassoloven.
+					<br />
+					<br />
+					Gebyr ved uavhentede ikke-forskuddsbetalte varer
+					<br />
+					Dersom kjøperen unnlater å hente ubetalte varer, kan selger
+					belaste kjøper med et gebyr. Gebyret skal maksimalt dekke
+					selgerens faktiske utlegg for å levere varen til kjøperen.
+					Et slikt gebyr kan ikke belastes kjøpere under 18 år.
+				</p>
+				<h1 className='font-bold text-3xl mt-4'>12. Garanti</h1>
+				<p className='text-xl'>
+					Garanti som gis av selgeren eller produsenten, gir kjøperen
+					rettigheter i tillegg til de kjøperen allerede har etter
+					ufravikelig lovgivning. En garanti innebærer dermed ingen
+					begrensninger i kjøperens rett til reklamasjon og krav ved
+					forsinkelse eller mangler etter punkt 9 og 10.
+				</p>
+				<h1 className='font-bold text-3xl mt-4'>
+					13. Personopplysninger
+				</h1>
+				<p className='text-xl'>
+					Behandlingsansvarlig for innsamlede personopplysninger er
+					selger. Med mindre kjøperen samtykker til noe annet, kan
+					selgeren, i tråd med personopplysningsloven, kun innhente og
+					lagre de personopplysninger som er nødvendig for at selgeren
+					skal kunne gjennomføre forpliktelsene etter avtalen.
+					Kjøperens personopplysninger vil kun bli utlevert til andre
+					hvis det er nødvendig for at selger skal få gjennomført
+					avtalen med kjøperen, eller i lovbestemte tilfelle.
+				</p>
+				<h1 className='font-bold text-3xl mt-4'>14. Konfliktløsning</h1>
+				<p className='text-xl'>
+					Klager rettes til selger innen rimelig tid, jf. punkt 9 og
+					10. Partene skal forsøke å løse eventuelle tvister i
+					minnelighet. Dersom dette ikke lykkes, kan kjøperen ta
+					kontakt med Forbrukertilsynet for mekling. Forbrukertilsynet
+					er tilgjengelig på telefon 23 400 600. Europa-Kommisjonens
+					klageportal kan også brukes hvis du ønsker å inngi en klage.
+					Det er særlig relevant, hvis du er forbruker bosatt i et
+					annet EU-land. Klagen inngis her: <a className="text-blue-800 font-semibold" href="http://ec.europa.eu/odr">http://ec.europa.eu/odr</a>.
+				</p>
 			</div>
 		</>
 	);
