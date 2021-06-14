@@ -21,22 +21,24 @@ const Success = () => {
 
 			let ticket;
 
-			await postData('order/createTicket', { query, course }, auth.token).then(
+			await postData('order/ticket', { query, course }, auth.token).then(
 				async (res) => {
 					ticket = res.newTicket;
 					await dispatch({
 						type: 'ADD_TICKETS',
 						payload: [...tickets, res.newTicket],
 					});
-					postData('mail', { user, course, ticket }, auth.token).then(
-						() => {
-							dispatch({ type: 'ADD_COURSE', payload: [] });
-							dispatch({
-								type: 'NOTIFY',
-								payload: {},
-							});
-						}
-					);
+					postData(
+						'mail/course',
+						{ user, course, ticket },
+						auth.token
+					).then(() => {
+						dispatch({ type: 'ADD_COURSE', payload: [] });
+						dispatch({
+							type: 'NOTIFY',
+							payload: {},
+						});
+					});
 				}
 			);
 		}
@@ -48,10 +50,12 @@ const Success = () => {
 				<h1 className='text-green-400 text-5xl font-extrabold'>
 					Takk for din bestilling!
 				</h1>
-				<p className='mt-5 text-gray-700'>
+				<p className='mt-5 text-gray-700 text-lg'>
 					Vi har sendt deg en bekfrefteles på e-post. Hvis du ikke har
-					mottatt denne, vennligst du kontakt
-					francescosolimeo@gmail.com
+					mottatt denne, vennligst kontakt francescosolimeo@gmail.com
+				</p>
+				<p className="mt-2 text-lg text-gray-700'">
+					Du kan også se dine bestillinger under "profil"
 				</p>
 				<Link href='/'>
 					<div className='flex items-center mt-9 cursor-pointer'>

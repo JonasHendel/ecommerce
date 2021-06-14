@@ -63,11 +63,11 @@ export const DataProvider = ({children}) => {
 
   useEffect(()=>{
       if(auth.token){
-        getData('order/cart', auth.token).then(res => {
+        getData('order/order', auth.token).then(res => {
           if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
           dispatch({type: 'ADD_ORDERS', payload: res.orders})
         })
-        getData('order/course', auth.token).then(res=>{
+        getData('order/ticket', auth.token).then(res=>{
           if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
           dispatch({type: 'ADD_TICKETS', payload: res.tickets})
         })

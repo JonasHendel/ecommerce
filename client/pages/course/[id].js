@@ -4,7 +4,7 @@ import { useState, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {useRouter} from 'next/router'
 import { loadStripe } from '@stripe/stripe-js';
-import { MinusCircle, PlusCircle, ShoppingCart } from 'phosphor-react';
+import { MinusCircle, PlusCircle, Calendar, Clock } from 'phosphor-react';
 import { addCourse } from '../../store/Actions';
 import ImageSlider from '../../components/slider/ImageSlider'
 
@@ -83,9 +83,13 @@ const Course = (props) => {
 						</div>
 					</section>
 					<section className='w-96 h-3/6 flex flex-col justify-evenly'>
+            <div className="flex justify-between">
+              <p className="font-semibold text-xl flex items-center"><Calendar/>{course.date}</p>
+              <p className="font-semibold text-xl flex items-center"><Clock/>{course.time}</p>
+            </div>
 						<div className='flex justify-between'>
 							<p className='font-semibold text-xl'>Pris per bilett: {course.price}</p>
-							{course.inStock !== 0 ? (
+							{course.spots > 0 ? (
 								<p className='font-semibold text-green-500 text-xl'>
 									Ledige plasser: {course.spots - quantity}
 								</p>
@@ -127,6 +131,7 @@ const Course = (props) => {
 							</h3>
             </div>
 						<div className='flex justify-between'>
+            {course.spots > 0 ? (
 							<motion.button
                 onClick={handlePayment}
 								animate={{ scale: [0.9, 1.1, 1.0] }}
@@ -137,6 +142,19 @@ const Course = (props) => {
                   Proceed with payment
 								</div>
 							</motion.button>
+								
+							) : (
+                <motion.button
+								animate={{ scale: [0.9, 1.1, 1.0] }}
+								transition={{ duration: 0.2 }}
+								className='h-12 w-60 bg-red-600 text-white rounded-lg'
+							>
+								<div className='flex items-center justify-center'>
+                 Utsolgt 
+								</div>
+							</motion.button>
+								
+							)}
 							<button
 								className='cancel-btn'
 								onClick={() => {

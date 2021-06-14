@@ -43,15 +43,15 @@ const DetailProduct = (props) => {
 				<title>{product.title}</title>
 			</Head>
 			<div className='max-w-7xl h-screen mx-auto sm:px-6 lg:px-8 flex justify-center'>
-				<div className='flex justify-evenly mt-20 items-center w-full h-1/2 shadow-even rounded-2xl'>
-					<div className='flex flex-col h-5/6 justify-center'>
+				<div className='flex flex-col justify-start md:justify-evenly mt-20 items-center w-full h-850 md:h-1/2  md:shadow-even md:flex-row rounded-2xl'>
+					<div className='flex flex-col ca:h-5/6 justify-center'>
 						<ImageSlider slides={product.images}/>
 					</div>
-					<div className='w-96 h-5/6 flex flex-col justify-evenly'>
+					<div className='w-96 md:w-2/5 mt-10 md:h-5/6 flex flex-col justify-evenly'>
 						<h1 className='capitalize font-bold text-2xl'>
 							{product.title}
 						</h1>
-						<div className='flex justify-between'>
+						<div className='flex mt-2 md:m-0 justify-between'>
 							<p className='font-semibold'>
 								NOK: {product.price}
 							</p>
@@ -65,9 +65,9 @@ const DetailProduct = (props) => {
 								</p>
 							)}
 						</div>
-						<p>{product.description}</p>
+						<p className="mt-2 md:m-0">{product.description}</p>
 						<p className="h-42">{product.content}</p>
-						<div className='flex justify-between'>
+						<div className='flex mt-4 md:m-0 justify-between'>
 							{addedToCart ? (
 								<motion.button
 									animate={{ scale: [0.9, 1.1, 1.0] }}
