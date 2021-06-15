@@ -14,7 +14,7 @@ import AdminDropdown from './AdminDropwdown';
 const navigation = [
 	{ name: 'Home', href: '/', current: false },
 	{ name: 'Kurs', href: '/course', current: false },
-	{ name: 'Shop', href: '/shop', current: false },
+	{ name: 'Nettbutikk', href: '/shop', current: false },
 	{ name: 'Arrangementer', href: '/events', current: false },
 	{ name: 'Oppskrifter', href: '/recipes', current: false },
 	{ name: 'Om meg', href: '/about', current: false },

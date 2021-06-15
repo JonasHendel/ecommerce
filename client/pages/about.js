@@ -1,24 +1,23 @@
 //NPM
 import { useState } from 'react';
 import { InstagramLogo, FacebookLogo, Phone, At } from 'phosphor-react';
-import {motion} from 'framer-motion'
-import Head from 'next/head'
+import { motion } from 'framer-motion';
+import Head from 'next/head';
+import Link from 'next/link'
 
-import {aboutText} from '../public/about'
+import { aboutText } from '../public/about';
 
 //Project Files
 import { getData } from '../utils/fetchData';
-
-
 
 const about = (/*props*/) => {
 	// const [content, setContent] = useState(props.content);
 
 	return (
 		<>
-    <Head>
-      <title>About</title>¨
-    </Head>
+			<Head>
+				<title>About</title>¨
+			</Head>
 			<div className='flex flex-col items-center max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
 				<div className='flex flex-col items-center mt-10 bg-white ca:shadow-even px-2 sm:px-20 py-5 rounded-2xl'>
 					<div>
@@ -29,48 +28,77 @@ const about = (/*props*/) => {
 					<div className='flex flex-col items-center mb-9 md:flex-row md:items-start'>
 						<main className='w-10/12 md:w-3/5'>
 							<p className='text-md'>{aboutText}</p>
-						</main> 
+						</main>
 						<div className='w-10/12 mt-9 flex flex-col justify-start md:ml-9 md:w-2/5 md:mt-2'>
 							<div className='flex justify-center items-start'>
 								<img
 									className='w-10/12 h-auto'
 									src='./logo.png'
+									alt='Francesco Solimeo pizzachef logo'
 								/>
 							</div>
-              <div className="flex justify-around h-60">
-                <div className='flex flex-col justify-between mt-9'>
-                  <div className='flex flex-col justify-center items-center'>
-                <motion.div whileHover={{scale: 1.05}} whileTap={{scale: 0.8}} className="bg-gray-800 text-white w-14 h-14 flex justify-center items-center rounded-full">
-                    <At className="text-4xl"/>
-                  </motion.div>
-                    <p className='text-base ml-2'>
-                      example@email.com
-                    </p>
-                  </div>
-                  <div className='flex flex-col justify-center items-center'>
-                <motion.div whileHover={{scale: 1.05}} whileTap={{scale: 0.8}} className="bg-gray-800 text-white w-14 h-14 flex justify-center items-center rounded-full">
-                    <Phone className="text-4xl" />
-                    </motion.div>
-                    <p className='text-base ml-2'>
-                      +47 987 231 123
-                    </p>
-                  </div>
-                </div>
-							<div className='flex flex-col justify-between mt-9'>
-								<div className='flex flex-col justify-center items-center'>
-                <motion.div whileHover={{scale: 1.05}} whileTap={{scale: 0.8}} className="bg-gray-800 text-white w-14 h-14 flex justify-center items-center rounded-full">
-									<InstagramLogo className="text-4xl" />
-                  </motion.div>
-									<p className='text-base ml-2'>@instagram</p>
+							<div className='flex justify-around h-60'>
+								<div className='flex flex-col justify-between mt-9'>
+                <Link href="/contact">
+									<a className='flex flex-col justify-center items-center'>
+										<motion.div
+											whileHover={{ scale: 1.05 }}
+											whileTap={{ scale: 0.8 }}
+											className='bg-gray-800 text-white w-14 h-14 flex justify-center items-center rounded-full'>
+											<At className='text-4xl' />
+										</motion.div>
+										<p className='text-base ml-2 mt-2'>
+											example@email.com
+										</p>
+									</a>
+                </Link>
+									<div className='flex flex-col justify-center items-center'>
+										<motion.div
+											whileHover={{ scale: 1.05 }}
+											whileTap={{ scale: 0.8 }}
+											className='bg-gray-800 text-white w-14 h-14 flex justify-center items-center rounded-full'>
+											<Phone className='text-4xl' />
+										</motion.div>
+										<p className='text-base ml-2 mt-2'>
+											+47 987 231 123
+										</p>
+									</div>
 								</div>
-								<div className='flex flex-col justify-center items-center'>
-                <motion.div whileHover={{scale: 1.05}} whileTap={{scale: 0.8}} className="bg-gray-800 text-white w-14 h-14 flex justify-center items-center rounded-full">
-									<FacebookLogo className="text-4xl" />
-                  </motion.div>
-									<p className='text-base ml-2'>@facebook</p>
+								<div className='flex flex-col justify-between mt-9'>
+									<a
+										href='https://www.instagram.com/vesuvio_cafe/'
+										target='_blank'
+										rel='noopener'>
+										<div className='flex flex-col justify-center items-center'>
+											<motion.div
+												whileHover={{ scale: 1.05 }}
+												whileTap={{ scale: 0.8 }}
+												className='bg-gray-800 text-white w-14 h-14 flex justify-center items-center rounded-full'>
+												<InstagramLogo className='text-4xl' />
+											</motion.div>
+											<p className='text-base ml-2 mt-2'>
+												@vesuvio_cafe
+											</p>
+										</div>
+									</a>
+									<a
+										href='https://www.facebook.com/vesuviocafeoslo/'
+										target='_blank'
+										rel='noopener'>
+										<div className='flex flex-col justify-center items-center'>
+											<motion.div
+												whileHover={{ scale: 1.05 }}
+												whileTap={{ scale: 0.8 }}
+												className='bg-gray-800 text-white w-14 h-14 flex justify-center items-center rounded-full'>
+												<FacebookLogo className='text-4xl' />
+											</motion.div>
+											<p className='text-base ml-2 mt-2'>
+												@vesuviocafeoslo
+											</p>
+										</div>
+									</a>
 								</div>
 							</div>
-              </div>
 						</div>
 					</div>
 				</div>

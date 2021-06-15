@@ -1,6 +1,11 @@
+import Head from 'next/head'
+
 const Salgsvilkar = () => {
 	return (
 		<>
+    <Head>
+      <title>Salgsvilkår</title>
+    </Head>
 			<div className='max-w-7xl min-h-screen mx-auto my-10 px-2 sm:px-6 lg:px-8'>
 				<h1 className='font-bold text-3xl mt-4'>1. Avtalen</h1>
 				<p className='text-xl'>

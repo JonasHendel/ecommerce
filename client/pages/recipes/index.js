@@ -72,7 +72,7 @@ function Recipes(props) {
 	return (
 		<>
 			<Head>
-				<title>Shop</title>
+				<title>Oppskrifter</title>
 			</Head>
 
 			<div className='max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8'>

@@ -11,6 +11,7 @@ class MyDocument extends Document {
 						name='description'
 						content='Lær hvordan man lager ekte italiensk pizza eller bestill et pizzaevent hvor vi baker pizza ved ditt event for ditt event!'
 					/>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
           <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
