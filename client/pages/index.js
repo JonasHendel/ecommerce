@@ -62,9 +62,9 @@ export default function Home() {
 				<div className='flex flex-wrap items-center justify-evenly mt-20 mb-20'>
 					<Link href='/shop'>
 						<div className='flex flex-col items-center w-22rem h-60 shadow-even mb-5 border-gray-900 rounded-xl cursor-pointer'>
-							<h1 className='font-bold text-4xl mt-3 h-1/5'>
+							<h2 className='font-bold text-4xl mt-3 h-1/5'>
 								Nettbutikk
-							</h1>
+							</h2>
 							<div className='flex items-center'>
 								<p className='font-semibold text-gray-600 text-xl w-1/2 pl-10'>
 									Her finner du alt fra ... til ...
@@ -75,9 +75,9 @@ export default function Home() {
 					</Link>
 					<Link href='/course'>
 						<div className='flex flex-col items-center w-22rem h-60 shadow-even mb-5 border-gray-900 rounded-xl cursor-pointer'>
-							<h1 className='font-bold text-4xl mt-3 h-1/5'>
+							<h2 className='font-bold text-4xl mt-3 h-1/5'>
 								Kurs
-							</h1>
+							</h2>
 							<div className='flex items-center'>
 								<p className='font-semibold text-gray-600 text-xl w-1/2 pl-10'>
 									Her kan du kjøpe billetter for kurs
@@ -87,9 +87,9 @@ export default function Home() {
 						</div>
 					</Link>
 					<div className='flex flex-col items-center w-22rem h-60 shadow-even mb-5 border-gray-900 rounded-xl '>
-						<h1 className='font-bold text-4xl mt-3 h-1/5'>
+						<h2 className='font-bold text-4xl mt-3 h-1/5'>
 							Newsletter
-						</h1>
+						</h2>
 						<div className='flex flex-grow'>
 							<MailchimpSubscribe
 								url={newsletterUrl}

@@ -46,9 +46,9 @@ export const FooterForm = ({ status, message, onValidated, setActive }) => {
 				className='flex flex-col justify-center h-full'
 				onSubmit={submit}>
 				<div>
-					<h1 className='text-lg w-60'>
+					<h2 className='text-lg w-60'>
 						Abonner min newsletter!
-					</h1>
+					</h2>
 				</div>
 				<input
 					className='text-black rounded-lg p-2 w-60 focus:outline-none'
