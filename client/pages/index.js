@@ -59,7 +59,7 @@ export default function Home() {
       <div className="w-full text-center mt-10 flex flex-col items-center">
       <h1 className="text-5xl font-bold">Pizzachef Francesco Solimeo</h1>
       </div>
-				<div className='w-full flex justify-center mt-12'>
+				<div className='w-full flex justify-center mt-20'>
 					<ImageSlider slides={SliderData} />
 				</div>
        
