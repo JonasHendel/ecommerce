@@ -20,7 +20,7 @@ export default async (req, res) => {
 
 const getEvents = async (req, res) => {
 	try {
-		const events = await Events.find();
+		const events = await Events.find({checked: false});
 		res.json({
 			status: 'success',
 			result: events.length,

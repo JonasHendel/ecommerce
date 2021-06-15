@@ -6,7 +6,6 @@ const filterSearch = ({router, page, category, sort, search}) => {
   if(search) query.search = search
   if(sort) query.sort = sort
 
-  console.log({path, query})
   
   router.push({
     pathname: path,

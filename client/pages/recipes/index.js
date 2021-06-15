@@ -98,7 +98,11 @@ function Recipes(props) {
 				)}
 					<div className='flex flex-wrap justify-evenly sm:justify-start'>
 						{recipes.length === 0 ? (
-							<h2>No recipes</h2>
+					<div className='flex justify-center w-full'>
+						<h1 className='mt-20 text-2xl font-bold'>
+							Ingen oppskrifter tilgjengelig
+						</h1>
+					</div>
 						) : (
 							recipes.map((recipe) => (
 								<RecipeItem

@@ -47,7 +47,7 @@ export const FooterForm = ({ status, message, onValidated, setActive }) => {
 				onSubmit={submit}>
 				<div>
 					<h1 className='text-lg w-60'>
-						Subscribe to my newsletter!
+						Abonner min newsletter!
 					</h1>
 				</div>
 				<input
@@ -60,7 +60,7 @@ export const FooterForm = ({ status, message, onValidated, setActive }) => {
 				<button
 					className='border-2 border-gray-50 p-2 my-2 rounded-lg w-60 focus:outline-none active:bg-white'
 					type='submit'>
-					Subscribe
+					Abonner
 				</button>
 			</form>
 			<br />

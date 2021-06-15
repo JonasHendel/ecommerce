@@ -6,8 +6,6 @@ mailchimp.setConfig({
 });
 
 export default async (req, res) => {
-
-  // console.log(req)
   const { email } = req.body;
 
   if (!email) {

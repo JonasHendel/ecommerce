@@ -23,7 +23,11 @@ const courseOverview = (props) => {
     </Head>
     <div className='flex flex-wrap justify-center sm:justify-start'>
 			{courses.length === 0 ? (
-				<h2>No products</h2>
+					<div className='flex justify-center w-full'>
+						<h1 className='mt-20 text-2xl font-bold'>
+							Ingen produkter tilgjengelig
+						</h1>
+					</div>
 			) : (
 				courses.map((course) => (
 						<CourseItem key={course._id} course={course}/>
@@ -38,7 +42,6 @@ export default courseOverview;
 
 export async function getServerSideProps() {
 	const res = await getData('course');
-	// console.log(res)
 	return {
 		props: {
 			courses: res.courses,

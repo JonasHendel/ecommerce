@@ -39,9 +39,6 @@ const Course = (props) => {
 		return 'h-12 mr-2';
 	};
 
-  console.log(course)
-
-
   const handlePayment = async () => {
 		if (!auth.user) {
 			return router.push('/signin');
@@ -59,7 +56,7 @@ const Course = (props) => {
 		});
 
 		if (result.error) {
-			console.log(result.error.message);
+      dispatch({type: 'NOTIFY', payload: {error: result.error.message}});
 		}
 	};
 

@@ -27,8 +27,6 @@ const createTicket = async (req, res) => {
 
 		const session = await stripe.checkout.sessions.retrieve(session_id);
 
-    console.log(session)
-
 		const newTicket = new Tickets({
 			user: result.id,
 			course: course._id,

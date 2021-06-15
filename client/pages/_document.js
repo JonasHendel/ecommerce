@@ -9,7 +9,7 @@ class MyDocument extends Document {
 				<Head>
 					<meta
 						name='description'
-						content='Personal website with courses, blog and shop'
+						content='Lær hvordan man lager ekte italiensk pizza, eller bestill et pizzaevent hvor vi baker pizza ved ditt event for ditt event!'
 					/>
           <script
             async

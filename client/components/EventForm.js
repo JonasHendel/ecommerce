@@ -22,7 +22,6 @@ const ContactForm = ({event}) => {
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setEmailInfo({ ...emailInfo, [name]: value });
-		console.log(emailInfo);
 	};
 
 	const sendEmail = (e) => {

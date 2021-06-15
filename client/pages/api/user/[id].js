@@ -46,8 +46,6 @@ const deleteUser = async (req, res) => {
 		await Users.findByIdAndUpdate((id), {
       checked: !user.checked
     });
-
-    await Users.findOneAndDelete({_id: id})
     
     res.json({msg: 'Success! User was deleted'})
   } catch (err) {

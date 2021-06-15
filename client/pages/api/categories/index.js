@@ -46,7 +46,7 @@ const createCategory = async (req, res) => {
 
 const getCategories = async (req, res) => {
   try {
-    const categories = await Categories.find()
+    const categories = await Categories.find({checked: false})
 
     res.json({
       categories

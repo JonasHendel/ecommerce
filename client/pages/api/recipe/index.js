@@ -55,7 +55,7 @@ class APIfeatures {
 
 const getRecipes = async (req, res) => {
 	try {
-		const features = new APIfeatures(Recipes.find(), req.query)
+		const features = new APIfeatures(Recipes.find({checked: false}), req.query)
 			.filtering()
 			.sorting()
 			.paginating();
@@ -88,8 +88,6 @@ const createRecipe = async (req, res) => {
       time,
       servings,
 		} = req.body;
-
-    console.log(req.body)
 
 		if (
 			!title ||

@@ -27,9 +27,9 @@ const about = (/*props*/) => {
 						</h1>
 					</div>
 					<div className='flex flex-col items-center mb-9 md:flex-row md:items-start'>
-						<div className='w-10/12 md:w-3/5'>
+						<main className='w-10/12 md:w-3/5'>
 							<p className='text-md'>{aboutText}</p>
-						</div> 
+						</main> 
 						<div className='w-10/12 mt-9 flex flex-col justify-start md:ml-9 md:w-2/5 md:mt-2'>
 							<div className='flex justify-center items-start'>
 								<img

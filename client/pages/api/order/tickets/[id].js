@@ -12,14 +12,6 @@ export default async (req, res) => {
 const getTickets = async (req, res) => {
 	const { id } = req.query;
 	try {
-		// const result = await auth(req, res)
-
-		// console.log(result)
-
-		// if(result.role !== 'admin'){
-		//   return res.status(400).json({err: 'Authentication is invalid!'})
-		// }
-
 		const tickets = await Tickets.find({ course: id })
 			.populate('user', '-password')
 			.populate('course');

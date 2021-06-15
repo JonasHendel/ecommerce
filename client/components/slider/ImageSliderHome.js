@@ -7,7 +7,6 @@ const ImageSlider = ({ slides }) => {
 	const length = slides.length;
 	const [current, setCurrent] = useState(0);
 
-  console.log(slides)
 
 	const nextSlide = () => {
 		setCurrent(current === length - 1 ? 0 : current + 1);

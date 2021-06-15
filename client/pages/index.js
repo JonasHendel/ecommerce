@@ -52,7 +52,7 @@ export default function Home() {
 	return (
 		<div>
 			<Head>
-				<title>Francesco Solimeo</title>
+				<title>Pizzachef Francesco Solimeo</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<div className='max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 flex flex-col'>

@@ -115,7 +115,7 @@ function cart() {
 		});
 
 		if (result.error) {
-			console.log(result.error.message);
+      dispatch({type: 'NOTIFY', payload: {error: result.error.message}});
 		}
 	};
 
@@ -125,7 +125,7 @@ function cart() {
 			<Head>
 				<title>Cart</title>
 			</Head>
-			<div className='flex items-center max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
+			<main className='flex items-center max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
 				<div className='flex flex-col justify-start  w-full min-h-500 p-10 my-20 rounded-2xl shadow-even'>
           <div className="mb-16">
 					<button className="flex items-center text-xl" onClick={() => router.back()}> <ArrowCircleLeft className="mr-2" weight='bold'/>Return</button>
@@ -158,7 +158,7 @@ function cart() {
 						</div>
 					</div>
 				</div>
-			</div>
+			</main>
 		</>
 	);
 }
