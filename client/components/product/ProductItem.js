@@ -116,7 +116,7 @@ const ProductItem = ({ product, handleCheck }) => {
           <input className="absolute ml-2 mt-2 w-6 h-6" type="checkbox" checked={product.checked} onChange={()=>handleCheck(product._id)} />
         }
 				<div className={styles.imageDiv}>
-					<img className={styles.image} src={images[0].url} />
+					<img className={styles.image} src={images[0].url} alt="Product images" />
 				</div>
 				<div className={styles.text}>
 					<div className='w-full flex justify-between'>
