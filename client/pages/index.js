@@ -80,7 +80,7 @@ export default function Home() {
 					<Link href='/course'>
 						<div className='flex flex-col items-center w-22rem h-60 shadow-even mb-5 border-gray-900 rounded-xl cursor-pointer'>
 							<h2 className='font-bold text-4xl mt-3 h-1/5'>
-								Kurs
+								Pizzakurs
 							</h2>
 							<div className='flex items-center'>
 								<p className='font-semibold text-gray-600 text-xl w-1/2 pl-10'>
