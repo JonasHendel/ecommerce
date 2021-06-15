@@ -44,12 +44,12 @@ const Footer = () => {
 						<p className='text-base ml-2'>+47 987 231 123</p>
 					</div>
 					<a
-						href='https://www.instagram.com'
+						href='https://www.instagram.com/vesuvio_cafe/'
 						target='_blank'
 						rel='noopener'>
 						<div className='flex items-center'>
 							<InstagramLogo />
-							<p className='text-base ml-2'>@instagram</p>
+							<p className='text-base ml-2'>@vesuvio_cafe</p>
 						</div>
 					</a>
 					<a

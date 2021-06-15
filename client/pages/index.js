@@ -56,10 +56,14 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<div className='max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 flex flex-col'>
-				<div className='w-full flex justify-center mt-20'>
+      <div className="w-full text-center mt-10 flex flex-col items-center">
+      <h1 className="text-5xl font-bold">Pizzachef Francesco Solimeo</h1>
+      </div>
+				<div className='w-full flex justify-center mt-12'>
 					<ImageSlider slides={SliderData} />
 				</div>
-				<div className='flex flex-wrap items-center justify-evenly mt-20 mb-20'>
+       
+				<div className='flex flex-wrap items-center justify-evenly mt-20 mb-5'>
 					<Link href='/shop'>
 						<div className='flex flex-col items-center w-22rem h-60 shadow-even mb-5 border-gray-900 rounded-xl cursor-pointer'>
 							<h2 className='font-bold text-4xl mt-3 h-1/5'>
@@ -80,7 +84,7 @@ export default function Home() {
 							</h2>
 							<div className='flex items-center'>
 								<p className='font-semibold text-gray-600 text-xl w-1/2 pl-10'>
-									Her kan du kjøpe billetter for kurs
+									Her kan du kjøpe billetter for pizzakurs.
 								</p>
 								<GraduationCap size={150} />
 							</div>
@@ -105,7 +109,10 @@ export default function Home() {
 							/>
 						</div>
 					</div>
-				</div>
+				</div> 
+        <div className="flex justify-center text-center mt-5 mb-20">
+      <p className="text-3xl w-3/6 font-bold text-gray-500 m">Lær hvordan man lager ekte italiensk pizza eller bestill et pizzaevent hvor vi baker pizza ved ditt event for ditt event!</p>
+        </div>
 			</div>
 		</div>
 	);
