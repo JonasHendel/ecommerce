@@ -47,7 +47,7 @@ const DetailProduct = (props) => {
 					<div className='flex flex-col ca:h-5/6 justify-center'>
 						<ImageSlider slides={product.images}/>
 					</div>
-					<div className='w-96 md:w-2/5 mt-10 md:h-5/6 flex flex-col justify-evenly'>
+					<section className='w-96 md:w-2/5 mt-10 md:h-5/6 flex flex-col justify-evenly'>
 						<h1 className='capitalize font-bold text-2xl'>
 							{product.title}
 						</h1>
@@ -108,7 +108,7 @@ const DetailProduct = (props) => {
 								Return
 							</button>
 						</div>
-					</div>
+					</section>
 				</div>
 			</div>
 		</>

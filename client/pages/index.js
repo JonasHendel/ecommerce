@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { GraduationCap, ShoppingBag } from 'phosphor-react';
+import { GraduationCap, Martini } from 'phosphor-react';
 import Link from 'next/link';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
 import { HomeForm } from '../components/Newsletter/CustomForms';
@@ -67,13 +67,13 @@ export default function Home() {
 					<Link href='/shop'>
 						<div className='flex flex-col items-center w-22rem h-60 shadow-even mb-5 border-gray-900 rounded-xl cursor-pointer'>
 							<h2 className='font-bold text-4xl mt-3 h-1/5'>
-								Nettbutikk
+								Pizzaevent
 							</h2>
 							<div className='flex items-center'>
 								<p className='font-semibold text-gray-600 text-xl w-1/2 pl-10'>
-									Her finner du alt fra ... til ...
+									Vi kommer til ditt event og lager pizza!
 								</p>
-								<ShoppingBag size={150} />
+								<Martini size={150} />
 							</div>
 						</div>
 					</Link>
@@ -84,7 +84,7 @@ export default function Home() {
 							</h2>
 							<div className='flex items-center'>
 								<p className='font-semibold text-gray-600 text-xl w-1/2 pl-10'>
-									Her kan du kjøpe billetter for pizzakurs.
+									Har du lyst til å lage ekte italiensk pizza?
 								</p>
 								<GraduationCap size={150} />
 							</div>
@@ -111,7 +111,7 @@ export default function Home() {
 					</div>
 				</div> 
         <div className="flex justify-center text-center mt-5 mb-20">
-      <p className="text-3xl w-3/6 font-bold text-gray-500 m">Lær hvordan man lager ekte italiensk pizza eller bestill et pizzaevent hvor vi baker pizza ved ditt event for ditt event!</p>
+      <p className="text-3xl w-3/6 font-bold text-gray-500 m">Lær hvordan man lager ekte italiensk pizza eller bestill et pizzaevent hvor vi baker pizza ved ditt event, for ditt event!</p>
         </div>
 			</div>
 		</div>

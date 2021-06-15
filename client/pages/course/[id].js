@@ -65,21 +65,21 @@ const Course = (props) => {
 			<Head>
 				<title>{course.title}</title>
 			</Head>
-			<div className='max-w-7xl h-screen mx-auto sm:px-6 lg:px-8 flex justify-center'>
-				<div className='flex justify-evenly mt-10 items-center w-full h-5/6 shadow-even rounded-2xl'>
-					<section className='flex flex-col full w-2/5 justify-center items-start'>
+			<div className='max-w-7xl min-h-screen mx-auto sm:px-6 lg:px-8 flex justify-center'>
+				<div className='flex flex-col justify-start md:justify-evenly md:mt-20 items-center w-full md:h-5/6  md:shadow-even md:flex-row rounded-2xl'>
+					<section className='w-96 md:w-2/5 mt-10 md:h-5/6 flex flex-col justify-evenly'>
 						<h1 className='uppercase font-bold text-2xl mb-10'>
 							{course.title}
 						</h1>
 						<div className='mb-10'>
               <ImageSlider slides={course.images}/>
 						</div>
-						<div className='w-full'>
+						<div className='w-full md:mb-10'>
 							<p className='font-bold'>{course.description}</p>
 							<p>{course.content}</p>
 						</div>
 					</section>
-					<section className='w-96 h-3/6 flex flex-col justify-evenly'>
+					<section className='w-96 h-96 mt-10 flex flex-col justify-evenly'>
             <div className="flex justify-between">
               <p className="font-semibold text-xl flex items-center"><Calendar/>{course.date}</p>
               <p className="font-semibold text-xl flex items-center"><Clock/>{course.time}</p>
@@ -108,7 +108,7 @@ const Course = (props) => {
 								}}>
 								<MinusCircle className="text-3xl text-red-600" weight='bold'/>
 							</button>
-							<p className="text-3xl font-bold">{course.quantity}</p>
+							<p className="text-3xl font-bold">{course.quantity} billetter</p>
 							<button
 								onClick={() =>{
                   if(course.quantity < course.spots)
@@ -136,7 +136,7 @@ const Course = (props) => {
 								className='h-12 w-60 bg-gray-900 text-white rounded-lg'
 							>
 								<div className='flex items-center justify-center'>
-                  Proceed with payment
+                Fortsett med betaling
 								</div>
 							</motion.button>
 								
@@ -157,7 +157,7 @@ const Course = (props) => {
 								onClick={() => {
 									router.back();
 								}}>
-								Return
+								Tilbake
 							</button>
 						</div>
 					</section>

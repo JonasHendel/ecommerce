@@ -123,7 +123,7 @@ function cart() {
 	return (
 		<>
 			<Head>
-				<title>Cart</title>
+				<title>Handlekurv</title>
 			</Head>
 			<main className='flex items-center max-w-7xl min-h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
 				<div className='flex flex-col justify-start  w-full min-h-500 p-10 my-20 rounded-2xl shadow-even'>
@@ -153,7 +153,7 @@ function cart() {
 								className='h-12 w-full bg-gray-900 text-white rounded-lg'
 								onClick={handlePayment}
 							>
-								Proceed with payment
+								Fortsett med betaling
 							</button>
 						</div>
 					</div>

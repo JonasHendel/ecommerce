@@ -9,7 +9,7 @@ export const SliderData = [
   },
   {
     image:
-      'https://res.cloudinary.com/devhendel/image/upload/v1619880720/IMG_9711_apmfkf.jpg'
+      'https://res.cloudinary.com/devhendel/image/upload/c_crop,h_1008,w_1512,x_0,y_112/v1619880718/IMG_9571_jhvxih.jpg'
   },
   {
     image:
