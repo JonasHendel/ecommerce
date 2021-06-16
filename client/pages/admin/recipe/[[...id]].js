@@ -10,16 +10,24 @@ const RecipeManager = () => {
 
 	const initialState = {
 		title: '',
-    ingredients: '',
-    equipment: '',
+		ingredients: '',
+		equipment: '',
 		description: '',
-    time: '00:00',
-    servings: 0,
-    content: '',
+		time: '00:00',
+		servings: 0,
+		content: '',
 	};
 
 	const [recipe, setRecipe] = useState(initialState);
-	const { title, ingredients, equipment, description, content, servings, time } = recipe;
+	const {
+		title,
+		ingredients,
+		equipment,
+		description,
+		content,
+		servings,
+		time,
+	} = recipe;
 
 	const [images, setImages] = useState([]);
 	const [onEdit, setOnEdit] = useState(false);
@@ -48,8 +56,9 @@ const RecipeManager = () => {
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
-    if(name === 'ingredients' || name === 'equipment') setRecipe({ ...recipe, [name]: value.split(",") });
-    else setRecipe({ ...recipe, [name]: value});
+		if (name === 'ingredients' || name === 'equipment')
+			setRecipe({ ...recipe, [name]: value.split(',') });
+		else setRecipe({ ...recipe, [name]: value });
 	};
 
 	const handleUpload = (e) => {
@@ -92,7 +101,7 @@ const RecipeManager = () => {
 	};
 
 	const isActive = (index) => {
-		if (tab == index) return 'h-12 mr-2 border-4 border-white ';
+		if (tab == index) return 'h-12 mr-2 border-2 border-white ';
 		return 'h-12 mr-2';
 	};
 
@@ -184,7 +193,7 @@ const RecipeManager = () => {
 									Title:
 								</label>
 								<input
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='text'
 									name='title'
 									value={title}
@@ -199,7 +208,7 @@ const RecipeManager = () => {
 									Description:
 								</label>
 								<textarea
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='text'
 									name='description'
 									value={description}
@@ -214,7 +223,7 @@ const RecipeManager = () => {
 									Time:
 								</label>
 								<input
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='time'
 									name='time'
 									value={time}
@@ -222,14 +231,14 @@ const RecipeManager = () => {
 									onChange={handleChange}
 								/>
 							</div>
-              <div className='flex flex-col'>
+							<div className='flex flex-col'>
 								<label
 									className='font-bold mr-2'
 									htmlFor='title'>
 									Servings:
 								</label>
 								<input
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='number'
 									name='servings'
 									value={servings}
@@ -244,7 +253,7 @@ const RecipeManager = () => {
 									Ingredients:
 								</label>
 								<textarea
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='text'
 									name='ingredients'
 									value={ingredients}
@@ -256,10 +265,10 @@ const RecipeManager = () => {
 								<label
 									className='font-bold mr-2'
 									htmlFor='title'>
-								 Equipment
+									Equipment
 								</label>
 								<textarea
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='text'
 									name='equipment'
 									value={equipment}
@@ -267,14 +276,14 @@ const RecipeManager = () => {
 									onChange={handleChange}
 								/>
 							</div>
-              <div className='flex flex-col'>
+							<div className='flex flex-col'>
 								<label
 									className='font-bold mr-2'
 									htmlFor='title'>
 									Content:
 								</label>
 								<textarea
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='text'
 									name='content'
 									value={content}
@@ -282,7 +291,6 @@ const RecipeManager = () => {
 									onChange={handleChange}
 								/>
 							</div>
-							
 						</div>
 						<section className='flex flex-col justify-evenly'>
 							<input
@@ -307,11 +315,11 @@ const RecipeManager = () => {
 										<div className='flex'>
 											{images.map((img, index) => (
 												<div key={index}>
-													<img key={index}
+													<img
+														key={index}
 														className={isActive(
 															index
 														)}
-														
 														src={
 															img.url
 																? img.url
@@ -338,7 +346,7 @@ const RecipeManager = () => {
 								)}
 							</div>
 						</section>
-          </div>
+					</div>
 					<div className='flex justify-end'>
 						<button
 							className='w-36 h-12 rounded-lg bg-gray-900 text-white '

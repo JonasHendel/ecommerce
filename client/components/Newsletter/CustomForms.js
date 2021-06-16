@@ -46,9 +46,7 @@ export const FooterForm = ({ status, message, onValidated, setActive }) => {
 				className='flex flex-col justify-center h-full'
 				onSubmit={submit}>
 				<div>
-					<h2 className='text-lg w-60'>
-						Abonner min newsletter!
-					</h2>
+					<h2 className='text-lg w-60'>Abonner min newsletter!</h2>
 				</div>
 				<input
 					className='text-black rounded-lg p-2 w-60 focus:outline-none'
@@ -124,7 +122,7 @@ export const HomeForm = ({ status, message, onValidated, setActive }) => {
 				Abonner min newsletter for å få oppdateringer på e-post!
 			</p>
 			<input
-				className='w-5/6 border-4 border-gray-900 rounded-md h-10 pl-2'
+				className='w-5/6 border-2 border-gray-900 rounded-md h-10 pl-2'
 				ref={(node) => (email = node)}
 				type='email'
 				placeholder='Din epost addresse'

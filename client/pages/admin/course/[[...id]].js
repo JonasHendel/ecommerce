@@ -20,8 +20,7 @@ const ProductManager = () => {
 
 	const [course, setCourse] = useState(initialState);
 
-	const { title, date, time, price, spots, description, content} =
-		course;
+	const { title, date, time, price, spots, description, content } = course;
 
 	// const dated = new Date(course.date).toISOString().slice(0, 10)
 	const [images, setImages] = useState([]);
@@ -91,7 +90,7 @@ const ProductManager = () => {
 	};
 
 	const isActive = (index) => {
-		if (tab == index) return 'h-12 mr-4 border-4 border-black ';
+		if (tab == index) return 'h-12 mr-4 border-2 border-black ';
 		return 'h-12 mr-4';
 	};
 
@@ -182,7 +181,7 @@ const ProductManager = () => {
 									Title:
 								</label>
 								<input
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='text'
 									name='title'
 									value={title}
@@ -197,7 +196,7 @@ const ProductManager = () => {
 									Date:
 								</label>
 								<input
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='date'
 									name='date'
 									value={date}
@@ -212,7 +211,7 @@ const ProductManager = () => {
 									Time:
 								</label>
 								<input
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='time'
 									name='time'
 									value={time}
@@ -227,7 +226,7 @@ const ProductManager = () => {
 									Price:
 								</label>
 								<input
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='number'
 									name='price'
 									value={price}
@@ -242,7 +241,7 @@ const ProductManager = () => {
 									Spots:
 								</label>
 								<input
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='number'
 									name='spots'
 									value={spots}
@@ -257,7 +256,7 @@ const ProductManager = () => {
 									Description:
 								</label>
 								<textarea
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='text'
 									name='description'
 									value={description}
@@ -272,7 +271,7 @@ const ProductManager = () => {
 									Content:
 								</label>
 								<textarea
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='text'
 									name='content'
 									value={content}

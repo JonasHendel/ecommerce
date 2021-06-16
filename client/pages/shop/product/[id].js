@@ -12,7 +12,7 @@ import styles from '../../..//styles/Product.module.css';
 import { getData } from '../../../utils/fetchData';
 import { DataContext } from '../../../store/GlobalState';
 import { addToCart } from '../../../store/Actions';
-import ImageSlider from '../../../components/slider/ImageSlider'
+import ImageSlider from '../../../components/slider/ImageSlider';
 
 const DetailProduct = (props) => {
 	const router = useRouter();
@@ -26,7 +26,7 @@ const DetailProduct = (props) => {
 	const { cart } = state;
 
 	const isActive = (index) => {
-		if (tab == index) return 'h-12 mr-2 border-4 border-white ';
+		if (tab == index) return 'h-12 mr-2 border-2 border-white ';
 		return 'h-12 mr-2';
 	};
 	useEffect(() => {
@@ -45,7 +45,7 @@ const DetailProduct = (props) => {
 			<div className='max-w-7xl h-screen mx-auto sm:px-6 lg:px-8 flex justify-center'>
 				<div className='flex flex-col justify-start md:justify-evenly mt-20 items-center w-full h-850 md:h-1/2  md:shadow-even md:flex-row rounded-2xl'>
 					<div className='flex flex-col ca:h-5/6 justify-center'>
-						<ImageSlider slides={product.images}/>
+						<ImageSlider slides={product.images} />
 					</div>
 					<section className='w-96 md:w-2/5 mt-10 md:h-5/6 flex flex-col justify-evenly'>
 						<h1 className='capitalize font-bold text-2xl'>
@@ -65,8 +65,8 @@ const DetailProduct = (props) => {
 								</p>
 							)}
 						</div>
-						<p className="mt-2 md:m-0">{product.description}</p>
-						<p className="h-42">{product.content}</p>
+						<p className='mt-2 md:m-0'>{product.description}</p>
+						<p className='h-42'>{product.content}</p>
 						<div className='flex mt-4 md:m-0 justify-between'>
 							{addedToCart ? (
 								<motion.button

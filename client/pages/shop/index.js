@@ -8,11 +8,11 @@ import styles from '../../styles/Shop.module.css';
 
 //Project files
 import ProductItem from '../../components/product/ProductItem';
-import {ProductFilter} from '../../components/Filter';
+import { ProductFilter } from '../../components/Filter';
 import { getData } from '../../utils/fetchData';
 import { DataContext } from '../../store/GlobalState';
 import filterSearch from '../../utils/filterSearch';
-import Loading from '../../components/Loading'
+import Loading from '../../components/Loading';
 
 function Shop(props) {
 	const [products, setProducts] = useState(props.products);
@@ -96,25 +96,25 @@ function Shop(props) {
 						</button>
 					</div>
 				)}
-					<div className='flex flex-wrap justify-evenly sm:justify-start'>
-						{products.length === 0 ? (
-							<h2>No products</h2>
-						) : (
-							products.map((product) => (
-								<ProductItem
-									key={product._id}
-									product={product}
-									handleCheck={handleCheck}
-								/>
-							))
-						)}
-					</div>
+				<div className='flex flex-wrap justify-evenly sm:justify-start'>
+					{products.length === 0 ? (
+						<h2>No products</h2>
+					) : (
+						products.map((product) => (
+							<ProductItem
+								key={product._id}
+								product={product}
+								handleCheck={handleCheck}
+							/>
+						))
+					)}
+				</div>
 				<div className='w-full flex justify-center'>
 					{props.result < page * 8 ? (
 						''
 					) : (
 						<button
-							className='w-36 h-12 border-4 border-gray-900  rounded-lg mb-5'
+							className='w-36 h-12 border-2 border-gray-900  rounded-lg mb-5'
 							onClick={handleLoadMore}>
 							Load more
 						</button>

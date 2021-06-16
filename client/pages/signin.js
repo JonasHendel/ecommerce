@@ -9,7 +9,6 @@ import { useRouter } from 'next/router';
 import { DataContext } from '../store/GlobalState';
 import { postData } from '../utils/fetchData';
 
-
 function signin() {
 	const initialState = { email: '', password: '' };
 	const [userData, setUserData] = useState(initialState);
@@ -62,38 +61,42 @@ function signin() {
 			<Head>
 				<title>Sign-in Page</title>
 			</Head>
-      
-			<form className='shadow-even w-2/5 min-w-400 h-2/5 rounded-2xl mt-20 flex flex-col justify-evenly items-center' onSubmit={handleSubmit}>
-				<h1 className="font-bold text-xl">Sign in</h1>
-        <div className="flex flex-col items-center">
-          <input
-            className="mb-2 border-4 border-gray-900 border-md rounded-md p-2"
-            type='text'
-            name='email'
-            value={email}
-            onChange={handleChangeInput}
-            placeholder='Email'
-          />
-          <input
-            className="border-4 border-black border-md rounded-md p-2"
-            type='password'
-            name='password'
-            value={password}
-            onChange={handleChangeInput}
-            placeholder='Password'
-          />
-        </div>
-        <div className="flex flex-col items-center">
-				<button className='h-12 w-28 mb-4 bg-gray-900 text-white rounded-lg' type='submit'>
-					Login
-				</button>
-        <div>
-          <a>You don't have an account? </a>
-          <Link href='/register'>
-            <a className="underline">Register</a>
-          </Link>
-        </div>
-        </div>
+
+			<form
+				className='shadow-even w-2/5 min-w-400 h-2/5 rounded-2xl mt-20 flex flex-col justify-evenly items-center'
+				onSubmit={handleSubmit}>
+				<h1 className='font-bold text-xl'>Sign in</h1>
+				<div className='flex flex-col items-center'>
+					<input
+						className='mb-2 border-2 border-gray-900 border-md rounded-md p-2'
+						type='text'
+						name='email'
+						value={email}
+						onChange={handleChangeInput}
+						placeholder='Email'
+					/>
+					<input
+						className='border-2 border-black border-md rounded-md p-2'
+						type='password'
+						name='password'
+						value={password}
+						onChange={handleChangeInput}
+						placeholder='Password'
+					/>
+				</div>
+				<div className='flex flex-col items-center'>
+					<button
+						className='h-12 w-28 mb-4 bg-gray-900 text-white rounded-lg'
+						type='submit'>
+						Login
+					</button>
+					<div>
+						<a>You don't have an account? </a>
+						<Link href='/register'>
+							<a className='underline'>Register</a>
+						</Link>
+					</div>
+				</div>
 			</form>
 		</div>
 	);

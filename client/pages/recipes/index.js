@@ -8,11 +8,11 @@ import styles from '../../styles/Shop.module.css';
 
 //Project files
 import RecipeItem from '../../components/RecipeItem';
-import {RecipeFilter} from '../../components/Filter';
+import { RecipeFilter } from '../../components/Filter';
 import { getData } from '../../utils/fetchData';
 import { DataContext } from '../../store/GlobalState';
 import filterSearch from '../../utils/filterSearch';
-import Loading from '../../components/Loading'
+import Loading from '../../components/Loading';
 
 function Recipes(props) {
 	const [recipes, setRecipes] = useState(props.recipes);
@@ -96,29 +96,29 @@ function Recipes(props) {
 						</button>
 					</div>
 				)}
-					<div className='flex flex-wrap justify-evenly sm:justify-start'>
-						{recipes.length === 0 ? (
-					<div className='flex justify-center w-full'>
-						<h1 className='mt-20 text-2xl font-bold'>
-							Ingen oppskrifter tilgjengelig
-						</h1>
-					</div>
-						) : (
-							recipes.map((recipe) => (
-								<RecipeItem
-									key={recipe._id}
-									recipe={recipe}
-									handleCheck={handleCheck}
-								/>
-							))
-						)}
-					</div>
+				<div className='flex flex-wrap justify-evenly sm:justify-start'>
+					{recipes.length === 0 ? (
+						<div className='flex justify-center w-full'>
+							<h1 className='mt-20 text-2xl font-bold'>
+								Ingen oppskrifter tilgjengelig
+							</h1>
+						</div>
+					) : (
+						recipes.map((recipe) => (
+							<RecipeItem
+								key={recipe._id}
+								recipe={recipe}
+								handleCheck={handleCheck}
+							/>
+						))
+					)}
+				</div>
 				<div className='w-full flex justify-center'>
 					{props.result < page * 8 ? (
 						''
 					) : (
 						<button
-							className='w-36 h-12 border-4 border-gray-900  rounded-lg mb-5'
+							className='w-36 h-12 border-2 border-gray-900  rounded-lg mb-5'
 							onClick={handleLoadMore}>
 							Load more
 						</button>
@@ -135,9 +135,7 @@ export async function getServerSideProps({ query }) {
 	const search = query.search || 'all';
 
 	const res = await getData(
-		`recipe?limit=${
-			page * 8
-		}&sort=${sort}&title=${search}`
+		`recipe?limit=${page * 8}&sort=${sort}&title=${search}`
 	);
 	return {
 		props: {

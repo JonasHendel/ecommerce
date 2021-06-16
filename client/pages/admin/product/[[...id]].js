@@ -90,7 +90,7 @@ const ProductManager = () => {
 	};
 
 	const isActive = (index) => {
-		if (tab == index) return 'h-12 mr-2 border-4 border-white ';
+		if (tab == index) return 'h-12 mr-2 border-2 border-white ';
 		return 'h-12 mr-2';
 	};
 
@@ -181,7 +181,7 @@ const ProductManager = () => {
 									Title:
 								</label>
 								<input
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='text'
 									name='title'
 									value={title}
@@ -196,7 +196,7 @@ const ProductManager = () => {
 									Price:
 								</label>
 								<input
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='number'
 									name='price'
 									value={price}
@@ -211,7 +211,7 @@ const ProductManager = () => {
 									In stock:
 								</label>
 								<input
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='number'
 									name='inStock'
 									value={inStock}
@@ -226,7 +226,7 @@ const ProductManager = () => {
 									Description:
 								</label>
 								<textarea
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='text'
 									name='description'
 									value={description}
@@ -241,7 +241,7 @@ const ProductManager = () => {
 									Content:
 								</label>
 								<textarea
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='text'
 									name='content'
 									value={content}
@@ -257,7 +257,7 @@ const ProductManager = () => {
 								</label>
 								<div>
 									<select
-										className='border-4 w-full border-black border-md rounded-md p-2'
+										className='border-2 w-full border-black border-md rounded-md p-2'
 										name='category'
 										id='category'
 										value={category}
@@ -297,11 +297,11 @@ const ProductManager = () => {
 										<div className='flex'>
 											{images.map((img, index) => (
 												<div key={index}>
-													<img key={index}
+													<img
+														key={index}
 														className={isActive(
 															index
 														)}
-														
 														src={
 															img.url
 																? img.url

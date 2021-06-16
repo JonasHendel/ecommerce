@@ -53,7 +53,7 @@ function register() {
 		if (res.err) {
 			return dispatch({ type: 'NOTIFY', payload: { error: res.err } });
 		}
-    router.push('/signin')
+		router.push('/signin');
 		return dispatch({ type: 'NOTIFY', payload: { success: res.msg } });
 	};
 
@@ -64,12 +64,11 @@ function register() {
 			</Head>
 			<form
 				className='shadow-even w-2/5 min-w-400 h-3/5 rounded-2xl mt-20 flex flex-col justify-evenly items-center'
-				onSubmit={handleSubmit}
-			>
+				onSubmit={handleSubmit}>
 				<h1 className='font-bold text-xl'>Register</h1>
 				<div className='flex flex-col items-center'>
 					<input
-						className='mb-2 border-4 border-gray-900 border-md rounded-md p-2'
+						className='mb-2 border-2 border-gray-900 border-md rounded-md p-2'
 						name='name'
 						value={name}
 						onChange={handleChangeInput}
@@ -77,7 +76,7 @@ function register() {
 						placeholder='Name'
 					/>
 					<input
-						className='mb-2 border-4 border-gray-900 border-md rounded-md p-2'
+						className='mb-2 border-2 border-gray-900 border-md rounded-md p-2'
 						name='email'
 						value={email}
 						onChange={handleChangeInput}
@@ -85,7 +84,7 @@ function register() {
 						placeholder='Email'
 					/>
 					<input
-						className='mb-2 border-4 border-gray-900 border-md rounded-md p-2'
+						className='mb-2 border-2 border-gray-900 border-md rounded-md p-2'
 						name='password'
 						value={password}
 						onChange={handleChangeInput}
@@ -93,30 +92,28 @@ function register() {
 						placeholder='Password'
 					/>
 					<input
-						className='mb-2 border-4 border-gray-900 border-md rounded-md p-2'
+						className='mb-2 border-2 border-gray-900 border-md rounded-md p-2'
 						name='cf_password'
 						value={cf_password}
 						onChange={handleChangeInput}
 						type='password'
 						placeholder='Confirm Password'
 					/>
-					<div className="flex mt-4 items-center">
+					<div className='flex mt-4 items-center'>
 						<input
-            className="mr-2"
+							className='mr-2'
 							type='checkbox'
 							onChange={(e) => {
 								setChecked(e.target.value);
 							}}
 						/>
-            <p className="font-semibold">Newsletter</p>
+						<p className='font-semibold'>Newsletter</p>
 					</div>
 				</div>
 				<div className='flex flex-col items-center'>
 					<button
 						className='h-12 w-28 mb-4 bg-gray-900 text-white rounded-lg'
-            
-						type='submit'
-					>
+						type='submit'>
 						Register
 					</button>
 					<div>

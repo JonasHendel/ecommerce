@@ -25,7 +25,7 @@ const ContactForm = () => {
 	};
 
 	const sendEmail = (e) => {
-    e.preventDefault();
+		e.preventDefault();
 		dispatch({ type: 'NOTIFY', payload: { loading: true } });
 
 		emailjs
@@ -49,57 +49,57 @@ const ContactForm = () => {
 
 	return (
 		<>
-				<form
-					className='p-8 my-8 w-5/6 lg:w-50rem h-40rem lg:mr-8 flex flex-col justify-evenly shadow-even rounded-xl'
-					onSubmit={sendEmail}>
-					<h1 className='font-bold text-xl'>Send meg en Epost!</h1>
-					<input type='hidden' name='contact_number' />
-					<div className='flex flex-col lg:flex-row justify-between'>
-						<input
-							className='lg:w-2/5 mb-2 border-4 border-gray-900 border-md rounded-md p-2'
-							value={user_name}
-							onChange={handleChange}
-							type='text'
-							name='user_name'
-							placeholder='Name'
-							required
-						/>
-						<input
-							className='lg:w-3/6 mb-2 border-4 border-gray-900 border-md rounded-md p-2'
-							value={user_email}
-							onChange={handleChange}
-							type='email'
-							name='user_email'
-							placeholder='Email'
-							required
-						/>
-					</div>
+			<form
+				className='p-8 my-8 w-5/6 lg:w-50rem h-40rem lg:mr-8 flex flex-col justify-evenly shadow-even rounded-xl'
+				onSubmit={sendEmail}>
+				<h1 className='font-bold text-xl'>Send meg en Epost!</h1>
+				<input type='hidden' name='contact_number' />
+				<div className='flex flex-col lg:flex-row justify-between'>
 					<input
-						className='mb-2 border-4 border-gray-900 border-md rounded-md p-2'
-						value={subject}
+						className='lg:w-2/5 mb-2 border-2 border-gray-900 border-md rounded-md p-2'
+						value={user_name}
 						onChange={handleChange}
 						type='text'
-						name='subject'
-						placeholder='Subject'
+						name='user_name'
+						placeholder='Name'
 						required
 					/>
-					<textarea
-						className='h-2/5 mb-2 border-4 border-gray-900 border-md rounded-md p-2'
-						value={message}
+					<input
+						className='lg:w-3/6 mb-2 border-2 border-gray-900 border-md rounded-md p-2'
+						value={user_email}
 						onChange={handleChange}
-						name='message'
-						placeholder='Message'
+						type='email'
+						name='user_email'
+						placeholder='Email'
 						required
 					/>
-					<div className='flex justify-end'>
-						<button
-							className='bg-gray-900 text-white h-12 w-28 rounded-md'
-							type='submit'
-							value='Send'>
-							Send
-						</button>
-					</div>
-				</form>
+				</div>
+				<input
+					className='mb-2 border-2 border-gray-900 border-md rounded-md p-2'
+					value={subject}
+					onChange={handleChange}
+					type='text'
+					name='subject'
+					placeholder='Subject'
+					required
+				/>
+				<textarea
+					className='h-2/5 mb-2 border-2 border-gray-900 border-md rounded-md p-2'
+					value={message}
+					onChange={handleChange}
+					name='message'
+					placeholder='Message'
+					required
+				/>
+				<div className='flex justify-end'>
+					<button
+						className='bg-gray-900 text-white h-12 w-28 rounded-md'
+						type='submit'
+						value='Send'>
+						Send
+					</button>
+				</div>
+			</form>
 		</>
 	);
 };

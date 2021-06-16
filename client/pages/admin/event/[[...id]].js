@@ -87,7 +87,7 @@ const EventManager = () => {
 	};
 
 	const isActive = (index) => {
-		if (tab == index) return 'h-12 mr-2 border-4 border-white';
+		if (tab == index) return 'h-12 mr-2 border-2 border-white';
 		return 'h-12 mr-2';
 	};
 
@@ -170,7 +170,7 @@ const EventManager = () => {
 									Title:
 								</label>
 								<input
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='text'
 									name='title'
 									value={title}
@@ -185,7 +185,7 @@ const EventManager = () => {
 									Description:
 								</label>
 								<textarea
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='text'
 									name='description'
 									value={description}
@@ -200,7 +200,7 @@ const EventManager = () => {
 									Content:
 								</label>
 								<textarea
-									className='border-4 border-black border-md rounded-md p-2'
+									className='border-2 border-black border-md rounded-md p-2'
 									type='text'
 									name='content'
 									value={content}
@@ -236,7 +236,6 @@ const EventManager = () => {
 														className={isActive(
 															index
 														)}
-														
 														src={
 															img.url
 																? img.url
@@ -246,7 +245,7 @@ const EventManager = () => {
 														}
 														alt={img}
 														onClick={() => {
-															setTab(index)
+															setTab(index);
 														}}
 													/>
 													<span
