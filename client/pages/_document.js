@@ -12,10 +12,6 @@ class MyDocument extends Document {
 						content='Lær hvordan man lager ekte italiensk pizza eller bestill et pizzaevent hvor vi baker pizza ved ditt event for ditt event!'
 					/>
 					<meta
-						name='viewport'
-						content='width=device-width, initial-scale=1.0'
-					/>
-					<meta
 						name='twitter:card'
 						content='Pizzakurs, pizzaevent og Nettbuttikk'
 					/>

@@ -4,7 +4,7 @@ import { useState, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {useRouter} from 'next/router'
 import { loadStripe } from '@stripe/stripe-js';
-import { MinusCircle, PlusCircle, Calendar, Clock } from 'phosphor-react';
+import { MinusCircle, PlusCircle, Calendar, Clock, ArrowLeft } from 'phosphor-react';
 import { addCourse } from '../../store/Actions';
 import ImageSlider from '../../components/slider/ImageSlider'
 
@@ -29,15 +29,9 @@ const Course = (props) => {
 		quantity: 1,
 	};
 
-	const [tab, setTab] = useState(0);
 	const [course, setCourse] = useState(initialState);
 	const { quantity, price } = course;
 
-
-	const isActive = (index) => {
-		if (tab == index) return 'h-12 mr-2 border-4 border-black ';
-		return 'h-12 mr-2';
-	};
 
   const handlePayment = async () => {
 		if (!auth.user) {
@@ -153,10 +147,10 @@ const Course = (props) => {
 								
 							)}
 							<button
-								className='cancel-btn'
-								onClick={() => {
-									router.back();
-								}}>
+								onClick={() => router.back()}
+								className='flex items-center justify-center h-12 w-28 mb-4 font-bold'
+								aria-hidden='true'>
+								<ArrowLeft className='mr-2' />
 								Tilbake
 							</button>
 						</div>

@@ -130,8 +130,8 @@ function cart() {
           <div className="mb-16">
 					<button className="flex items-center text-xl" onClick={() => router.back()}> <ArrowCircleLeft className="mr-2" weight='bold'/>Return</button>
           </div>
-					<div className='flex justify-evenly items-center w-full'>
-						<div className='w-2/5 flex flex-col'>
+					<main className='flex flex-col md:flex-row justify-evenly items-center w-full'>
+						<section className='flex flex-col'>
 							{cart.map((item) => (
 								<CartItem
 									key={item._id}
@@ -140,8 +140,8 @@ function cart() {
 									cart={cart}
 								/>
 							))}
-						</div>
-						<div className='ml-9 flex w-1/5 flex-col justify-center '>
+						</section>
+						<section className='ml-9 flex text-center w-96 md:text-left md:w-1/5 flex-col justify-center '>
 							<h3 className='font-bold mb-10 text-4xl'>
 								Total:
 								<br /> NOK{' '}
@@ -155,8 +155,8 @@ function cart() {
 							>
 								Fortsett med betaling
 							</button>
-						</div>
-					</div>
+						</section>
+					</main>
 				</div>
 			</main>
 		</>

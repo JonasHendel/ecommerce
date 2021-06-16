@@ -6,12 +6,15 @@ import styles from '../styles/Contact.module.css';
 import { useContext } from 'react';
 import { DataContext } from '../store/GlobalState';
 
-const ContactForm = ({event}) => {
+const ContactForm = ({ event }) => {
 	const initialState = {
 		user_name: '',
 		user_email: '',
 		subject: event.title,
-		message: 'Hei, jeg vil gjerne booke deg den "ANGI DATO". Vi er "ANGI ANTALL PERSONER" personer. Stedet vi vil at du skal være er "ANGI STED".',
+		date: '',
+		persons: '',
+		location: '',
+		message: '',
 	};
 
 	const [emailInfo, setEmailInfo] = useState(initialState);
@@ -22,12 +25,17 @@ const ContactForm = ({event}) => {
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setEmailInfo({ ...emailInfo, [name]: value });
+		
 	};
 
 	const sendEmail = (e) => {
-    e.preventDefault();
+    setEmailInfo({
+			...emailInfo,
+			message: `Hei, jeg vil gjerne booke deg den ${emailInfo.date}. Vi er ${emailInfo.persons} personer. Stedet vi vil at du skal være er ${emailInfo.location}.`,
+		});
+    console.log(e.target)
+		e.preventDefault();
 		dispatch({ type: 'NOTIFY', payload: { loading: true } });
-
 
 		emailjs
 			.sendForm('test', 'template1', e.target, process.env.USER_EMAILJS)
@@ -35,14 +43,14 @@ const ContactForm = ({event}) => {
 				(result) => {
 					dispatch({
 						type: 'NOTIFY',
-						payload: { success: 'Success! Email was sent.' },
+						payload: { success: 'E-mailen er sendt, du kommer til å høre fra meg innen få dager!' },
 					});
 					setEmailInfo(initialState);
 				},
 				(error) => {
 					dispatch({
 						type: 'NOTIFY',
-						payload: { error: 'Error, try again later' },
+						payload: { error: 'Det oppsto en feil, prøv igjen senere' },
 					});
 				}
 			);
@@ -52,22 +60,22 @@ const ContactForm = ({event}) => {
 		<>
 			<div>
 				<form
-					className='p-8 mt-8 mr-8 h-40rem flex flex-col justify-evenly'
+					className='p-8 mt-8 md:mr-8 h-40rem flex flex-col justify-evenly'
 					onSubmit={sendEmail}>
 					<h1 className='font-bold text-xl'>Book meg!</h1>
 					<input type='hidden' name='contact_number' />
 					<div className='flex justify-between'>
 						<input
-							className='w-2/5 mb-2 border-4 border-gray-900 border-md rounded-md p-2'
+							className='w-2/5 mb-2 border-2 border-gray-900 border-md rounded-md p-2'
 							value={user_name}
 							onChange={handleChange}
 							type='text'
 							name='user_name'
-							placeholder='Name'
+							placeholder='Navn'
 							required
 						/>
 						<input
-							className='w-3/6 mb-2 border-4 border-gray-900 border-md rounded-md p-2'
+							className='w-3/6 mb-2 border-2 border-gray-900 border-md rounded-md p-2'
 							value={user_email}
 							onChange={handleChange}
 							type='email'
@@ -77,22 +85,55 @@ const ContactForm = ({event}) => {
 						/>
 					</div>
 					<input
-						className='mb-2 border-4 border-gray-900 border-md rounded-md p-2'
-						value={event.title}
+						className='mb-2 border-2 border-gray-900 border-md rounded-md p-2'
 						onChange={handleChange}
 						type='text'
 						name='subject'
 						placeholder='Subject'
-						required
-					/>
-					<textarea
-						className='h-2/5 mb-2 border-4 border-gray-900 border-md rounded-md p-2'
-						value={message}
-						onChange={handleChange}
-						name='message'
-						placeholder='Message'
-						required
-					/>
+						value={event.title}
+						required/>
+					<div>
+						<p>
+							Hei, jeg vil gjerne booke deg den{' '}
+							<input
+								type='date'
+								className='mb-2 border-2 border-gray-900 border-md rounded-md p-2'
+								value={emailInfo.date}
+								onChange={handleChange}
+								name='date'
+                required
+							/>
+							. <br />
+							Vi er{' '}
+							<input
+								type='number'
+								className='mb-2 border-2 border-gray-900 border-md rounded-md p-2'
+								value={emailInfo.persons}
+								onChange={handleChange}
+								name='persons'
+                placeholder="Antall personer"
+                required
+							/>{' '}
+							personer.
+							<br />
+							Stedet vi vil at du skal være er{' '}
+							<input
+								type='text'
+								className='mb-2 border-2 border-gray-900 border-md rounded-md p-2'
+								value={emailInfo.location}
+								onChange={handleChange}
+								name='location'
+                placeholder="Sted"
+                required
+							/>
+							.
+						</p>
+            <input
+            className="hidden"
+              value={emailInfo.message}
+              name="message"
+            />
+					</div>
 					<div className='flex justify-end'>
 						<button
 							className='bg-gray-900 text-white h-12 w-28 rounded-md'

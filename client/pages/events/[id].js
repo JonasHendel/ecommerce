@@ -27,25 +27,16 @@ const Event = (props) => {
 		quantity: 1,
 	};
 
-	const [tab, setTab] = useState(0);
 	const [event, setEvent] = useState(initialState);
-
-
-	const isActive = (index) => {
-		if (tab == index) return 'h-12 mr-2 border-4 border-black ';
-		return 'h-12 mr-2';
-	};
-
-
 
 	return (
 		<>
 			<Head>
 				<title>{event.title}</title>
 			</Head>
-			<div className='max-w-7xl h-screen mx-auto sm:px-6 lg:px-8 flex justify-center'>
-				<div className='flex justify-evenly mt-10 items-center w-full h-4/5 shadow-even rounded-2xl'>
-					<section className='flex flex-col h-4/5 w-2/5 justify-center'>
+			<div className='max-w-7xl min-h-screen mx-auto sm:px-6 lg:px-8 flex justify-center'>
+				<div className='flex flex-col justify-start md:justify-evenly md:mt-20 items-center w-full md:h-5/6  md:shadow-even md:flex-row rounded-2xl'>
+					<section className='w-96 md:w-2/5 md:ml-20 mt-10 md:mb-20 md:h-5/6 flex flex-col justify-evenly'>
 						<h1 className='uppercase font-bold text-2xl mb-10'>
 							{event.title}
 						</h1>

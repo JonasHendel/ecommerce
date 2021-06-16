@@ -48,17 +48,10 @@ const OrderDetails = () => {
 		);
 	};
 
-  if (!auth.user) {
-		return null;
-	} else if (auth.user) {
-		if (auth.user.role !== 'admin') {
-			return null;
-		}
-	}
 	return (
 		<div className='max-w-7xl h-screen mx-auto px-2 sm:px-6 lg:px-8 '>
 			<Head>
-				<title>Order Details</title>
+				<title>Bestillingsdetaljer</title>
 			</Head>
 			<div>
 				{orderDetail.map((order) => (
@@ -71,24 +64,24 @@ const OrderDetails = () => {
 								className='flex items-center justify-center h-12 w-28 mb-4 font-bold'
 								aria-hidden='true'>
 								<ArrowLeft className='mr-2' />
-								Return
+								Tilbake
 							</button>
 						</div>
 						<div className='flex justify-center mb-6'>
 							<h1 className='text-3xl font-bold'>
-								Order: {order._id}
+								Bestilling: {order._id}
 							</h1>
 						</div>
 						<div className='flex justify-center'>
 							<div className='w-2/5 flex flex-col'>
 								<h2 className='text-lg font-semibold'>
-									Shipping:{' '}
+									Shipping{' '}
 								</h2>
 								{order.user ? (
 									<div className='mt-4'>
 										<div className='flex'>
 											<p className='font-semibold mr-1'>
-												Name:
+												Navn:
 											</p>{' '}
 											{order.user.name}
 										</div>
@@ -100,7 +93,7 @@ const OrderDetails = () => {
 										</div>
 										<div className='flex'>
 											<p className='font-semibold mr-1'>
-												Address:
+												Addresse:
 											</p>{' '}
 											{order.address.line1},{' '}
 											{order.address.city},{' '}
@@ -108,16 +101,16 @@ const OrderDetails = () => {
 										</div>
 									</div>
 								) : (
-									<p>Not found</p>
+									<p>Ikke funnet</p>
 								)}
 								<div className='mt-8'>
 									{order.delivered ? (
 										<p className='text-green-600 font-semibold'>
-											Delivered on {order.updatedAt}
+											Levert den {order.updatedAt}
 										</p>
 									) : (
 										<p className='text-red-600 font-semibold'>
-											Not delivered
+											Ikke levert
 										</p>
 									)}
 									{auth.user.role === 'admin' &&
@@ -133,12 +126,12 @@ const OrderDetails = () => {
 								</div>
 							</div>
 							<div className='w-2/5'>
-								<h1 className='text-lg font-bold'>Items</h1>
+								<h1 className='text-lg font-bold'>Varer</h1>
 								{order.cart.map((item) => (
 									<div key={item._id} className='flex mb-4'>
 										<div>
 											<img
-												className='w-28 rounded-md'
+												className='w-28 h-20 object-cover rounded-md'
 												src={item.images[0].url}></img>
 										</div>
 										<div className='flex justify-center'>

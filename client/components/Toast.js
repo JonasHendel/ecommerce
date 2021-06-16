@@ -24,7 +24,7 @@ const Toast = ({ message, handleShow }) => {
 			<ToastContainer
 				limit={2}
 				pauseOnHover={false}
-				autoClose={3000}
+				autoClose={4000}
 				newestOnTop={true}
 			/>
 		</div>

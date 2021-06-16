@@ -10,12 +10,12 @@ const OrderTable = ({items, title}) => {
 					<thead className='sticky top-0 z-10 bg-white'>
 						<tr className='font-bold uppercase '>
 							<th className='text-left'>Id</th>
-							<th className='text-left'>Date</th>
+							<th className='text-left'>Dato</th>
 							<th className='text-left'>Total</th>
-              {title !== 'tickets' && 
-							  <th className=''>Delivered</th>
+              {title !== 'billetter' && 
+							  <th className=''>Levert</th>
               }
-							<th className='text-left'>Action</th>
+							<th className='text-left'></th>
 						</tr>
 					</thead>
 					<tbody className='divide-y divide-gray-200'>
@@ -28,7 +28,7 @@ const OrderTable = ({items, title}) => {
 									).toLocaleDateString()}
 								</td>
 								<td>NOK: {order.total / 100}</td>
-              {title !== 'tickets' && 
+              {title !== 'billetter' && 
 								<td className='flex justify-center h-14 items-center'>
 									{order.delivered ? (
 										<CheckCircle className=' text-xl text-green-500' />
@@ -38,11 +38,11 @@ const OrderTable = ({items, title}) => {
 								</td>
               }
 								<td>
-                {title === 'tickets' ?
-									<Link href={`/admin/tickets/ticket/${order._id}`}>
-										<a className='underline'>Details</a>
-									</Link> : <Link href={`/admin/order/${order._id}`}>
-										<a className='underline'>Details</a>
+                {title === 'billetter' ?
+									<Link href={`/details/ticket/${order._id}`}>
+										<a className='underline'>Detalier</a>
+									</Link> : <Link href={`/details/order/${order._id}`}>
+										<a className='underline'>Detalier</a>
 									</Link>
 
                 }

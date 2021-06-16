@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Trash, MinusCircle, PlusCircle } from 'phosphor-react';
 import { decrease, increase, deleteItem } from '../store/Actions';
+import Image from 'next/image'
 
 const CartItem = ({ item, dispatch, cart }) => {
 	// const {state, dispatch} = useContext(DataContext)
@@ -12,7 +13,7 @@ const CartItem = ({ item, dispatch, cart }) => {
 	return (
 		<>
 			<div className='flex mb-5 justify-between items-center'>
-				<div>
+				<div className="mr-4">
 					<img
 						className='w-28 h-20 object-cover rounded-md'
 						src={item.images[0].url}
@@ -24,7 +25,7 @@ const CartItem = ({ item, dispatch, cart }) => {
 						<a className='capitalize font-bold'>{item.title}</a>
 
 						<h6 className='font-semibold'>
-							NOK {item.quantity * item.price}
+							NOK {item.price}
 						</h6>
 						{item.inStock > 0 ? (
 							<p className='font-semibold text-green-500'>
@@ -51,7 +52,7 @@ const CartItem = ({ item, dispatch, cart }) => {
 							weight='bold'
 						/>
 					</motion.button>
-					<p className='w-6 text-center'>{item.quantity}</p>
+					<p className='w-6 text-center font-bold'>{item.quantity}</p>
 					<motion.button
 						whileTap={{ scale: 0.9 }}
 						className='text-3xl'
@@ -68,7 +69,7 @@ const CartItem = ({ item, dispatch, cart }) => {
 				<motion.div
 					className='cursor-pointer ml-7'
 					whileTap={{ scale: 0.9 }}
-					onClick={() => dispatch({type: 'ADD_MODAL', payload: [{data: cart, id:item._id, title: item.title, type: 'ADD_CART'}]})}
+					onClick={()=>dispatch(deleteItem(cart, item._id, 'ADD_CART'))}
 				>
 					<Trash size={30} weight='bold' />
 				</motion.div>
