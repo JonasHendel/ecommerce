@@ -42,7 +42,7 @@ const OrderTable = ({items, title}) => {
 									<Link href={`/details/ticket/${order._id}`}>
 										<a className='underline'>Detalier</a>
 									</Link> : <Link href={`/details/order/${order._id}`}>
-										<a className='underline'>Detalier</a>
+										<a className='underline'>Detaljer</a>
 									</Link>
 
                 }
