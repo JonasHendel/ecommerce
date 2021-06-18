@@ -31,8 +31,8 @@ const createCheckoutSession = async (req, res) => {
       }
     ],
 			mode: 'payment',
-			success_url: `${process.env.BASE_URL}/success/course?session_id={CHECKOUT_SESSION_ID}`,
-			cancel_url: `${process.env.BASE_URL}/course/${course._id}`,
+			success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success/course?session_id={CHECKOUT_SESSION_ID}`,
+			cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/course/${course._id}`,
 		});
 
 		res.json({ id: session.id });
